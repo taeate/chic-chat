@@ -1,8 +1,10 @@
 {% extends 'layout.html' %}
 {% block content %}
 {% if room %}
-<h1>성공</h1>
+<h1>
+    "{{ room.name }}" 채팅방 입니다.
+</h1>
 {% else %}
-<h1>채팅방이 없습니다.</h1>
+<h1>채팅방이 찾을수가 없어요...ㅠㅠ 안타깝..</h1>
 {% endif %}
 {% endblock %}

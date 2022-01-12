@@ -1,7 +1,14 @@
 {% extends 'layout.html' %}
 {% block content %}
 {% if room_list %}
+{% for room in room_list %}
+<a href="{% url 'chat:detail' room.name %}">
+    <h5 class="my-3 border-bottom pb-2">
+        채팅방 이름 : {{ room.name }}
+    </h5>
+</a>
+{% endfor %}
 {% else %}
-<h1>채팅방이 없습니다.</h1>
+<h1>채팅방 is alone...</h1>
 {% endif %}
 {% endblock %}
