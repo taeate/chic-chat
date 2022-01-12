@@ -1,5 +1,12 @@
-from django.http import HttpResponse
-from django.shortcuts import render
+from django.contrib import auth
+from django.contrib.auth import authenticate
+from django.http import HttpRequest
+from django.shortcuts import render, redirect
+
 
 def accounts(request):
-    return HttpResponse('sdsaasdas')
+    return render(request, 'accounts_login.html')
+
+
+def login(request: HttpRequest):
+    return render(request, 'login.html')
