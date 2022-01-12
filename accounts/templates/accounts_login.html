@@ -7,17 +7,27 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Document</title>
 </head>
-    <div>
-        Chicken's Talk
-    </div>
+<div>
+    Chicken's Talk
+</div>
 <body>
-    <div>
+<div>
+    <form method="POST">
+        <input type="search" name="search_keyword"
+               placeholder="아이디를 입력해주세요."
+               aria-label="id">
+    </form>
+    <input type="search" name="search_keyword"
+           placeholder="비밀번호를 입력해주세요."
+           aria-label="pw">
     <button>
-        <a href="login">로그인</a>
+        <div class="card-header">
+            <a href="login">로그인</a>
+        </div>
     </button>
     <button>
         <a>회원가입</a>
     </button>
-    </div>
+</div>
 </body>
 </html>
