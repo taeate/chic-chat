@@ -75,7 +75,7 @@ WSGI_APPLICATION = 'base.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.mysql',
-        'NAME': 'chictalk',
+        'NAME': 'chickenstalk',
         'USER': 'root',
         'PASSWORD': '',
         'HOST': '127.0.0.1',
