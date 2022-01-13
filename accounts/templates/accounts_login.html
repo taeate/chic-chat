@@ -22,8 +22,7 @@
         <button type="submit" class="btn btn-primary">로그인</button>
     </form>
 </div>
-    <form method="post" class="post-form" action="{% url 'accounts:signup' %}">
-        {% csrf_token %}
+    <form method="get" class="post-form" action="{% url 'accounts:signup' %}">
         <button><a>회원가입</a></button>
     </form>
 
