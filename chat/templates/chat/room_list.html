@@ -2,11 +2,22 @@
 {% block content %}
 {% if room_list %}
 {% for room in room_list %}
+<h5 class="my-3 border-bottom pb-2">
+    채팅방 이름 : {{ room.name }}
+</h5>
+{% if my_servers %}
+{% for myserver in my_servers %}
+{% if myserver.room == room %}
 <a href="{% url 'chat:detail' room.name %}">
-    <h5 class="my-3 border-bottom pb-2">
-        채팅방 이름 : {{ room.name }}
-    </h5>
+    <button type="button" class="btn btn-success">참가중인 서버</button>
 </a>
+{% endif %}
+{% endfor %}
+{% else %}
+<a href="{% url 'chat:accessServer' room.name %}">
+    <button type="button" class="btn btn-success">서버 참가</button>
+</a>
+{% endif %}
 {% endfor %}
 {% else %}
 <h1>채팅방 is alone...</h1>
