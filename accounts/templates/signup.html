@@ -1,7 +1,7 @@
 {% extends 'layout.html' %}
 {% block content %}
 
-<form method="post" class="post-form" action="{% url 'accounts:signup' %}">
+<form method="post" class="post-form" action="{% url 'accounts1:signup' %}">
     {% csrf_token %}
     {% include "form_errors.html" %}
     <div class="form-group">

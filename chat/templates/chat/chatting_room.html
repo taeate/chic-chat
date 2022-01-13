@@ -3,7 +3,20 @@
 {% if room %}
 <h1>
     "{{ room.name }}" 채팅방 입니다.
+
+<form action="{% url 'chat:message_write' %}" onsubmit="ChickChatForm__submit(this); return false;">
+    {% csrf_token %}
+    <input type="text" style="display:none" name="room_id" value="{{room.id}}"></input>
+    <input type="text" placeholder="작성자" name="writer">
+    <input type="text" placeholder="내용" name="body">
+    <input type="submit" value="작성">
+</form>
+
+<div class="chat-messages">
+    <div></div>
+</div>
 </h1>
+
 {% else %}
 <h1>채팅방이 찾을수가 없어요...ㅠㅠ 안타깝..</h1>
 {% endif %}
