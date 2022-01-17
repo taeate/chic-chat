@@ -1,7 +1,7 @@
 {% extends 'layout.html' %}
 {% block content %}
-{% if room_list %}
-{% for room in room_list %}
+{% if rooms %}
+{% for room in rooms %}
 <h5 class="my-3 border-bottom pb-2">
     채팅방 이름 : {{ room.name }}
 </h5>
