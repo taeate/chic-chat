@@ -1,88 +1,28 @@
 {% extends 'layout.html' %}
 {% block content %}
 {% if room %}
+{% include 'chat/js/chat_logic.html' %}
 <h1>
     "{{ room.name }}" 채팅방 입니다.
-
-<form action="{% url 'chat:message_write' %}" onsubmit="ChickChatForm__submit(this); return false;">
-    {% csrf_token %}
-    <input type="text" style="display:none" name="room_id" value="{{room.id}}"></input>
-    <input type="text" placeholder="작성자" name="writer">
-    <input type="text" placeholder="내용" name="body">
-    <input type="submit" value="작성">
-</form>
-
-        <script type="text/javascript">
-            function ChickChatForm__submit(form) {
-                form.writer.value = form.writer.value.trim();
-                if ( form.writer.value.length == 0 ) {
-                    alert('작성자를 입력해주세요.');
-                    form.writer.focus();
-        
-                    return false;
-                }
-        
-                if ( form.body.value.length == 0 ) {
-                    alert('내용을 입력해주세요.');
-                    form.body.focus();
-        
-                    return false;
-                }
-        
-                const writer = form.writer.value;
-                const body = form.body.value;
-                const room_id = form.room_id.value;
-        
-                $.post(
-                    form.action,
-                    {
-                        csrfmiddlewaretoken: form.csrfmiddlewaretoken.value,
-                        writer,
-                        body,
-                        room_id
-                    },
-                    function(data) {
-                        console.log(data);
-                    },
-                    'json'
-                );
-        
-                form.body.value = '';
-                form.body.focus();
-            }
-        
-            let ChickChat__lastMessageId = 0;
-        
-            function ChickChat__loadMore() {
-                $.get(
-                    "{% url 'chat:chat' room.id %}",
-                    {
-                        from_id: ChickChat__lastMessageId
-                    },
-                    function(data) {
-                        for ( let chatKey in data.chats ) {
-                            const chat = data.chats[chatKey];
-                            ChickChat__lastMessageId = chat.id;
-                            ChickChat__renderMessage(chat);
-                        }
-                        console.log(1)
-                        setTimeout(ChickChat__loadMore, 200);
-                    },
-                    'json'
-                );
-            }
-        
-            function ChickChat__renderMessage(chat) {
-                $('.chat-messages').prepend(`<div>${chat.writer} : ${chat.message}</div>`);
-            }
-        
-            ChickChat__loadMore();
-        
-            </script>
-
 </h1>
+
 
 {% else %}
 <h1>채팅방이 찾을수가 없어요...ㅠㅠ 안타깝..</h1>
 {% endif %}
+<link rel="stylesheet" href="/base/templates/chatting_room.css">
+<div class="chat-messages"></div>
+<form action="{% url 'chat:message_write' %}" onsubmit="ChickChatForm__submit(this); return false;">
+    {% csrf_token %}
+    <input type="text" style="display:none" name="room_id" value="{{room.id}}">
+    <input type="text" placeholder="작성자" name="writer">
+    <input type="text" placeholder="메세지 보내기..." name="body">
+    <input type="submit" value="작성">
+</form>
+    <button >
+     <a href="">나가기</a>
+    </button>
+
 {% endblock %}
+
+

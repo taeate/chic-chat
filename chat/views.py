@@ -1,9 +1,11 @@
+from audioop import reverse
 from django.contrib.auth.decorators import login_required
 from django.core.exceptions import ValidationError
 from django.http.request import HttpRequest
 from django.http.response import JsonResponse
 from django.shortcuts import render, redirect
 from django.utils import timezone
+from django.contrib import messages
 
 from chat.form import RoomForm
 from chat.models import *
@@ -60,18 +62,18 @@ def message_write(request: HttpRequest):
         raise ValidationError("body가 없습니다.")
 
     ChatMessage(room=room, writer=writer, message=body).save()
-
+    list(ChatMessage.objects.filter(room=room).values())
     return JsonResponse({
         'message': "성공",
-        'resultCode': "S-1"
+        'resultCode': "S-1",
     })
 
 
 def chat(request, room_id):
     id = request.GET.get('from_id')
-    room = Room.objects.get(room_id=room_id)
-    chats = list(ChatMessage.objects.filter(id__gt=id).order_by('id').values())
-    chats = ChatMessage.objects.filter(room=room)
+    room = Room.objects.get(id=room_id)
+    chats = list(ChatMessage.objects.filter(id__gt=id,room=room).order_by('id').values())
+
     return JsonResponse({
         'resultCode': "S-1",
         'chats': chats,
