@@ -67,9 +67,11 @@ def message_write(request: HttpRequest):
     })
 
 
-def chat(request: HttpRequest):
+def chat(request, room_id):
     id = request.GET.get('from_id')
+    room = Room.objects.get(room_id=room_id)
     chats = list(ChatMessage.objects.filter(id__gt=id).order_by('id').values())
+    chats = ChatMessage.objects.filter(room=room)
     return JsonResponse({
         'resultCode': "S-1",
         'chats': chats,

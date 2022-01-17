@@ -10,5 +10,10 @@ urlpatterns = [
     path('detail/<int:room_id>/', views.room_detail, name="detail"),
     path('detail/<int:room_id>/accessServer/', views.accessServer, name="accessServer"),
     path('detail/messages/write', views.message_write, name='message_write'),
+<<<<<<< HEAD
     path('detail/messages/', views.chat, name='chat'),
 ]
+=======
+    path('detail/messages/<int:room_id>', views.chat, name='chat'),
+]
+>>>>>>> cce93074ec1900e44a0dd4173e23a1d56dfa8bd5
