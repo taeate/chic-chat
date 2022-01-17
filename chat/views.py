@@ -1,11 +1,10 @@
-from audioop import reverse
 from django.contrib.auth.decorators import login_required
 from django.core.exceptions import ValidationError
+from django.db.models import Prefetch
 from django.http.request import HttpRequest
 from django.http.response import JsonResponse
 from django.shortcuts import render, redirect
 from django.utils import timezone
-from django.contrib import messages
 
 from chat.form import RoomForm
 from chat.models import *
@@ -30,7 +29,8 @@ def room_create(request):
 @login_required(login_url='accounts:login')
 def room_list(request):
     rooms = Room.objects.all().order_by('-id')
-    my_servers = MyServer.objects.filter(user=request.user)
+    my_servers = Room.objects.prefetch_related(
+        Prefetch('part_user', queryset=User.objects.filter(id=request.user.id), to_attr='part_server'))
     context = {'rooms': rooms, 'my_servers': my_servers}
     return render(request, 'chat/room_list.html', context)
 
@@ -39,14 +39,20 @@ def room_list(request):
 def room_detail(request, room_id):
     room = Room.objects.get(id=room_id)
     context = {'room': room}
-    return render(request, 'chat/chatting_room.html', context)
+    return render(request, 'chat/room_detail.html', context)
 
 
 @login_required(login_url='accounts:login')
-def accessServer(request, room_id):
+def access_server(request, room_id):
     room = Room.objects.get(id=room_id)
-    user = request.user
-    MyServer(room=room, user=user).save
+    request.user.part_server.add(room)
+    return redirect('chat:detail', room_id=room_id)
+
+
+@login_required(login_url='accounts:login')
+def exit_server(request, room_id):
+    room = Room.object.get(id=room_id)
+    request.user.part_server.remove(room)
     return redirect('chat:detail', room_id=room_id)
 
 
@@ -72,7 +78,7 @@ def message_write(request: HttpRequest):
 def chat(request, room_id):
     id = request.GET.get('from_id')
     room = Room.objects.get(id=room_id)
-    chats = list(ChatMessage.objects.filter(id__gt=id,room=room).order_by('id').values())
+    chats = list(ChatMessage.objects.filter(id__gt=id, room=room).order_by('id').values())
 
     return JsonResponse({
         'resultCode': "S-1",

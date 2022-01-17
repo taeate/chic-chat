@@ -1,6 +1,6 @@
 from django import forms
 
-from chat.models import Room, MyServer
+from chat.models import Room
 
 
 class RoomForm(forms.ModelForm):

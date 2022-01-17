@@ -5,16 +5,12 @@
 <h5 class="my-3 border-bottom pb-2">
     채팅방 이름 : {{ room.name }}
 </h5>
-{% if my_servers %}
-{% for myserver in my_servers %}
-{% if myserver.room == room %}
+{% if room.part_user == user%}
 <a href="{% url 'chat:detail' room.id %}">
     <button type="button" class="btn btn-success">참가중인 서버</button>
 </a>
-{% endif %}
-{% endfor %}
 {% else %}
-<a href="{% url 'chat:accessServer' room.id %}">
+<a href="{% url 'chat:access_server' room.id %}">
     <button type="button" class="btn btn-success">서버 참가</button>
 </a>
 {% endif %}
