@@ -1,20 +1,16 @@
 from django.contrib.auth.decorators import login_required
-from django.contrib.auth.models import User
-from django.shortcuts import render, redirect
-from django.utils import timezone
 from django.core.exceptions import ValidationError
 from django.http.request import HttpRequest
 from django.http.response import JsonResponse
-from django.core import serializers
-from django.contrib import messages
+from django.shortcuts import render, redirect
+from django.utils import timezone
 
 from chat.form import RoomForm
 from chat.models import *
 
 
-
 @login_required(login_url='accounts:login')
-def create(request):
+def room_create(request):
     if request.method == "POST":
         form = RoomForm(request.POST)
         if form.is_valid():
@@ -28,16 +24,17 @@ def create(request):
     context = {'form': form}
     return render(request, 'chat/room_form.html', context)
 
+
 @login_required(login_url='accounts:login')
 def _list(request):
     room_list = Room.objects.all().order_by('-id')
     my_servers = MyServer.objects.filter(user=request.user)
-    context = {'room_list': room_list, 'my_servers':my_servers}
+    context = {'room_list': room_list, 'my_servers': my_servers}
     return render(request, 'chat/room_list.html', context)
 
 
 @login_required(login_url='accounts:login')
-def detail(request, room_id):
+def room_detail(request, room_id):
     room = Room.objects.get(id=room_id)
     context = {'room': room}
     return render(request, 'chat/chatting_room.html', context)
@@ -47,8 +44,9 @@ def detail(request, room_id):
 def accessServer(request, room_id):
     room = Room.objects.get(id=room_id)
     user = request.user
-    MyServer(room=room,user=user).save
+    MyServer(room=room, user=user).save
     return redirect('chat:detail', room_id=room_id)
+
 
 def message_write(request: HttpRequest):
     writer = request.POST.get("writer", "")
@@ -61,7 +59,7 @@ def message_write(request: HttpRequest):
     if not body:
         raise ValidationError("body가 없습니다.")
 
-    ChatMessage(room=room,writer=writer, message=body).save()
+    ChatMessage(room=room, writer=writer, message=body).save()
 
     return JsonResponse({
         'message': "성공",
@@ -69,7 +67,7 @@ def message_write(request: HttpRequest):
     })
 
 
-def chat(request:HttpRequest):
+def chat(request: HttpRequest):
     id = request.GET.get('from_id')
     chats = list(ChatMessage.objects.filter(id__gt=id).order_by('id').values())
     return JsonResponse({
