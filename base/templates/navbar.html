@@ -1,7 +1,10 @@
 <nav class="navbar navbar-expand-lg navbar-light bg-light">
     <div class="container-fluid">
-        <a class="navbar-brand" href="/">
+        <a class="navbar-brand" href="{% url 'chat:list' %}">
             <img src="https://i.esdrop.com/d/gd4tby6mr58u/YgLYnDwzOT.png" alt="" width="50">
+        </a>
+        <a href="{% url 'chat:create' %}" class="btn btn-success">
+            서버 생성
         </a>
         <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent"
                 aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">

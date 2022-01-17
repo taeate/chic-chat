@@ -6,12 +6,12 @@
     채팅방 이름 : {{ room.name }}
 </h5>
 {% if room.part_user == user%}
-<a href="{% url 'chat:detail' room.id %}">
-    <button type="button" class="btn btn-success">참가중인 서버</button>
+<a href="{% url 'chat:detail' room.id %}" class="btn btn-success">
+    참가중인 서버
 </a>
 {% else %}
-<a href="{% url 'chat:access_server' room.id %}">
-    <button type="button" class="btn btn-success">서버 참가</button>
+<a href="{% url 'chat:access_server' room.id %}" class="btn btn-success">
+    서버 참가
 </a>
 {% endif %}
 {% endfor %}
