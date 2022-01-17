@@ -6,7 +6,7 @@
 
 <form action="{% url 'chat:message_write' %}" onsubmit="ChickChatForm__submit(this); return false;">
     {% csrf_token %}
-    <input type="text" style="display:none" name="room_id" value="{{room.id}}"></input>
+    <input type="text" style="display:none" name="room_id" value="{{room.id}}">
     <input type="text" placeholder="작성자" name="writer">
     <input type="text" placeholder="내용" name="body">
     <input type="submit" value="작성">

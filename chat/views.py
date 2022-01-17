@@ -26,10 +26,10 @@ def room_create(request):
 
 
 @login_required(login_url='accounts:login')
-def _list(request):
-    room_list = Room.objects.all().order_by('-id')
+def room_list(request):
+    rooms = Room.objects.all().order_by('-id')
     my_servers = MyServer.objects.filter(user=request.user)
-    context = {'room_list': room_list, 'my_servers': my_servers}
+    context = {'rooms': rooms, 'my_servers': my_servers}
     return render(request, 'chat/room_list.html', context)
 
 
