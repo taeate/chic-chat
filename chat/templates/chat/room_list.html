@@ -5,6 +5,8 @@
 <h5 class="my-3 border-bottom pb-2">
     채팅방 이름 : {{ room.name }}
 </h5>
+{{ user }}
+{{room.part_user}}
 {% if room.part_user == user%}
 <a href="{% url 'chat:detail' room.id %}" class="btn btn-success">
     참가중인 서버
