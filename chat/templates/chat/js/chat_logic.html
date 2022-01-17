@@ -46,13 +46,13 @@
                 from_id: ChickChat__lastMessageId
             },
             function(data) {
-                console.log(data.chats);
                 for ( let chatKey in data.chats ) {
                     const chat = data.chats[chatKey];
                     ChickChat__lastMessageId = chat.id;
                     ChickChat__renderMessage(chat);
                 }
-                setTimeout(ChickChat__loadMore, 1000);
+                console.log(1)
+                setTimeout(ChickChat__loadMore, 500);
             },
             'json'
         );

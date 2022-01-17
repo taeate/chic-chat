@@ -2,27 +2,51 @@
 {% block content %}
 {% if room %}
 {% include 'chat/js/chat_logic.html' %}
-<h1>
-    "{{ room.name }}" 채팅방 입니다.
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <div style="background: rgb(27, 27, 27); color: rgb(214, 213, 213);">
+        　Wegnal
+    </div>
+</head>
+<body style="background-color: rgb(40, 43, 46);">
+
+</body>
+</html>
+
+<h1 style="color:white">
+    {{ room.name }} 채팅방 입니다.
 </h1>
 
 
 {% else %}
 <h1>채팅방이 찾을수가 없어요...ㅠㅠ 안타깝..</h1>
 {% endif %}
-<link rel="stylesheet" href="/base/templates/chatting_room.css">
-<div class="chat-messages"></div>
-<form action="{% url 'chat:message_write' %}" onsubmit="ChickChatForm__submit(this); return false;">
-    {% csrf_token %}
-    <input type="text" style="display:none" name="room_id" value="{{room.id}}">
-    <input type="text" placeholder="작성자" name="writer">
-    <input type="text" placeholder="메세지 보내기..." name="body">
-    <input type="submit" value="작성">
-</form>
-    <button >
-     <a href="">나가기</a>
-    </button>
 
+
+<link rel="stylesheet" href="/base/templates/chatting_room.css">
+
+<div class="chat-messages"></div>
+<div>
+    <ul id=>
+        <form action="{% url 'chat:message_write' %}" onsubmit="ChickChatForm__submit(this); return false;">
+            {% csrf_token %}
+            <input type="text" style="display:none" name="room_id" value="{{room.id}}">
+            <input type="text" placeholder="작성자" name="writer">
+            <input type="text" placeholder="메세지 보내기..." name="body">
+            <input type="submit" value="작성">
+        </form>
+        <button >
+            <a href="">나가기</a>
+        </button>
+    </ul>
+</div>
 {% endblock %}
+
+
 
 
