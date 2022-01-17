@@ -3,6 +3,7 @@ from django.contrib.auth import authenticate
 from django.http import HttpRequest
 from django.shortcuts import render, redirect
 from django.contrib.auth import login as auth_login
+from django.contrib.auth import logout as auth_logout
 from accounts.form import UserForm
 from django.contrib import messages
 
@@ -39,3 +40,8 @@ def signup(request: HttpRequest):
     return render(request, 'signup.html', {
         'form': form,
     })
+
+
+def logout(request):
+    auth_logout(request)
+    return redirect('/')
