@@ -26,7 +26,6 @@ def room_create(request):
     return render(request, 'chat/room_form.html', context)
 
 
-@login_required(login_url='accounts:login')
 def room_list(request):
     rooms = Room.objects.all().order_by('-id')
     my_servers = Room.objects.prefetch_related(
@@ -35,7 +34,6 @@ def room_list(request):
     return render(request, 'chat/room_list.html', context)
 
 
-@login_required(login_url='accounts:login')
 def room_detail(request, room_id):
     room = Room.objects.get(id=room_id)
     context = {'room': room}
