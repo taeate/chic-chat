@@ -1,3 +1,4 @@
+from django.contrib import messages
 from django.contrib.auth.decorators import login_required
 from django.core.exceptions import ValidationError
 from django.db.models import Prefetch
@@ -51,7 +52,10 @@ def access_server(request, room_id):
 @login_required(login_url='accounts:login')
 def exit_server(request, room_id):
     room = Room.objects.get(id=room_id)
-    request.user.part_server.remove(room)
+    if room.host == request.user:
+        messages.warning(request, "내가 만든 서버는 못 나감")
+    else:
+        request.user.part_server.remove(room)
     return redirect('chat:list')
 
 
