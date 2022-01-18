@@ -19,6 +19,7 @@ def room_create(request):
             room.host = request.user
             room.reg_date = timezone.now()
             room.save()
+            request.user.part_server.add(room)
             return redirect('chat:detail', room_id=room.id)
     else:
         form = RoomForm()
