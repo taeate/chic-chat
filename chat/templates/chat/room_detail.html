@@ -30,7 +30,7 @@
 
 <link rel="stylesheet" href="/base/templates/chatting_room.css">
 
-<div class="chat-messages"></div>
+<div class="chat-messages text-white"></div>
 <div>
     <ul id=>
         <form action="{% url 'chat:message_write' %}" onsubmit="ChickChatForm__submit(this); return false;">
@@ -40,8 +40,8 @@
             <input type="text" placeholder="메세지 보내기..." name="body">
             <input type="submit" value="작성">
         </form>
-        <button >
-            <a href="">나가기</a>
+        <button>
+            <a href="{% url 'chat:list' %}">나가기</a>
         </button>
     </ul>
 </div>

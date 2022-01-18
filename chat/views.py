@@ -55,7 +55,7 @@ def exit_server(request, room_id):
 
 
 def message_write(request: HttpRequest):
-    writer = request.POST.get("writer", "")
+    writer = request.user
     body = request.POST.get("body", "")
     room_id = request.POST.get("room_id")
     room = Room.objects.get(id=room_id)
@@ -82,3 +82,16 @@ def chat(request, room_id):
         'resultCode': "S-1",
         'chats': chats,
     })
+
+
+def my_server_list(request):
+    rooms = Room.objects.prefetch_related(
+        Prefetch('part_user', queryset=User.objects.filter(id=request.user.id), to_attr='part_server'))
+    rooms = rooms.filter(host=request.user)
+    context = {'rooms': rooms}
+    return render(request, 'chat/my_server_list.html', context)
+
+
+def delete_server(request, room_id):
+    Room.objects.get(id=room_id).delete()
+    return redirect('chat:my_server_list')
