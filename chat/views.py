@@ -1,4 +1,3 @@
-from django.contrib import messages
 from django.contrib.auth.decorators import login_required
 from django.core.exceptions import ValidationError
 from django.db.models import Prefetch
@@ -28,7 +27,6 @@ def room_create(request):
 
 
 def room_list(request):
-    # rooms = Room.objects.all().order_by('-id')
     rooms = Room.objects.prefetch_related(
         Prefetch('part_user', queryset=User.objects.filter(id=request.user.id), to_attr='part_server'))
     context = {'rooms': rooms}
@@ -51,9 +49,9 @@ def access_server(request, room_id):
 # 구현x
 @login_required(login_url='accounts:login')
 def exit_server(request, room_id):
-    room = Room.object.get(id=room_id)
+    room = Room.objects.get(id=room_id)
     request.user.part_server.remove(room)
-    return redirect('chat:detail', room_id=room_id)
+    return redirect('chat:list')
 
 
 def message_write(request: HttpRequest):
