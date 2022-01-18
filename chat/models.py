@@ -7,6 +7,7 @@ class Room(models.Model):
     name = models.CharField('채팅방 이름', max_length=100, unique=True)
     host = models.ForeignKey(User, on_delete=models.CASCADE)
     part_user = models.ManyToManyField(User, related_name="part_server")
+    password = models.CharField('채팅방 비밀번호', max_length=50, null=True)
 
 
 class ChatMessage(models.Model):

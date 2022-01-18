@@ -3,6 +3,9 @@
 {% if rooms %}
 {% for room in rooms %}
 <h5 class="my-3 border-bottom pb-2">
+    {% if room.password %}
+    <i class="fas fa-lock"></i>
+    {% endif %}
     채팅방 이름 : {{ room.name }}
 </h5>
 {% if room.part_server %}
@@ -13,12 +16,39 @@
     서버 나가기
 </a>
 {% else %}
+{% if room.password %}
+<input type="button" value="서버 참가" onClick="passWord('room.password')" class="btn btn-success">
+{% else %}
 <a href="{% url 'chat:access_server' room.id %}" class="btn btn-success">
     서버 참가
 </a>
 {% endif %}
+{% endif %}
 {% endfor %}
 {% else %}
-<h1>채팅방 is alone...</h1>
+<h1>채팅방 is lonely...</h1>
 {% endif %}
+
+<script>
+function passWord(A) {
+
+    alert(room_password);
+    let pass1 = prompt(""); // 초기시 암호 물어보는 멘트
+    while (true) {
+        if (pass1)
+            if (pass1.toLowerCase() == "1234") { // 암호지정
+            href = '';
+            alert("성공!");
+            break;
+        }
+        if (!pass1) {
+            break;
+        }
+        pass1 = prompt('잘못된 비밀번호 입니다.');
+    }
+}
+
+
+</script>
 {% endblock %}
+

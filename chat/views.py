@@ -44,6 +44,8 @@ def room_detail(request, room_id):
 @login_required(login_url='accounts:login')
 def access_server(request, room_id):
     room = Room.objects.get(id=room_id)
+    if room.password:
+        return redirect('/')
     request.user.part_server.add(room)
     return redirect('chat:detail', room_id=room_id)
 
