@@ -18,6 +18,7 @@
 </div>
 {% endfor %}
 {% endif %}
+
 <div>
 </div>
 </body>
@@ -34,27 +35,47 @@
 
     }
     #box-left {
-      background: rgb(38, 38, 39);
+      background: rgb(47, 49, 54);
       flex: 1;
       color: rgb(143, 141, 146);
 
     }
     #box-center {
-      background: rgb(50, 53, 59);
-      flex: 3;
+      background: rgb(54, 57, 63);
+      flex: 5;
       text-align: center;
     }
     #box-right {
-      background: rgb(39, 38, 38);
-      flex: 1;
+      background: rgb(47, 49, 54);
+      flex: 2;
       text-align: right;
     }
     </style>
+
     <div id='ava'>
-        <div id='box-left'>　</div>
+        <div id='box-left'>
+          <div class="d-grid">
+            <div class="form-group" style="margin: 8px; background: rgb(26, 25, 25);">
+            
+              <input type="text" class="form-control" placeholder="서버 찾기 또는 시작하기" id="inputDefault" style="background: rgb(26, 25, 25); color: white;">
+            </div>
+            <button class="btn btn-lg btn-primary" type="button" style="background-color: rgb(33, 33, 36); margin: 8px; text-align: left; font-size: 12pt;">
+              <i class="fas fa-users"></i>
+              친구
+            </button>
+            <div style="font-size: 13px; margin-left: 15px; margin-top: 10px;">
+              다이렉트 메세지
+            </div>
+          
+          </div>
+        </div>
         <div id='box-center'> 
+          
             {% block content %}
             {% endblock %}
+            
         </div>
-        <div id='box-right'>오른쪽</div>
+        <div id='box-right'>
+          현재활동중
+        </div>
     </div>
