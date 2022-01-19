@@ -18,9 +18,42 @@
 </div>
 {% endfor %}
 {% endif %}
-<div class="container">
-    {% block content %}
-    {% endblock %}
+<div>
 </div>
 </body>
 </html>
+
+    
+<style>
+    #ava {
+      display: flex;
+      height: 100vh;
+      margin-left: 4.5rem;
+
+
+    }
+    #box-left {
+      background: rgb(38, 38, 39);
+      flex: 1;
+      color: white;
+
+    }
+    #box-center {
+      background: rgb(34, 34, 33);
+      flex: 3;
+      text-align: center;
+    }
+    #box-right {
+      background: rgb(39, 38, 38);
+      flex: 1;
+      text-align: right;
+    }
+    </style>
+    <div id='ava'>
+        <div id='box-left'>　dwdwdw</div>
+        <div id='box-center'> 
+            {% block content %}
+            {% endblock %}
+        </div>
+        <div id='box-right'>오른쪽</div>
+    </div>
