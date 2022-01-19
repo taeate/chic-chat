@@ -1,34 +1,35 @@
 {% extends 'layout.html' %}
 {% block content %}
-{% if rooms %}
-{% for room in rooms %}
-<h5 class="my-3 border-bottom pb-2">
+<div>
+    {% if rooms %}
+    {% for room in rooms %}
+    <h5 class="my-3 border-bottom pb-2">
+        {% if room.password %}
+        <i class="fas fa-lock"></i>
+        {% endif %}
+        채팅방 이름 : {{ room.name }}
+    </h5>
+    {% if room.part_server %}
+    <a href="{% url 'chat:detail' room.id %}" class="btn btn-success">
+        참가중인 서버
+    </a>
+    <a href="{% url 'chat:exit_server' room.id %}" class="btn btn-danger">
+        서버 나가기
+    </a>
+    {% else %}
     {% if room.password %}
-    <i class="fas fa-lock"></i>
+    <input type="button" value="서버 참가" onClick="passWord('room.password')" class="btn btn-success">
+    {% else %}
+    <a href="{% url 'chat:access_server' room.id %}" class="btn btn-success">
+        서버 참가
+    </a>
     {% endif %}
-    채팅방 이름 : {{ room.name }}
-</h5>
-{% if room.part_server %}
-<a href="{% url 'chat:detail' room.id %}" class="btn btn-success">
-    참가중인 서버
-</a>
-<a href="{% url 'chat:exit_server' room.id %}" class="btn btn-danger">
-    서버 나가기
-</a>
-{% else %}
-{% if room.password %}
-<input type="button" value="서버 참가" onClick="passWord('room.password')" class="btn btn-success">
-{% else %}
-<a href="{% url 'chat:access_server' room.id %}" class="btn btn-success">
-    서버 참가
-</a>
-{% endif %}
-{% endif %}
-{% endfor %}
-{% else %}
-<h1>채팅방 is lonely...</h1>
-{% endif %}
-
+    {% endif %}
+    {% endfor %}
+    {% else %}
+    <h1>채팅방 is lonely...</h1>
+    {% endif %}
+</div>
 <script>
 function passWord(A) {
 
@@ -47,6 +48,7 @@ function passWord(A) {
         pass1 = prompt('잘못된 비밀번호 입니다.');
     }
 }
+
 
 
 </script>
