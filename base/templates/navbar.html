@@ -1,5 +1,5 @@
 <div class="d-flex flex-column flex-shrink-0  text-white h-100 fixed-top overflow-auto none-display-scroll"
-     style="width: 4.5rem; background: rgb(32, 34, 37);">
+     style="width: 5.5rem; background: rgb(32, 34, 37);">
     <ul class=" nav nav-pills nav-flush flex-column mb-auto text-center text-white">
         <li class="nav-item w-100">
             <a href="{% url 'chat:list' %}" class="nav-link p-0" aria-current="page" title="" data-bs-toggle="tooltip"
@@ -43,7 +43,16 @@
             <a href="{% url 'chat:detail' room.id %}" class="nav-link" title="" data-bs-toggle="tooltip"
                data-bs-placement="right"
                data-bs-original-title="Customers" style="color: rgb(3, 194, 105);">
-                {{ room.name }}
+               <button type="button" class="text-nowrap overflow-hidden " id="btn6"
+               style="border: 1px solid #3b8c9a; cursor:pointer; cursor:hand;
+               width: 65px;
+               height: 65px;
+               outline: 0;
+               border: 0;
+                 background-color: #3c3c42;
+                 color: rgb(255, 255, 255);
+                 padding: 5px;
+                 border-radius: 50%;"> {{ room.name }}</button>
             </a>
         </li>
         {% endif %}
