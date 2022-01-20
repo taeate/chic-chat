@@ -9,7 +9,7 @@
 
 <div class="chat-messages text-white"></div>
 <div>
-    <ul id=>
+    <ul class="fixed-bottom">
         <form action="{% url 'chat:message_write' %}" onsubmit="ChickChatForm__submit(this); return false;">
             {% csrf_token %}
             <input type="text" style="display:none" name="room_id" value="{{room.id}}">
