@@ -102,3 +102,7 @@ def my_server_list(request):
 def delete_server(request, room_id):
     Room.objects.get(id=room_id).delete()
     return redirect('chat:my_server_list')
+
+
+def input_password(request, room_id):
+    return
