@@ -1,12 +1,6 @@
 <script type="text/javascript">
     function ChickChatForm__submit(form) {
         form.writer.value = form.writer.value.trim();
-        if ( form.writer.value.length == 0 ) {
-            alert('작성자를 입력해주세요.');
-            form.writer.focus();
-
-            return false;
-        }
 
         if ( form.body.value.length == 0 ) {
             alert('내용을 입력해주세요.');

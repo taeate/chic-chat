@@ -27,7 +27,8 @@
 <style>
     #ava {
       display: flex;
-      height: 100vh;
+      min-height: 100vh;
+      height: Always;
       margin-left: 4.5rem;
       font-weight: bold;
 
@@ -50,8 +51,10 @@
       text-align: right;
     }
     </style>
-    <div id='ava'>
-        <div id='box-left'>　</div>
+    <div id='ava' >
+        <div id='box-left'>
+            Uommit
+        </div>
         <div id='box-center'> 
             {% block content %}
             {% endblock %}

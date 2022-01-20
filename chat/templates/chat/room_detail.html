@@ -2,29 +2,27 @@
 {% block content %}
 {% if room %}
 {% include 'chat/js/chat_logic.html' %}
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+<h1 style="color:white">
+    {{ room.name }} 채팅방 입니다.
+</h1>
+<link rel="stylesheet" href="/base/templates/chatting_room.css">
 
-  
-</head>
-<body>
-
-</body>
-</html>
-
+<div class="chat-messages text-white"></div>
+<div>
+    <ul id=>
+        <form action="{% url 'chat:message_write' %}" onsubmit="ChickChatForm__submit(this); return false;">
+            {% csrf_token %}
+            <input type="text" style="display:none" name="room_id" value="{{room.id}}">
+            <input type="hidden" placeholder="작성자" name="writer">
+            <input type="text" placeholder="메세지 보내기..." name="body">
+            <input type="submit" value="작성">
+        </form>
+        <a href="{% url 'chat:list' %}" class="btn btn-danger">나가기</a>
+    </ul>
+</div>
 
 {% else %}
 <h1>채팅방이 찾을수가 없어요...ㅠㅠ 안타깝..</h1>
 {% endif %}
 
-
 {% endblock %}
-
-
-
-

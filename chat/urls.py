@@ -10,9 +10,10 @@ urlpatterns = [
     path('detail/<int:room_id>/', views.room_detail, name="detail"),
     path('detail/<int:room_id>/access_server/', views.access_server, name="access_server"),
     path('detail/<int:room_id>/exit_server/', views.exit_server, name="exit_server"),
-    path('detail/messages/write', views.message_write, name='message_write'),
+    path('detail/messages/write/', views.message_write, name='message_write'),
     path('detail/messages/', views.chat, name='chat'),
     path('detail/messages/<int:room_id>', views.chat, name='chat'),
     path('my_server_list/', views.my_server_list, name='my_server_list'),
     path('<int:room_id>/delete_server/', views.delete_server, name='delete_server'),
+    path('<int:room_id>/input_password/', views.input_password, name='input_password'),
 ]
