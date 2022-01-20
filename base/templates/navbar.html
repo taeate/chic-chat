@@ -39,6 +39,7 @@
         </li>
         {% if rooms %}
         {% for room in rooms %}
+        {% if room.part_server %}
         <li>
             <a href="{% url 'chat:detail' room.id %}" class="nav-link py-3" title="" data-bs-toggle="tooltip"
                data-bs-placement="right"
@@ -46,6 +47,7 @@
                 채팅방 이름 : {{ room.name }}
             </a>
         </li>
+        {% endif %}
         {% endfor %}
         {% endif %}
     </ul>
