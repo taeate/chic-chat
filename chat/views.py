@@ -32,7 +32,7 @@ def room_list(request):
     rooms = Room.objects.prefetch_related(
         Prefetch('part_user', queryset=User.objects.filter(id=request.user.id), to_attr='part_server'))
     context = {'rooms': rooms}
-    return render(request, 'chat/room_list.html', context)git
+    return render(request, 'chat/room_list.html', context)
 
 
 def room_detail(request, room_id):
@@ -110,4 +110,3 @@ def delete_server(request, room_id):
 @login_required(login_url='accounts:login')
 def input_password(request, room_id):
     room = Room.objects.get(id=room_id)
-

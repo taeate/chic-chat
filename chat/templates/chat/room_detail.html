@@ -24,5 +24,75 @@
 {% else %}
 <h1>채팅방이 찾을수가 없어요...ㅠㅠ 안타깝..</h1>
 {% endif %}
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+<script type="text/javascript">
+function ChickChatForm__submit(form) {
+    form.writer.value = form.writer.value.trim();
+    if ( form.writer.value.length == 0 ) {
+        alert('작성자를 입력해주세요.');
+        form.writer.focus();
 
+<<<<<<< HEAD
+=======
+        return false;
+    }
+
+    if ( form.body.value.length == 0 ) {
+        alert('내용을 입력해주세요.');
+        form.body.focus();
+
+        return false;
+    }
+
+    const writer = form.writer.value;
+    const body = form.body.value;
+    const room_id = form.room_id.value;
+
+    $.post(
+        form.action,
+        {
+            csrfmiddlewaretoken: form.csrfmiddlewaretoken.value,
+            writer,
+            body,
+            room_id
+        },
+        function(data) {
+            console.log(data);
+        },
+        'json'
+    );
+
+    form.body.value = '';
+    form.body.focus();
+}
+
+let ChickChat__lastMessageId = 0;
+
+function ChickChat__loadMore() {
+    $.get(
+        "{% url 'chat:chat'%}",
+        {
+            from_id: ChickChat__lastMessageId
+        },
+        function(data) {
+            for ( let chatKey in data.chats ) {
+                const chat = data.chats[chatKey];
+                ChickChat__lastMessageId = chat.id;
+                ChickChat__renderMessage(chat);
+            }
+            console.log(1)
+            setTimeout(ChickChat__loadMore, 500);
+        },
+        'json'
+    );
+}
+
+function ChickChat__renderMessage(chat) {
+    $('.chat-messages').prepend(`<div>${chat.writer} : ${chat.message}</div>`);
+}
+
+ChickChat__loadMore();
+
+</script>
+>>>>>>> b6c63f9448b2853247aff33eb37201aa0da374d3
 {% endblock %}
