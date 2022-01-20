@@ -50,6 +50,15 @@
       flex: 2;
       text-align: right;
     }
+    .none-display-scroll {
+        -ms-overflow-style: none;
+        scrollbar-width: none;
+    }
+    .none-display-scroll::-webkit-scrollbar {
+        display: none;
+    }
+
+
 
 </style>
 
@@ -78,7 +87,7 @@
         {% endblock %}
 
     </div>
-    <div id='box-right'>
+    <div id='box-right' class="text-white">
         현재활동중
     </div>
 </div>

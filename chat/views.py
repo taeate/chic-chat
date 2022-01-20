@@ -98,7 +98,7 @@ def my_server_list(request):
         Prefetch('part_user', queryset=User.objects.filter(id=request.user.id), to_attr='part_server'))
     rooms = rooms.filter(host=request.user)
     context = {'rooms': rooms}
-    return render(request, 'navbar.html', context)
+    return render(request, 'chat/my_server_list.html', context)
 
 
 @login_required(login_url='accounts:login')
