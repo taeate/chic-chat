@@ -40,6 +40,7 @@
   
 }
 
+
 </style>
 <div class="d-flex flex-column flex-shrink-0  text-white h-100 fixed-top overflow-auto none-display-scroll"
      style="width: 5.5rem; background: rgb(32, 34, 37);">
@@ -65,53 +66,51 @@
         <li class="nav-item w-100">
             <a href="/" class="nav-link py-3" title="" data-bs-toggle="tooltip" data-bs-placement="right"
                data-bs-original-title="Dashboard" style="color: rgb(3, 194, 105);">
-               <button type="button" class="text-nowrap overflow-hidden text-center" id="btn-7">
-                <i class="fas fa-user-plus fa-1x"></i>
-               </button>
-                
+                <button type="button" class="text-nowrap overflow-hidden text-center" id="btn-7">
+                    <i class="fas fa-user-plus fa-1x"></i>
+                </button>
+
             </a>
         </li>
         <li class="nav-item w-100">
             <a href="{% url 'accounts:logout' %}" class="nav-link py-3" title="" data-bs-toggle="tooltip"
                data-bs-placement="right"
                data-bs-original-title="Orders" style="color: rgb(3, 194, 105);">
-               <button type="button" class="text-nowrap overflow-hidden text-center" id="btn-7">
-                <i class="fas fa-sign-out-alt fs-4"></i>
-               </button>
-        
+                <button type="button" class="text-nowrap overflow-hidden text-center" id="btn-7">
+                    <i class="fas fa-sign-out-alt fs-4"></i>
+                </button>
+
             </a>
         </li>
         <li class="nav-item w-100">
             <a href="{% url 'chat:my_server_list' %}" class="nav-link py-3" title="" data-bs-toggle="tooltip"
                data-bs-placement="right"
                data-bs-original-title="Customers" style="color: rgb(3, 194, 105);">
-               <button type="button" class="text-nowrap overflow-hidden text-center" id="btn-7">
-                <i class="far fa-list-alt fs-4"></i>
-               </button>
-            
+                <button type="button" class="text-nowrap overflow-hidden text-center" id="btn-7">
+                    <i class="far fa-list-alt fs-4"></i>
+                </button>
+
             </a>
         </li>
-        {% if rooms %}
-        {% for room in rooms %}
-        {% if room.part_server %}
+        {% if user %}
+        {% for room in user.part_server.all %}
         <link rel="stylesheet" href="base/templates/navbar.css">
         <li class="nav-item w-100">
             <a href="{% url 'chat:detail' room.id %}" class="nav-link" title="" data-bs-toggle="tooltip"
                data-bs-placement="right"
                data-bs-original-title="Customers" style="color: rgb(3, 194, 105);">
-               
-               <button type="button" class="text-nowrap overflow-hidden" id="btn-6">
-               
-                 {{ room.name }}
-                 </button>
-                 
+
+                <button type="button" class="text-nowrap overflow-hidden" id="btn-6">
+
+                    {{ room.name }}
+                </button>
+
             </a>
         </li>
 
-        {% endif %}
         {% endfor %}
         {% endif %}
-        
+
     </ul>
     <div class="dropdown border-top">
         <a href="/"
