@@ -35,8 +35,31 @@ def room_list(request):
     return render(request, 'chat/room_list.html', context)
 
 
+def input_room_password(request, room):
+    # return render(request, 'chat/input_password.html')
+    return
+
+
+def decorator(cb):
+    # def wrap(request, *args, **kwargs):
+    #     messages.success(request, f'debug : {args[0]}')
+    #     messages.success(request, request.user)
+    #     return cb(request, *args, **kwargs)
+    #
+    # return wrap
+    return
+
+
+# @decorator
+def check_room_password(request, room):
+    # value = False
+    # return redirect('chat:list')
+    return
+
 def room_detail(request, room_id):
     room = Room.objects.get(id=room_id)
+    # if room.password:
+    #     return check_room_password(request, room)
     context = {'room': room}
     return render(request, 'chat/room_detail.html', context)
 
@@ -50,7 +73,6 @@ def access_server(request, room_id):
     return redirect('chat:detail', room_id=room_id)
 
 
-# 구현x
 @login_required(login_url='accounts:login')
 def exit_server(request, room_id):
     room = Room.objects.get(id=room_id)
@@ -61,6 +83,7 @@ def exit_server(request, room_id):
     return redirect('chat:list')
 
 
+@login_required(login_url='accounts:login')
 def message_write(request: HttpRequest):
     writer = request.user
     body = request.POST.get("body", "")
@@ -91,6 +114,7 @@ def chat(request, room_id):
     })
 
 
+@login_required(login_url='accounts:login')
 def my_server_list(request):
     rooms = Room.objects.prefetch_related(
         Prefetch('part_user', queryset=User.objects.filter(id=request.user.id), to_attr='part_server'))
@@ -99,10 +123,7 @@ def my_server_list(request):
     return render(request, 'chat/my_server_list.html', context)
 
 
+@login_required(login_url='accounts:login')
 def delete_server(request, room_id):
     Room.objects.get(id=room_id).delete()
     return redirect('chat:my_server_list')
-
-
-def input_password(request, room_id):
-    return

@@ -3,9 +3,6 @@
 <div class="container w-50 position-absolute top-50 start-50 translate-middle">
     <form method="post" class="post-form" action="{% url 'accounts:login' %}">
         {% csrf_token %}
-        {% if error %}
-        {{ error }}
-        {% endif %}
         <div class="form-control cmd-base-color">
             <div class="mb-3">
                 <label class="form-label text-white" for="username">사용자ID</label>

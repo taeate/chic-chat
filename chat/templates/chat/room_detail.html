@@ -5,7 +5,6 @@
 <h1 style="color:white">
     {{ room.name }} 채팅방 입니다. 인사해주세요
 </h1>
-<link rel="stylesheet" href="/base/templates/chatting_room.css">
 
 <div class="chat-messages text-white"></div>
 <div>
@@ -20,11 +19,10 @@
         <a href="{% url 'chat:list' %}" class="btn btn-danger">나가기</a>
     </ul>
 </div>
-
 {% else %}
 <h1>채팅방이 찾을수가 없어요...ㅠㅠ 안타깝..</h1>
 {% endif %}
-<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+
 <script type="text/javascript">
 function ChickChatForm__submit(form) {
     form.writer.value = form.writer.value.trim();
@@ -90,6 +88,9 @@ function ChickChat__renderMessage(chat) {
 }
 
 ChickChat__loadMore();
+
+
+
 
 </script>
 {% endblock %}

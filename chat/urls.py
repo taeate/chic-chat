@@ -15,5 +15,5 @@ urlpatterns = [
     path('detail/messages/<int:room_id>', views.chat, name='chat'),
     path('my_server_list/', views.my_server_list, name='my_server_list'),
     path('<int:room_id>/delete_server/', views.delete_server, name='delete_server'),
-    path('<int:room_id>/input_password/', views.input_password, name='input_password'),
+    path('<int:room_id>/input_room_password/', views.input_room_password, name='input_room_password'),
 ]

@@ -18,7 +18,7 @@
                 </a>
             {% else %}
             {% if room.password %}
-            <a href="{% url 'chat:input_password' room.id %}" class="btn btn-success">
+            <a href="{% url 'chat:input_room_password' room.id %}" class="btn btn-success">
                 서버 참가
             </a>
             {% else %}
