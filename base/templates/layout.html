@@ -9,7 +9,7 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
 
-<style>
+    <style>
     #ava {
       display: flex;
       min-height: 100vh;
@@ -26,12 +26,12 @@
     }
     #box-center {
       background: rgb(54, 57, 63);
-      flex: 5;
+      flex: 6;
       text-align: center;
     }
     #box-right {
       background: rgb(47, 49, 54);
-      flex: 2;
+      flex: 1;
       text-align: right;
     }
     .none-display-scroll {
@@ -41,11 +41,16 @@
     .none-display-scroll::-webkit-scrollbar {
         display: none;
     }
+    .cmd-base-color{
+        background: rgb(54, 57, 63)
+    }
 
-</style>
+
+
+    </style>
 </head>
 <body>
-{% include "navbar.html" %}
+{% include "sidebar.html" %}
 
 
 <div id='ava'>
