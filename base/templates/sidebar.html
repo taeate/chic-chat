@@ -1,17 +1,21 @@
 <style>
     #btn-6 {
         color: rgb(255, 255, 255);
-        background: rgb(63, 63, 65);
-        border-radius: 50%;
-        width: 65px;
-        height: 65px;
-        font-size: 15px;
-        text-align: center;
-        border: #363434 solid 1px;
-        justify-content: center;
-        display: flex;
-        align-items: center;
-        padding: 10px;    
+            background: rgb(63, 63, 65);
+            border-radius: 50%;
+            width: 65px;
+            height: 65px;
+            font-size: 15px;
+            text-align: center;
+            border: #363434 solid 1px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            
+       
+        border: 5px solid transparent;
+        transition: all 0.2s cubic-bezier(.10, .24, 0, 1);
     }
     #btn-6:hover {
         color: #ffffff;
@@ -29,7 +33,7 @@
             font-size: 15px;
             text-align: center;
             border: #363434 solid 1px;
-        padding: 10px;
+       
         border: 5px solid transparent;
         transition: all 0.2s cubic-bezier(.10, .24, 0, 1);
     }
@@ -43,6 +47,7 @@
 </style>
 
 
+
 <div class="d-flex flex-column flex-shrink-0  text-white h-100 fixed-top overflow-auto none-display-scroll"
      style="width: 5.5rem; background: rgb(32, 34, 37);">
     <ul class=" nav nav-pills nav-flush flex-column mb-auto text-center text-white">
@@ -52,22 +57,25 @@
 <!--                <i class="fas fa-home fa-1x"></i>-->
 <!--            </a>-->
 <!--        </li>-->
+        <div style="font-weight: bold; color: rgb(68, 63, 63);">
+            Paracord
+        </div>
         <li class="nav-item w-100">
-            <a href="{% url 'chat:list' %}" class="nav-link py-3" aria-current="page" title=""
+            <a href="{% url 'chat:list' %}" class="nav-link py-2" aria-current="page" title=""
                data-bs-toggle="tooltip"
-               data-bs-placement="right" data-bs-original-title="Home">
+               data-bs-placement="right" data-bs-original-title="Home" style="padding: 8px;">
                 <span style="color: rgb(3, 194, 105);">
                     <button type="button" class="text-nowrap overflow-hidden text-center" id="btn-7">
-                        <i class="fas fa-home fa-1x"></i>
+                        <i class="fas fa-dragon fs-4"></i>
                     </button>
 
                 </span>
             </a>
         </li>
         <li class="nav-item w-100">
-            <a href="{% url 'chat:create' %}" class="nav-link py-3" aria-current="page" title=""
+            <a href="{% url 'chat:create' %}" class="nav-link py-2" aria-current="page" title=""
                data-bs-toggle="tooltip"
-               data-bs-placement="right" data-bs-original-title="Home">
+               data-bs-placement="right" data-bs-original-title="Home" style="padding: 8px;">
                 <span style="color: rgb(3, 194, 105);">
                     <button type="button" class="text-nowrap overflow-hidden text-center" id="btn-7">
                         <i class="fas fa-plus fa-1x"></i>
@@ -77,8 +85,8 @@
             </a>
         </li>
         <li class="nav-item w-100">
-            <a href="/" class="nav-link py-3" title="" data-bs-toggle="tooltip" data-bs-placement="right"
-               data-bs-original-title="Dashboard" style="color: rgb(3, 194, 105);">
+            <a href="/" class="nav-link py-2" title="" data-bs-toggle="tooltip" data-bs-placement="right"
+               data-bs-original-title="Dashboard" style="color: rgb(3, 194, 105); padding: 8px;">
                 <button type="button" class="text-nowrap overflow-hidden text-center" id="btn-7">
                     <i class="fas fa-user-plus fa-1x"></i>
                 </button>
@@ -86,9 +94,9 @@
             </a>
         </li>
         <li class="nav-item w-100">
-            <a href="{% url 'accounts:logout' %}" class="nav-link py-3" title="" data-bs-toggle="tooltip"
+            <a href="{% url 'accounts:logout' %}" class="nav-link py-2" title="" data-bs-toggle="tooltip"
                data-bs-placement="right"
-               data-bs-original-title="Orders" style="color: rgb(3, 194, 105);">
+               data-bs-original-title="Orders" style="color: rgb(3, 194, 105); padding: 8px;">
                 <button type="button" class="text-nowrap overflow-hidden text-center" id="btn-7">
                     <i class="fas fa-sign-out-alt fs-4"></i>
                 </button>
@@ -96,9 +104,9 @@
             </a>
         </li>
         <li class="nav-item w-100">
-            <a href="{% url 'chat:my_server_list' %}" class="nav-link py-3" title="" data-bs-toggle="tooltip"
+            <a href="{% url 'chat:my_server_list' %}" class="nav-link py-2" title="" data-bs-toggle="tooltip"
                data-bs-placement="right"
-               data-bs-original-title="Customers" style="color: rgb(3, 194, 105);">
+               data-bs-original-title="Customers" style="color: rgb(3, 194, 105); padding: 8px">
                 <button type="button" class="text-nowrap overflow-hidden text-center" id="btn-7">
                     <i class="far fa-list-alt fs-4"></i>
                 </button>
@@ -108,11 +116,11 @@
         {% if user %}
         {% for room in user.part_server.all %}
         <li class="nav-item w-100">
-            <a href="{% url 'chat:detail' room.id %}" class="nav-link" title="" data-bs-toggle="tooltip"
+            <a href="{% url 'chat:detail' room.id %}" class="nav-link py-2 margin" title="" data-bs-toggle="tooltip"
                data-bs-placement="right"
-               data-bs-original-title="Customers" style="color: rgb(3, 194, 105);">
+               data-bs-original-title="Customers" style="color: rgb(3, 194, 105); padding-left: 11px;">
 
-                <button type="button" class="text-nowrap overflow-hidden" id="btn-6">
+                <button type="button" class="text-nowrap overflow-hidden text-center" id="btn-6">
 
                     {{ room.name }}
                 </button>

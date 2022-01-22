@@ -1,3 +1,4 @@
+
 <!doctype html>
 <html>
 <head>
@@ -27,7 +28,12 @@
     #box-center {
       background: rgb(54, 57, 63);
       flex: 6;
-      text-align: center;
+      text-align: left;
+      font-size: 13pt;
+      font-weight: lighter;
+      
+
+      
     }
     #box-right {
       background: rgb(47, 49, 54);
@@ -65,10 +71,11 @@
             <div style="font-size: 13px; margin-left: 15px; margin-top: 10px;">
                 다이렉트 메세지
             </div>
-
+                
         </div>
     </div>
     <div id='box-center'>
+    
         {% if messages %}
         {% for message in messages %}
         <div class="alert alert-{{message.tags}}">
@@ -78,6 +85,7 @@
         {% endif %}
         {% block content %}
         {% endblock %}
+    
 
     </div>
     <div id='box-right' class="text-white">
