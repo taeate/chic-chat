@@ -51,8 +51,11 @@ def logout(request):
 @login_required(login_url='accounts:login')
 def add_friend(request, user_id):
     user = User.objects.get(id=user_id)
-    request.user.friends.add(user)
-    return redirect('chat:list')
+    if user != request.user:
+        request.user.friends.add(user)
+    else:
+        messages.warning(request, '자기 자신은 친구 추가 하지 않아도 영원한 친구입니다.')
+    return redirect('accounts:user_list')
 
 
 def searching_user(request):
@@ -63,3 +66,9 @@ def searching_user(request):
             search_user = User.objects.get(nickname=nickname)
             return redirect('chat:list', search_user=search_user)
     return redirect('chat:list')
+
+
+def user_list(request):
+    users = User.objects.all()
+    context = {'users': users}
+    return render(request, 'users.html', context)

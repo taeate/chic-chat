@@ -50,9 +50,6 @@
         background: rgb(54, 57, 63)
     }
 
-
-
-
     </style>
 
 </head>
@@ -65,16 +62,13 @@
                 <form action="{% url 'accounts:searching_user' %}">
                     <input type="text" class="form-control d-flex border-0 pe-0" placeholder="유저 찾기"
                            id="inputDefault" style="background: rgb(26, 25, 25); color: white;">
-                    <span class="d-flex text-white">
-                        <i class="fas fa-search" style="padding: .75rem .3rem;"></i>
-                    </span>
                 </form>
             </div>
-            <button class="btn btn-lg btn-primary" type="button"
-                    style="background-color: rgb(33, 33, 36); margin: 8px; text-align: left; font-size: 12pt;">
+            <a href="{% url 'accounts:user_list' %}" class="btn btn-lg btn-primary"
+               style="background-color: rgb(33, 33, 36); margin: 8px; text-align: left; font-size: 12pt;">
                 <i class="fas fa-users"></i>
                 친구
-            </button>
+            </a>
             <div style="font-size: 13px; margin-left: 15px; margin-top: 10px;">
                 찾은 유저
                 {% if search_user %}

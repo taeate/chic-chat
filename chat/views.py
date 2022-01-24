@@ -32,8 +32,7 @@ def room_create(request):
 def room_list(request):
     rooms = Room.objects.prefetch_related(
        Prefetch('part_user', queryset=User.objects.filter(id=request.user.id), to_attr='part_server'))
-    users = User.objects.all
-    context = {'rooms': rooms, 'users': users}
+    context = {'rooms': rooms}
     return render(request, 'chat/room_list.html', context)
 
 

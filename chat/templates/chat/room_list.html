@@ -8,28 +8,12 @@
         친구추가
     </button>
 </div>
-
-<h1>전체 유저 목록</h1>
-{% for user in users %}
-<div class="text-white">
-    {{user.nickname}}
-    <a href="{% url 'accounts:add_friend' user.id %}" class="btn btn-success">
-        친구추가
-    </a>
-</div>
-{% endfor %}
-<h1>친구 목록</h1>
-{% for friend in user.friends.all %}
-<div class="text-white">
-    {{friend}}
-</div>
-{% endfor %}
 <div>
 
 
     {% if rooms %}
     {% for room in rooms %}
-    <h5 class="my-3 border-top pb-2 pt-2" style="color: rgb(236, 234, 231);">
+    <h5 class="my-3 border-top py-2" style="color: rgb(236, 234, 231);">
         {{room.name}}</h5>
     {% if room.part_server %}
     <a href="{% url 'chat:detail' room.id %}" class="btn btn-success">
