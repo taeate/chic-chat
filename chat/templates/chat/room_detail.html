@@ -3,20 +3,22 @@
 {% if room %}
 {% include 'chat/js/chat_logic.html' %}
 <hr>
-<h3 style="color:white">
-    {{ room.name }}   
-    <a style="margin-left: 75%;" href="{% url 'chat:list' %}" class="btn btn-danger">서버 나가기</a>
+<h3 style="color:white" class="d-flex justify-content-between px-3">
+    <span>{{ room.name }}</span>
+    <button class="btn btn-danger" onclick="history.back()">이전 페이지</button>
 </h3>
 <hr>
-<div class="chat-messages text-white"></div>
-<div class="" style="position: fixed; bottom: 0; width: 71%">
-    <form action="{% url 'chat:message_write' %}" onsubmit="ChickChatForm__submit(this); return false;" style="flex-shrink: 0; padding-left: 16px; padding-right: 16px; margin-top: -8px;">
+<div class="chat-messages text-white mb-4"></div>
+<div class="mb-3" style="position: fixed; bottom: 0; width: 70%">
+    <form action="{% url 'chat:message_write' %}" onsubmit="ChickChatForm__submit(this); return false;">
         {% csrf_token %}
-        <input type="text" style="display:none"  name="room_id" value="{{room.id}}">
+        <input type="hidden" name="room_id" value="{{room.id}}">
         <input type="hidden" placeholder="작성자" name="writer">
-        <input class="form-control"type="text" placeholder="메세지 보내기..." name="body" style="background-color: rgb(77, 74, 74);">
-        <input type="submit" value="작성">
-        
+        <div class="input-group">
+            <input class="form-control text-white w1" type="text" placeholder="메세지 보내기..." name="body"
+                   style="background-color: rgb(77, 74, 74);">
+            <input class="btn btn-outline-secondary" type="submit" value="작성">
+        </div>
     </form>
 </div>
 
@@ -91,6 +93,8 @@ function ChickChat__renderMessage(chat) {
 }
 
 ChickChat__loadMore();
+
+
 
 
 
