@@ -21,7 +21,8 @@ def room_create(request):
             room.reg_date = timezone.now()
             room.save()
             request.user.part_server.add(room)
-            return redirect('chat:detail', room_id=room.id)
+            return redirect('chat'
+                            ':detail', room_id=room.id)
     else:
         form = RoomForm()
     context = {'form': form}
@@ -30,45 +31,22 @@ def room_create(request):
 
 def room_list(request):
     rooms = Room.objects.prefetch_related(
-        Prefetch('part_user', queryset=User.objects.filter(id=request.user.id), to_attr='part_server'))
+       Prefetch('part_user', queryset=User.objects.filter(id=request.user.id), to_attr='part_server'))
+    # rooms = Room.objects.all().get(id=1)
     context = {'rooms': rooms}
     return render(request, 'chat/room_list.html', context)
 
 
-def input_room_password(request, room):
-    # return render(request, 'chat/input_password.html')
-    return
-
-
-def decorator(cb):
-    # def wrap(request, *args, **kwargs):
-    #     messages.success(request, f'debug : {args[0]}')
-    #     messages.success(request, request.user)
-    #     return cb(request, *args, **kwargs)
-    #
-    # return wrap
-    return
-
-
-# @decorator
-def check_room_password(request, room):
-    # value = False
-    # return redirect('chat:list')
-    return
-
 def room_detail(request, room_id):
     room = Room.objects.get(id=room_id)
-    # if room.password:
-    #     return check_room_password(request, room)
     context = {'room': room}
+
     return render(request, 'chat/room_detail.html', context)
 
 
 @login_required(login_url='accounts:login')
 def access_server(request, room_id):
     room = Room.objects.get(id=room_id)
-    if room.password:
-        return redirect('/')
     request.user.part_server.add(room)
     return redirect('chat:detail', room_id=room_id)
 
