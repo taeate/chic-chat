@@ -9,14 +9,16 @@
     </button>
 </div>
 
+<h1>전체 유저 목록</h1>
 {% for user in users %}
 <div class="text-white">
-    {{user}}
+    {{user.nickname}}
     <a href="{% url 'accounts:add_friend' user.id %}" class="btn btn-success">
         친구추가
     </a>
 </div>
 {% endfor %}
+<h1>친구 목록</h1>
 {% for friend in user.friends.all %}
 <div class="text-white">
     {{friend}}

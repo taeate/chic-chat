@@ -4,7 +4,7 @@
     <form method="post" class="post-form" action="{% url 'accounts:signup' %}">
         {% csrf_token %}
         {% include "form_errors.html" %}
-        <div class="form-control cmd-base-color text-white">
+        <div class="form-control paracode-base-color text-white">
             <div class="form-label">
                 <h4>계정생성</h4>
             </div>
@@ -24,11 +24,11 @@
                        value="{{ form.password2.value|default_if_none:'' }}">
             </div>
             <div class="mb-3 w-75 m-auto">
-                <label for="email" class="form-label">이메일</label>
-                <input type="text" class="form-control" name="email" id="email"
-                       value="{{ form.email.value|default_if_none:'' }}">
+                <label for="nickname" class="form-label">닉네임</label>
+                <input type="text" class="form-control" name="nickname" id="nickname"
+                       value="{{ form.nickname.value|default_if_none:'' }}">
             </div>
-            <button type="submit" class="btn btn-primary my-3 w-75 m-auto">생성하기</button>
+            <button type="submit" class="btn btn-primary my-4 w-75 mx-auto d-block">생성하기</button>
         </div>
     </form>
 </div>
