@@ -1,4 +1,4 @@
-from django.contrib import auth
+from accounts.models import User
 from django.contrib import messages
 from django.contrib.auth import login as auth_login
 from django.contrib.auth import logout as auth_logout
@@ -16,9 +16,9 @@ def login(request: HttpRequest):
     if request.method == 'POST':
         username = request.POST['username']
         password = request.POST['password']
-        user = auth.authenticate(request, username=username, password=password)
+        user = User.objects.get(username=username, password=password)
         if user:
-            auth.login(request, user)
+            auth_login(request, user)
             messages.success(request, "회원가입 환영합니다.")
             return redirect('chat:list')
         else:
