@@ -9,7 +9,7 @@
 </h3>
 <hr>
 <div class="chat-messages text-white mb-4"></div>
-<div class="mb-3" style="position: fixed; bottom: 0; width: 70%">
+<div class="mb-3" style="position: fixed; bottom: 0;">
     <form action="{% url 'chat:message_write' %}" onsubmit="ChickChatForm__submit(this); return false;">
         {% csrf_token %}
         <input type="hidden" name="room_id" value="{{room.id}}">
@@ -93,6 +93,7 @@ function ChickChat__renderMessage(chat) {
 }
 
 ChickChat__loadMore();
+
 
 
 

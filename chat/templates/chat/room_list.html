@@ -1,35 +1,26 @@
 {% extends 'layout.html' %}
 {% block content %}
 <div>
+
     {% if rooms %}
-        {% for room in rooms %}
-        <h5 class="my-3 border-top pb-2 pt-2" style="color: rgb(236, 234, 231);">
-            {% if room.password %}
-            <i class="fas fa-lock"></i>
-            {% endif %}
-            채팅방 이름 : {{ room.name }}
-        </h5>
-            {% if room.part_server %}
-                <a href="{% url 'chat:detail' room.id %}" class="btn btn-success">
-                    참가중인 서버
-                </a>
-                <a href="{% url 'chat:exit_server' room.id %}" class="btn btn-danger">
-                    서버 나가기
-                </a>
-            {% else %}
-            {% if room.password %}
-            <a href="{% url 'chat:input_room_password' room.id %}" class="btn btn-success">
-                서버 참가
-            </a>
-            {% else %}
-            <a href="{% url 'chat:access_server' room.id %}" class="btn btn-success">
-                서버 참가
-            </a>
-            {% endif %}
-        {% endif %}
-        {% endfor %}
+    {% for room in rooms %}
+    <h5 class="my-3 border-top pb-2 pt-2" style="color: rgb(236, 234, 231);">
+    {{room.name}}</h5>
+    {% if room.part_server %}
+    <a href="{% url 'chat:detail' room.id %}" class="btn btn-success">
+        참가중인 서버
+    </a>
+    <a href="{% url 'chat:exit_server' room.id %}" class="btn btn-danger">
+        서버 나가기
+    </a>
     {% else %}
-        <h1>채팅방 is lonely...</h1>
+    <a href="{% url 'chat:access_server' room.id %}" class="btn btn-success">
+        서버 참가
+    </a>
+    {% endif %}
+    {% endfor %}
+    {% else %}
+    <h1>채팅방 is lonely...</h1>
     {% endif %}
 </div>
 {% endblock %}
