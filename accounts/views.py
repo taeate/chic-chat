@@ -1,8 +1,10 @@
+from django.contrib.auth.decorators import login_required
+from django.http import HttpRequest
+
 from accounts.models import User
 from django.contrib import messages
 from django.contrib.auth import login as auth_login
 from django.contrib.auth import logout as auth_logout
-from django.http import HttpRequest
 from django.shortcuts import render, redirect
 
 from accounts.form import UserForm
@@ -44,3 +46,10 @@ def signup(request: HttpRequest):
 def logout(request):
     auth_logout(request)
     return redirect('/')
+
+
+@login_required(login_url='accounts:login')
+def add_friend(request, user_id):
+    user = User.objects.get(id=user_id)
+    request.user.friends.add(user)
+    return redirect('chat:list')
