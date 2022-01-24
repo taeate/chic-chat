@@ -7,7 +7,7 @@ from django.contrib.auth import login as auth_login
 from django.contrib.auth import logout as auth_logout
 from django.shortcuts import render, redirect
 
-from accounts.form import UserForm
+from accounts.form import UserForm, SearchUserForm
 
 
 def accounts(request):
@@ -52,4 +52,14 @@ def logout(request):
 def add_friend(request, user_id):
     user = User.objects.get(id=user_id)
     request.user.friends.add(user)
+    return redirect('chat:list')
+
+
+def searching_user(request):
+    if request.method == "POST":
+        form = SearchUserForm(request.POST)
+        if form.is_valid():
+            nickname = form.save(commit=False)
+            search_user = User.objects.get(nickname=nickname)
+            return redirect('chat:list', search_user=search_user)
     return redirect('chat:list')
