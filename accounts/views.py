@@ -81,4 +81,5 @@ def searching_user(request):
   if kw:
       find_friend = User.objects.filter(nickname__icontains=kw)
   
+  
   return render(request, 'friend_search.html', {'find_friend':find_friend})
