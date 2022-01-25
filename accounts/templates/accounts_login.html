@@ -5,17 +5,19 @@
         {% csrf_token %}
         <div class="form-control cmd-base-color">
             <div class="mb-3">
-                <label class="form-label text-white" for="username">사용자ID</label>
+                <label class="form-label" for="username">사용자ID</label>
                 <input placeholder="아이디를 입력해주세요." type="text" class="form-control" name="username" id="username"
                        value="{{ form.username.value|default_if_none:'' }}">
             </div>
             <div class="mb-3">
-                <label class="form-label text-white" for="password">비밀번호</label>
+                <label class="form-label" for="password">비밀번호</label>
                 <input placeholder="비밀번호를 입력해주세요." type="password" class="form-control" name="password" id="password"
                        value="{{ form.password.value|default_if_none:'' }}">
             </div>
-            <button type="submit" class="btn btn-primary w-25">로그인</button>
-            <a href="{% url 'accounts:signup' %}" class="btn btn-success w-25">회원 가입</a>
+            <div class="d-flex justify-content-evenly">
+                <button type="submit" class="btn btn-primary w-50">로그인</button>
+                <a href="{% url 'accounts:signup' %}" class="btn btn-success w-50">회원 가입</a>
+            </div>
         </div>
     </form>
 </div>

@@ -17,13 +17,12 @@ def login(request: HttpRequest):
     if request.method == 'POST':
         username = request.POST['username']
         password = request.POST['password']
-        user = User.objects.get(username=username, password=password)
+        user = User.objects.get(username=username, password1=password)
         if user:
             auth_login(request, user)
-            messages.success(request, "회원가입 환영합니다.")
+            user.active = True
             return redirect('chat:list')
         else:
-            messages.success(request, "회원가입 환영합니다.")
             return redirect('accounts:login')
 
 
@@ -33,6 +32,7 @@ def signup(request: HttpRequest):
         if form.is_valid():
             signed_user = form.save()
             auth_login(request, signed_user)
+            signed_user.active = True
             messages.success(request, "회원가입 환영합니다.")
             return redirect('chat:list')
     else:
@@ -43,6 +43,7 @@ def signup(request: HttpRequest):
 
 
 def logout(request):
+    request.user.active = 'False'
     auth_logout(request)
     return redirect('/')
 
@@ -70,7 +71,7 @@ def searching_user(request):
 def user_list(request):
     users = User.objects.all()
     context = {'users': users}
-    return render(request, 'users.html', context)
+    return render(request, 'user_list.html', context)
 
 
 def searching_user(request):
