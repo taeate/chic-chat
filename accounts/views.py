@@ -1,12 +1,12 @@
 from django.contrib.auth.decorators import login_required
-from django.http import HttpRequest
+from django.http import HttpRequest, HttpResponse
 from accounts.models import User
 from django.contrib import messages
-from django.contrib.auth import login as auth_login
+from django.contrib.auth import login as auth_login, authenticate
 from django.contrib.auth import logout as auth_logout
 from django.shortcuts import render, redirect
 
-from accounts.form import UserForm, SearchUserForm
+from accounts.form import UserForm, SearchUserForm, LoginForm
 
 
 def accounts(request):
@@ -24,6 +24,7 @@ def login(request: HttpRequest):
             user.save()
             return redirect('chat:list')
     return render(request,'accounts_login.html')
+
 
 
 def signup(request: HttpRequest):
