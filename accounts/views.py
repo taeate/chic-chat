@@ -1,12 +1,12 @@
 from django.contrib.auth.decorators import login_required
-from django.http import HttpRequest
+from django.http import HttpRequest, HttpResponse
 from accounts.models import User
 from django.contrib import messages
-from django.contrib.auth import login as auth_login
+from django.contrib.auth import login as auth_login, authenticate
 from django.contrib.auth import logout as auth_logout
 from django.shortcuts import render, redirect
 
-from accounts.form import UserForm, SearchUserForm
+from accounts.form import UserForm, SearchUserForm, LoginForm
 
 
 def accounts(request):
@@ -17,14 +17,17 @@ def login(request: HttpRequest):
     if request.method == 'POST':
         username = request.POST['username']
         password = request.POST['password']
-        user = User.objects.get(username=username, password1=password)
-        if user:
+        user = User.objects.get(username=username)
+        if user is not None:
             auth_login(request, user)
             user.is_active = 1
             user.save()
             return redirect('chat:list')
         else:
-            return redirect('accounts:login')
+            return HttpResponse('실패')
+    else:
+        form = LoginForm()
+        return render(request, 'accounts_login.html', {'form': form})
 
 
 def signup(request: HttpRequest):
