@@ -73,13 +73,10 @@ def user_list(request):
     return render(request, 'users.html', context)
 
 
-
 def searching_user(request):
+    kw = request.GET.get('kw')
+    find_friend = User.objects.get(nickname=kw)
+    if kw:
+        find_friend = User.objects.filter(nickname__icontains=kw)
 
-  kw = request.GET.get('kw')
-  find_friend = User.objects.get(nickname=kw)
-  if kw:
-      find_friend = User.objects.filter(nickname__icontains=kw)
-  
-  
-  return render(request, 'friend_search.html', {'find_friend':find_friend})
+    return render(request, 'friend_search.html', {'find_friend': find_friend})

@@ -1,0 +1,26 @@
+{% extends 'layout.html' %}
+{% block content %}
+
+<h1 class="text-white">전체 유저 목록</h1>
+{% for use in users %}
+<div class="text-white my-3 border-top py-2">
+    {% if user == use %}
+    <span class="badge bg-secondary">본인</span>
+    {% endif %}
+    {% if use.active %}
+    <i class="fas fa-circle text-danger"></i> {{use.nickname}}
+    {% else %}
+    <i class="fas fa-circle text-success"></i> {{use.nickname}}
+    {% endif %}
+    <a href="{% url 'accounts:add_friend' use.id %}" class="btn btn-success">
+        친구추가
+    </a>
+</div>
+{% endfor %}
+<h1 class="text-white">친구 목록</h1>
+{% for friend in user.friends.all %}
+<div class="text-white my-3 border-top py-2">
+    {{friend}}
+</div>
+{% endfor %}
+{% endblock %}
