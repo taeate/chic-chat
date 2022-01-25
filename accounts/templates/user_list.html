@@ -7,7 +7,7 @@
     {% if user == use %}
     <span class="badge bg-secondary">본인</span>
     {% endif %}
-    {% if use.active %}
+    {% if use.is_active %}
     <i class="fas fa-circle text-danger"></i> {{use.nickname}}
     {% else %}
     <i class="fas fa-circle text-success"></i> {{use.nickname}}
