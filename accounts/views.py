@@ -17,14 +17,13 @@ def login(request: HttpRequest):
     if request.method == 'POST':
         username = request.POST['username']
         password = request.POST['password']
-        user = User.objects.get(username=username, password1=password)
-        if user:
+        user = User.objects.filter(username=username).first()
+        if user and user.check_password(password):
             auth_login(request, user)
             user.is_active = 1
             user.save()
             return redirect('chat:list')
-        else:
-            return redirect('accounts:login')
+    return render(request,'accounts_login.html')
 
 
 def signup(request: HttpRequest):

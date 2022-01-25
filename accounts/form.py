@@ -7,7 +7,7 @@ from accounts.models import User
 class UserForm(UserCreationForm):
     class Meta:
         model = User
-        fields = ("username", "password1", "password2", "nickname")
+        fields = ["username", "password1", "password2", "nickname"]
 
 
 class SearchUserForm(forms.ModelForm):
