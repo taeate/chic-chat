@@ -1,6 +1,5 @@
 from django.contrib.auth.decorators import login_required
 from django.http import HttpRequest
-
 from accounts.models import User
 from django.contrib import messages
 from django.contrib.auth import login as auth_login
@@ -72,3 +71,14 @@ def user_list(request):
     users = User.objects.all()
     context = {'users': users}
     return render(request, 'users.html', context)
+
+
+
+def searching_user(request):
+
+  kw = request.GET.get('kw')
+  find_friend = User.objects.get(nickname=kw)
+  if kw:
+      find_friend = User.objects.filter(nickname__icontains=kw)
+  
+  return render(request, 'friend_search.html', {'find_friend':find_friend})

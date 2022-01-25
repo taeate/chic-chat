@@ -59,10 +59,11 @@
     <div id='box-left'>
         <div class="d-grid">
             <div class="form-group d-flex" style="margin: 8px; background: rgb(26, 25, 25);">
-                <form action="{% url 'accounts:searching_user' %}">
-                    <input type="text" class="form-control d-flex border-0 pe-0" placeholder="유저 찾기"
+                <form action="{% url 'accounts:searching_user' %}" method="GET">
+                    <input name="kw" type="text" class="form-control d-flex border-0 pe-0" placeholder="유저 찾기"
                            id="inputDefault" style="background: rgb(26, 25, 25); color: white;">
                 </form>
+                
             </div>
             <a href="{% url 'accounts:user_list' %}" class="btn btn-lg btn-primary"
                style="background-color: rgb(33, 33, 36); margin: 8px; text-align: left; font-size: 12pt;">

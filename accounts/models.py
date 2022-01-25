@@ -8,5 +8,4 @@ class User(AbstractUser):
     password1 = models.CharField(max_length=50)
     password2 = models.CharField(max_length=50)
     nickname = models.CharField(max_length=50, unique=True)
-    active = models.BooleanField()
     email = False
