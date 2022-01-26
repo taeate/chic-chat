@@ -80,6 +80,14 @@
         </div>
     </div>
     <div id='box-center'>
+        <div class="top-button">
+            <a href="{% url 'accounts:user_list_all' %}">모두</a>
+            <a href="{% url 'accounts:user_list_online' %}">온라인</a>
+            <button href=""
+                    style=" color: rgb(255, 255, 255);  background-color: rgb(27, 216, 90); border: none; border-radius: 1.5rem;">
+                친구추가
+            </button>
+        </div>
 
         {% if messages %}
         {% for message in messages %}

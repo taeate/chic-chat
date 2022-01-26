@@ -64,10 +64,25 @@ def add_friend(request, user_id):
     return redirect('accounts:user_list')
 
 
+
 def user_list(request):
     users = User.objects.all()
     context = {'users': users}
     return render(request, 'user_list.html', context)
+
+
+
+def user_list_all(request):
+    users = User.objects.all()
+    context = {'users': users}
+    return render(request, 'all_user_list.html', context)
+
+
+
+def user_list_online(request):
+    users = User.objects.filter(is_active=1)
+    context = {'users': users}
+    return render(request, 'online_user_list.html', context)
 
 
 def searching_user(request):

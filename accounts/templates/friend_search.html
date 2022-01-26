@@ -3,8 +3,11 @@
 <div class="text-white">
 <h1>Friend Search</h1>
 {% for i in  find_friend %}
-{{i.nickname}}은(는)
-{{i.id}}번째 유저입니다.
+{{i.nickname}}
+<a href="{% url 'accounts:add_friend' i.id %}" class="btn btn-success">
+    친구추가
+</a>
+
 {% endfor %}
 </div>
 {% endblock %}
