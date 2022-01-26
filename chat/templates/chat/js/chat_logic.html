@@ -2,13 +2,6 @@
     function ChickChatForm__submit(form) {
         form.writer.value = form.writer.value.trim();
 
-        if ( form.body.value.length == 0 ) {
-            alert('내용을 입력해주세요.');
-            form.body.focus();
-
-            return false;
-        }
-
         const writer = form.writer.value;
         const body = form.body.value;
         const room_id = form.room_id.value;
@@ -53,9 +46,8 @@
     }
 
     function ChickChat__renderMessage(chat) {
-        $('.chat-messages').append(`<div>${chat.writer} : ${chat.message}</div>`);
+        $('.chat-messages').append(`<div>${chat.writer.nickname} : ${chat.message}</div>`);
     }
 
     ChickChat__loadMore();
-
 </script>

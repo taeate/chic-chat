@@ -61,16 +61,11 @@ def exit_server(request, room_id):
 
 
 @login_required(login_url='accounts:login')
-def message_write(request: HttpRequest):
+def message_write(request):
     writer = request.user
     body = request.POST.get("body", "")
     room_id = request.POST.get("room_id")
     room = Room.objects.get(id=room_id)
-    if not writer:
-        raise ValidationError("writer가 없습니다.")
-
-    if not body:
-        raise ValidationError("body가 없습니다.")
 
     ChatMessage(room=room, writer=writer, message=body).save()
     list(ChatMessage.objects.filter(room=room).values())

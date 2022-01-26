@@ -1,6 +1,10 @@
+{% extends 'layout.html' %}
+{% block content %}
+<div class="text-white">
 <h1>Friend Search</h1>
-
 {% for i in  find_friend %}
 {{i.nickname}}은(는)
 {{i.id}}번째 유저입니다.
 {% endfor %}
+</div>
+{% endblock %}
