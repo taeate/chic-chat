@@ -22,9 +22,11 @@ def login(request: HttpRequest):
             auth_login(request, user)
             user.is_active = 1
             user.save()
+            messages.success(request, f"돌아오셨군요ㅠㅠ {user.nickname}님..")
             return redirect('chat:list')
-    return render(request,'accounts_login.html')
-
+        else:
+            messages.warning(request, "")
+    return render(request, 'accounts_login.html')
 
 
 def signup(request: HttpRequest):
