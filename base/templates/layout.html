@@ -10,45 +10,42 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
 
     <style>
-    #ava {
-      display: flex;
-      min-height: 100vh;
-      margin-left: 5.5rem;
-      font-weight: bold;
-
-
-    }
-    #box-left {
-      background: rgb(47, 49, 54);
-      flex: 1;
-      color: rgb(143, 141, 146);
-
-    }
-    #box-center {
-      background: rgb(54, 57, 63);
-      flex: 6;
-      text-align: left;
-      font-size: 13pt;
-      font-weight: lighter;
-      
-
-      
-    }
-    #box-right {
-      background: rgb(47, 49, 54);
-      flex: 1;
-      text-align: center;
-    }
-    .none-display-scroll {
-        -ms-overflow-style: none;
-        scrollbar-width: none;
-    }
-    .none-display-scroll::-webkit-scrollbar {
-        display: none;
-    }
-    .paracode-base-color{
-        background: rgb(54, 57, 63)
-    }
+        #ava {
+        display: flex;
+        min-height: 100vh;
+        margin-left: 5.5rem;
+        font-weight: bold;
+        }
+        #box-left {
+        background: rgb(47, 49, 54);
+        flex: 1;
+        color: rgb(143, 141, 146);
+        }
+        #box-center {
+        background: rgb(54, 57, 63);
+        flex: 6;
+        text-align: left;
+        font-size: 13pt;
+        font-weight: lighter;
+        max-height: 100vh;
+        overflow: auto;
+        scrollbar-width: thin;
+        }
+        #box-right {
+        background: rgb(47, 49, 54);
+        flex: 1;
+        text-align: center;
+        }
+        .none-display-scroll {
+            -ms-overflow-style: none;
+            scrollbar-width: none;
+        }
+        .none-display-scroll::-webkit-scrollbar {
+            display: none;
+        }
+        .paracode-base-color{
+            background: rgb(54, 57, 63)
+        }
 
     </style>
 
@@ -73,7 +70,7 @@
             <div style="font-size: 13px; margin-left: 15px; margin-top: 10px;">
                 찾은 유저
                 {% if search_user %}
-                {{search_user}}
+                    {{search_user}}
                 {% endif %}
             </div>
 
@@ -90,16 +87,16 @@
         </div>
 
         {% if messages %}
-        {% for message in messages %}
-        <div class="alert alert-{{message.tags}}">
-            {{ message }}
-        </div>
-        {% endfor %}
+            {% for message in messages %}
+            
+            <div class="alert alert-{{message.tags}}">
+                {{ message }}
+            </div>
+
+            {% endfor %}
         {% endif %}
         {% block content %}
         {% endblock %}
-
-
     </div>
     <div id='box-right' class="text-white">
         <h5>온라인</h5>
