@@ -31,7 +31,7 @@ def room_create(request):
 
 def room_list(request):
     rooms = Room.objects.prefetch_related(
-       Prefetch('part_user', queryset=User.objects.filter(id=request.user.id), to_attr='part_server'))
+        Prefetch('part_user', queryset=User.objects.filter(id=request.user.id), to_attr='part_server'))
     context = {'rooms': rooms}
     return render(request, 'chat/room_list.html', context)
 
@@ -67,7 +67,10 @@ def message_write(request):
     room_id = request.POST.get("room_id")
     room = Room.objects.get(id=room_id)
 
-    ChatMessage(room=room, writer=writer, message=body).save()
+    if not body:
+        raise ValidationError("body가 없습니다.")
+
+    ChatMessage(room=room, writer=writer, nickname=writer.nickname, message=body).save()
     list(ChatMessage.objects.filter(room=room).values())
     return JsonResponse({
         'message': "성공",
@@ -78,11 +81,12 @@ def message_write(request):
 def chat(request, room_id):
     id = request.GET.get('from_id')
     room = Room.objects.get(id=room_id)
-    chats = list(ChatMessage.objects.filter(id__gt=id, room=room).order_by('id').values())
-
+    chats = list(ChatMessage.objects.select_related('writer').filter(id__gt=id, room=room)
+                 .order_by('id').values())
     return JsonResponse({
         'resultCode': "S-1",
         'chats': chats,
+        'writer':'none',
     })
 
 

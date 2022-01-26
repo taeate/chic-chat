@@ -14,9 +14,6 @@
                 body,
                 room_id
             },
-            function(data) {
-                console.log(data);
-            },
             'json'
         );
 
@@ -33,7 +30,7 @@
                 from_id: ChickChat__lastMessageId
             },
             function(data) {
-                for ( let chatKey in data.chats ) {
+                for ( const chatKey in data.chats ) {
                     const chat = data.chats[chatKey];
                     ChickChat__lastMessageId = chat.id;
                     ChickChat__renderMessage(chat);
@@ -46,8 +43,12 @@
     }
 
     function ChickChat__renderMessage(chat) {
-        $('.chat-messages').append(`<div>${chat.writer.nickname} : ${chat.message}</div>`);
+        console.log(chat);
+        $('.chat-messages').append(`<div>${chat.nickname} : ${chat.message}</div>`);
+        $(window).scrollTop(1000000000);
     }
 
     ChickChat__loadMore();
+
+
 </script>
