@@ -1,14 +1,15 @@
 <!doctype html>
+{% load static %}
 <html>
 <head>
     <meta charset="utf-8"/>
     <title>chicken's talk</title>
 
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/5.1.3/js/bootstrap.min.js"></script>
+    <link rel="stylesheet" href="{% static common.css %}">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/5.1.3/css/bootstrap.min.css">
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
-
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/5.1.3/js/bootstrap.min.js"></script>
     <style>
         #ava {
         display: flex;
@@ -47,10 +48,11 @@
             background: rgb(54, 57, 63)
         }
 
+
     </style>
 
 </head>
-<body>
+<body class="t-h-[50px]">
 {% include "sidebar.html" %}
 <div id='ava'>
     <div id='box-left'>
@@ -60,7 +62,7 @@
                     <input name="kw" type="text" class="form-control d-flex border-0 pe-0" placeholder="유저 찾기"
                            id="inputDefault" style="background: rgb(26, 25, 25); color: white;">
                 </form>
-                
+
             </div>
             <a href="{% url 'accounts:user_list' %}" class="btn btn-lg btn-primary"
                style="background-color: rgb(33, 33, 36); margin: 8px; text-align: left; font-size: 12pt;">
@@ -70,13 +72,14 @@
             <div style="font-size: 13px; margin-left: 15px; margin-top: 10px;">
                 찾은 유저
                 {% if search_user %}
-                    {{search_user}}
+                {{search_user}}
                 {% endif %}
             </div>
 
         </div>
     </div>
     <div id='box-center'>
+        <div class="t-bg-red-500 t-m-[500px] t-h-[500px]">asdasd</div>
         <div class="top-button">
             <a href="{% url 'accounts:user_list_all' %}">모두</a>
             <a href="{% url 'accounts:user_list_online' %}">온라인</a>
@@ -87,13 +90,13 @@
         </div>
 
         {% if messages %}
-            {% for message in messages %}
-            
-            <div class="alert alert-{{message.tags}}">
-                {{ message }}
-            </div>
+        {% for message in messages %}
 
-            {% endfor %}
+        <div class="alert alert-{{message.tags}}">
+            {{ message }}
+        </div>
+
+        {% endfor %}
         {% endif %}
         {% block content %}
         {% endblock %}
