@@ -8,8 +8,10 @@
     <button class="btn btn-danger" onclick="history.back()">이전 페이지</button>
 </h3>
 <hr>
-<div class="chat-messages text-white my-4 pb-5"></div>
-<div class="mb-3" style="position: fixed; bottom: 0; width: 70%;">
+
+    <div class="chat-messages text-white my-4 pb-5" ></div>
+
+<div class="pb-3" style="position: fixed;background: rgb(54, 57, 63); bottom: 0; width: 70%; height:50px;">
     <form action="{% url 'chat:message_write' %}" onsubmit="ChickChatForm__submit(this); return false;">
         {% csrf_token %}
         <input type="hidden" name="room_id" value="{{room.id}}">
