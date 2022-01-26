@@ -25,7 +25,8 @@ def login(request: HttpRequest):
             messages.success(request, f"돌아오셨군요ㅠㅠ {user.nickname}님..")
             return redirect('chat:list')
         else:
-            messages.warning(request, "")
+            messages.warning(request, "잘못된 아이디/비밀번호 입니다.")
+            return redirect('accounts:login')
     return render(request, 'accounts_login.html')
 
 
