@@ -97,3 +97,22 @@
 }
 
 /* sidebar . css  끝  */
+
+
+/* room_detail.css 시작 */
+
+#exit_page {
+  color: white;
+}
+#message_form {
+  position: fixed;
+  background: rgb(54, 57, 63);
+  bottom: 0;
+  width: 70%;
+  height:50px;
+}
+#message_input {
+  background-color: rgb(77, 74, 74);
+}
+
+/* room_detail.css 끝 */

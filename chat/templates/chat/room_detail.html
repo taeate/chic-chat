@@ -2,8 +2,9 @@
 {% block content %}
 {% if room %}
 {% include 'chat/js/chat_logic.html' %}
+
 <hr>
-<h3 style="color:white" class="d-flex justify-content-between px-3">
+<h3 id="exit_page" class="d-flex justify-content-between px-3">
     <span>{{ room.name }}</span>
     <button class="btn btn-danger" onclick="history.back()">이전 페이지</button>
 </h3>
@@ -11,14 +12,13 @@
 
     <div class="chat-messages text-white my-4 pb-5" ></div>
 
-<div class="pb-3" style="position: fixed;background: rgb(54, 57, 63); bottom: 0; width: 70%; height:50px;">
+<div id="message_form" class="pb-3">
     <form action="{% url 'chat:message_write' %}" onsubmit="ChickChatForm__submit(this); return false;">
         {% csrf_token %}
         <input type="hidden" name="room_id" value="{{room.id}}">
         <input type="hidden" placeholder="작성자" name="writer">
         <div class="input-group">
-            <input class="form-control text-white" type="text" placeholder="메세지 보내기..." name="body"
-                   style="background-color: rgb(77, 74, 74);">
+            <input id="message_input" class="form-control text-white" type="text" placeholder="메세지 보내기..." name="body">
         </div>
     </form>
 </div>
