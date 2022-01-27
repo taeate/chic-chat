@@ -36,7 +36,7 @@
                     ChickChat__renderMessage(chat);
                 }
                 console.log(1)
-                setTimeout(ChickChat__loadMore, 500);
+                setTimeout(ChickChat__loadMore, 200);
             },
             'json'
         );
@@ -45,9 +45,9 @@
     function ChickChat__renderMessage(chat) {
         console.log(chat);
         $('.chat-messages').append(`<div>${chat.nickname} : ${chat.message}</div>`);
-        $(window).scrollTop(1000000000);
+        var box_center = document.getElementById("box-center");
+        box_center.scrollTop = box_center.scrollHeight;
     }
-
     ChickChat__loadMore();
 
 
