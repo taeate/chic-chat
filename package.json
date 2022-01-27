@@ -3,6 +3,6 @@
     "tailwindcss": "^3.0.16"
   },
   "scripts": {
-    "css": "npx tailwindcss -i ./base/static/common.css -o ./base/static/tailwind.ouput.css --watch"
+    "css": "npx tailwindcss -i ./base/static/common.css -o ./base/static/tailwind.output.css --watch"
   }
 }
