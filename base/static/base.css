@@ -1,0 +1,99 @@
+/* layout . css  시작  */
+
+#ava {
+  display: flex;
+  min-height: 100vh;
+  margin-left: 5.5rem;
+  font-weight: bold;
+}
+
+#box-left {
+  background: rgb(47, 49, 54);
+  flex: 1;
+  color: rgb(143, 141, 146);
+}
+
+#box-center {
+  background: rgb(54, 57, 63);
+  flex: 6;
+  text-align: left;
+  font-size: 13pt;
+  font-weight: lighter;
+  max-height: 100vh;
+  overflow: auto;
+  scrollbar-width: thin;
+}
+
+#box-right {
+  background: rgb(47, 49, 54);
+  flex: 1;
+  text-align: center;
+}
+
+.none-display-scroll {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+
+.none-display-scroll::-webkit-scrollbar {
+  display: none;
+}
+
+.paracode-base-color {
+  background: rgb(54, 57, 63)
+}
+
+/* layout . css  끝  */
+
+
+/*  sidebar . css  시작  */
+
+#btn-6 {
+  color: rgb(255, 255, 255);
+  background: rgb(63, 63, 65);
+  border-radius: 50%;
+  width: 65px;
+  height: 65px;
+  font-size: 15px;
+  text-align: center;
+  border: #363434 solid 1px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+
+
+  border: 5px solid transparent;
+  transition: all 0.2s cubic-bezier(.10, .24, 0, 1);
+}
+
+#btn-6:hover {
+  color: #ffffff;
+  background-color: #27aa78;
+  border-radius: 30%;
+  transition: all 0.4s cubic-bezier(.10, .24, 0, 1);
+
+}
+
+#btn-7 {
+  color: rgb(69, 228, 109);
+  background: rgb(63, 63, 65);
+  border-radius: 50%;
+  width: 65px;
+  height: 65px;
+  font-size: 15px;
+  text-align: center;
+  border: #363434 solid 1px;
+
+  border: 5px solid transparent;
+  transition: all 0.2s cubic-bezier(.10, .24, 0, 1);
+}
+
+#btn-7:hover {
+  color: rgb(255, 255, 255);
+  background-color: #27aa78;
+  border-radius: 30%;
+
+}
+
+/* sidebar . css  끝  */

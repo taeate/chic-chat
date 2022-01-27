@@ -1,55 +1,15 @@
-<style>
-
-    #btn-6 {
-        color: rgb(255, 255, 255);
-            background: rgb(63, 63, 65);
-            border-radius: 50%;
-            width: 65px;
-            height: 65px;
-            font-size: 15px;
-            text-align: center;
-            border: #363434 solid 1px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            text-align: center;
-            
-       
-        border: 5px solid transparent;
-        transition: all 0.2s cubic-bezier(.10, .24, 0, 1);
-    }
-    #btn-6:hover {
-        color: #ffffff;
-        background-color: #27aa78;
-        border-radius: 30%;
-        transition: all 0.4s cubic-bezier(.10, .24, 0, 1);
-
-    }
-    #btn-7 {
-            color: rgb(69, 228, 109);
-            background: rgb(63, 63, 65);
-            border-radius: 50%;
-            width: 65px;
-            height: 65px;
-            font-size: 15px;
-            text-align: center;
-            border: #363434 solid 1px;
-       
-        border: 5px solid transparent;
-        transition: all 0.2s cubic-bezier(.10, .24, 0, 1);
-    }
-    #btn-7:hover {
-        color: rgb(255, 255, 255);
-        background-color: #27aa78;
-        border-radius: 30%;
-
-    }
-
-</style>
-
-
-
-<div class="d-flex flex-column flex-shrink-0  text-white h-100 fixed-top overflow-auto none-display-scroll"
+<!DOCTYPE html>
+{% load static %}
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="{% static 'base.css' %}">
+</head>
+<body>
+    <div class="d-flex flex-column flex-shrink-0  text-white h-100 fixed-top overflow-auto none-display-scroll"
      style="width: 5.5rem; background: rgb(32, 34, 37);">
     <ul class=" nav nav-pills nav-flush flex-column mb-auto text-center text-white">
         <div style="font-weight: bold; color: rgb(68, 63, 63);">
@@ -145,3 +105,5 @@
         </ul>
     </div>
 </div>
+</body>
+</html>

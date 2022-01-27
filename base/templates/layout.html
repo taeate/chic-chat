@@ -1,5 +1,5 @@
-{% load static %}
 <!doctype html>
+{% load static %}
 <html>
 <head>
     <meta charset="utf-8"/>
@@ -9,47 +9,8 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/5.1.3/css/bootstrap.min.css">
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
-    <link rel="stylesheet" href="{% static 'common.css' %}">
+    <link rel="stylesheet" href="{% static 'base.css' %}">
 
-    <style>
-        #ava {
-        display: flex;
-        min-height: 100vh;
-        margin-left: 5.5rem;
-        font-weight: bold;
-        }
-        #box-left {
-        background: rgb(47, 49, 54);
-        flex: 1;
-        color: rgb(143, 141, 146);
-        }
-        #box-center {
-        background: rgb(54, 57, 63);
-        flex: 6;
-        text-align: left;
-        font-size: 13pt;
-        font-weight: lighter;
-        max-height: 100vh;
-        overflow: auto;
-        scrollbar-width: thin;
-        }
-        #box-right {
-        background: rgb(47, 49, 54);
-        flex: 1;
-        text-align: center;
-        }
-        .none-display-scroll {
-            -ms-overflow-style: none;
-            scrollbar-width: none;
-        }
-        .none-display-scroll::-webkit-scrollbar {
-            display: none;
-        }
-        .paracode-base-color{
-            background: rgb(54, 57, 63)
-        }
-
-    </style>
 
 </head>
 <body>
