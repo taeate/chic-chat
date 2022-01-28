@@ -33,7 +33,7 @@ def room_list(request):
     rooms = Room.objects.prefetch_related(
         Prefetch('part_user', queryset=User.objects.filter(id=request.user.id), to_attr='part_server'))
     context = {'rooms': rooms}
-    return render(request, 'm.layout.html', context)
+    return render(request, 'chat/room_list.html', context)
 
 
 def room_detail(request, room_id):

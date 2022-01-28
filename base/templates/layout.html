@@ -8,6 +8,7 @@
     <title>Paracord</title>
     <link rel="stylesheet" href="{% static 'common.css' %}" type="text/css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+    <link rel="shorticut icon" href="/favicon.ico"/>
 </head>
 <body>
     <div class="t-flex">
@@ -68,7 +69,7 @@
                 </ul>
            </div>
         </div>
-        <div class="t-flex t-flex-col t-min-h-screen t-h-screen">
+        <div class="t-flex t-flex-col t-min-h-screen t-h-screen t-flex-1">
             <div class="t-flex t-text-white t-h-12">
             <div class="t-bg-gray-800 t-w-56 t-flex-none t-flex t-items-center t-justify-between t-px-3 t-py-2 t-border-b t-border-gray-900">
                 <div>{{ room.name }}</div>
@@ -100,17 +101,73 @@
             </div>
             <div class="t-flex-1  t-flex t-overflow-y-hidden">
                 <div class="t-bg-gray-800 t-w-56 t-flex-none t-flex t-flex-col t-justify-between">
-                    <div class="t-overflow-y-auto">
-                        Hashtag sidebar. Lorem ipsum dolor, sit amet consectetur adipisicing elit. Qui, amet quisquam rerum soluta aliquam tempore at corrupti architecto laborum repellat id accusamus magni! Blanditiis sint id expedita rem reiciendis quibusdam doloribus est dolore impedit soluta perspiciatis, iste illum dolores! Explicabo eos cupiditate eum similique alias reprehenderit minima sapiente, soluta, tenetur architecto laudantium maiores vel ipsa. Deleniti quasi laudantium magnam porro, cupiditate nam iusto vitae in quam modi incidunt, quae exercitationem ipsum, recusandae explicabo cum ex labore obcaecati quod quia. Iusto beatae quod perspiciatis architecto deleniti, eveniet eaque sint laboriosam reiciendis ipsum optio quaerat nemo repudiandae aut nostrum placeat voluptas adipisci labore. Ducimus, asperiores quas voluptatum nam veritatis perspiciatis debitis repellendus vitae aperiam ex autem sint dicta fuga cum, libero repellat iste pariatur enim ea, adipisci sapiente odit magnam! Unde ipsum sit, consequatur maiores iusto ut tempore animi, cumque obcaecati nam, adipisci quas dolor aspernatur quibusdam repellat voluptatem ipsa assumenda. Totam ipsam, nostrum quam error incidunt impedit nobis fuga hic modi delectus recusandae, quasi explicabo molestiae mollitia libero? Id unde qui autem iusto animi quisquam eius aut! Ab mollitia eum saepe repellendus dicta cumque, praesentium, facere repellat quaerat officia consectetur deserunt. Ipsam animi debitis odio dicta tenetur modi dolorem nihil itaque! Ducimus ullam tempora laboriosam vero non quaerat voluptatum veniam in nemo reprehenderit dolorum consequuntur distinctio iure sed, tempore, magnam odio. Tempore accusantium, doloribus animi ut optio omnis beatae veniam provident debitis! Dolorum velit atque placeat neque cumque ea deserunt nobis consectetur? Atque, nobis excepturi error aut voluptate magni aspernatur saepe voluptatem amet unde aliquid veritatis explicabo! Illo tenetur tempore quia quaerat excepturi ratione error? Nisi modi incidunt sequi iure repellat, sit dolorem corrupti doloremque illo, inventore minima sapiente eligendi quis.
+                    <div class="t-text-sm t-overflow-y-auto">
+                        <ul class="t-px-2 t-py-3">
+                            <li class="t-text-gray-500 t-px-2 hover:t-text-gray-200 hover:t-bg-gray-700 t-rounded>
+                            <a class="t-flex t-items-center"  href="#" >
+                                <span class="t-text-xl">#</span>
+                                <span class="t-ml-2">welcome</span>
+                            </a>
+                            </li>
+                            <li class="t-text-gray-500 t-px-2 hover:t-text-gray-200 hover:t-bg-gray-700 t-rounded>
+                                <a class="t-flex t-items-center"  href="#" >
+                                    <span class="t-text-xl">#</span>
+                                    <span class="t-ml-2">faq</span>
+                                </a>
+                            </li>
+                        </ul>
+                        <button class="t-flex t-items-center t-text-gray-500 hover:t-text-gray-200">
+                            <i class="fas fa-caret-down t-uppercase t-tracking-wide t-font-semibold"> Tailwind</i>
+                        </button>
+
                     </div>
-                    <div class="t-bg-gray-500">Bottom</div>
+                    <div class="t-bg-gray-900 t-py-4 t-px-2 t-flex t-items-center t-justify-between">
+                        <div class="t-flex t-items-center">
+                            <a href="#">
+                                <i class="fas fa-user-circle fa-2x t-text-white"></i>
+                            </a>
+                            <div class="t-text-xs t-ml-2">
+                                <div class="t-text-white">닉네임</div>
+                            </div>
+                        </div>
+                        <div class="t-flex t-items-center t-text-gray-500">
+                        
+                            <a href="#" class="t-ml-2 t-text-xs t-text-gray-300">로그아웃</a>
+                        </div>
+                    </div>
                 </div>
                 <div class="t-bg-green-500 t-flex-1 t-flex t-justify-between">
                     <div class="t-bg-gray-700 t-flex-1 t-flex t-flex-col t-justify-between">
-                        <div class="t-overflow-y-auto">
-                            Display chat contents. Lorem ipsum dolor sit amet consectetur adipisicing elit. Provident reiciendis dolorem quibusdam repellendus amet saepe assumenda molestiae repudiandae hic accusantium atque libero voluptate modi aspernatur, voluptas ipsa veniam. Voluptatibus, debitis exercitationem eius ipsa vero officia tenetur iusto, neque voluptate voluptas odit praesentium. Doloremque voluptatum, perspiciatis rem omnis autem, provident, aut officiis odio repellendus laborum temporibus inventore harum nobis vero facilis odit illo a id quo pariatur laboriosam qui. Esse, natus, sapiente quas facere saepe voluptas et nemo id, similique eius illum nisi ducimus. Quam quidem iusto officiis eaque ipsum aperiam, possimus vitae animi magni nisi porro numquam modi optio repudiandae consectetur doloribus. Adipisci quibusdam dignissimos enim qui eveniet nam dolore, at architecto accusantium aperiam maxime amet asperiores beatae porro voluptate itaque est? Aspernatur dolores porro veniam officia totam architecto iste? Mollitia officiis nisi, nulla aspernatur expedita in quisquam eius et enim repellendus autem, porro omnis obcaecati fugiat! Blanditiis placeat voluptatum laboriosam vitae commodi optio at rerum iure harum distinctio repudiandae delectus nam, perspiciatis voluptates vero facilis. Doloremque alias expedita nulla nihil officia assumenda pariatur excepturi, adipisci eaque. Iusto dolor eum atque totam recusandae autem quisquam cupiditate cum cumque minima consectetur officiis tempora consequuntur quod vero labore dolore tempore, dicta ea magni laborum placeat blanditiis. Ipsam suscipit quae modi sequi soluta omnis sapiente inventore illo doloribus nemo ab quis velit magni totam beatae, maiores veniam nostrum laborum unde adipisci necessitatibus debitis fuga, veritatis rem. Quis illum error, vitae quasi doloremque modi? Magnam est totam placeat itaque omnis facilis necessitatibus officiis aliquam tempora voluptate sed natus libero repudiandae voluptatem doloremque, consectetur aperiam odit, possimus aut corrupti. Iusto, velit. Ipsam, quod reprehenderit dolorum amet magni expedita autem at, enim labore ex libero voluptatem cum, blanditiis odio similique natus. Eligendi ipsam dolor commodi obcaecati.
+                        <div class="t-text-sm t-text-gray-400 t-overflow-y-auto">
+
+                            <!-- 채팅반복 시작 -->
+                            <div class="t-flex t-mx-6 t-my-3 t-py-4 t-border-t t-border-gray-500">
+                                <div class="t-flext-none">
+                                    <i class="fas fa-user-circle fa-2x t-text-white"></i>
+                                </div>
+                                <div class="t-ml-5">
+                                    <div>
+                                        <a href="#" class="t-text-white hover:t-underline">닉네임</a>
+                                        <span class="t-text-xs t-text-gray-500 t-ml-1">2022/1/28</span>
+                                    </div>
+                                    <div class="t-text-gray-300">
+                                        <div>나는 빡빡이다</div>
+                                        <div>어쩔티비 어쩔 냉장고</div>
+                                        <div>ㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋ</div>
+                                    </div>
+                                </div>
+                            </div>
+                            <!-- 채팅반복 끝 -->
+                            
                         </div>
-                        <div class="t-bg-gray-700">채팅인풋</div>
+                        <div class="t-bg-gray-700 t-h-24 t-flex t-items-center t-mx-3">
+                            <button class="t-px-2 t-py-2 t-h-10 t-bg-gray-700 t-rounded-l t-text-gray-600 hover:t-text-white t-border-r t-border-gray-600">
+                                <i class="fas fa-plus-circle"></i>
+                            </button>
+                            <div class="t-flex-1">
+                                <input placeholder="메세지보내기.." type="text" class="t-w-full t-text-sm t-h-10 t-px-2 t-py-2 t-bg-gray-600 t-text-gray-200 focus:t-outline-none t-rounded">
+                            </div>
+                        </div>
                     </div>
                     <div class="t-bg-gray-800 t-w-56 t-flex-none  t-overflow-y-auto">온라인/오프라인 . Lorem ipsum dolor sit amet consectetur adipisicing elit. Architecto iusto doloribus laboriosam, fugit reiciendis molestiae quia consectetur blanditiis natus ipsa, beatae repudiandae non consequuntur, ratione assumenda? Dignissimos magni doloremque quidem et velit! Sit, voluptatibus voluptatum? Minus optio fugiat explicabo accusantium atque magni itaque placeat unde, adipisci nam. Id eveniet placeat labore exercitationem fugiat possimus cum hic, aperiam nulla dolorum sequi similique quaerat autem quod recusandae veniam. Reiciendis debitis incidunt alias sit sint dolores, dolorem minima dolorum accusantium, culpa, fugit quasi pariatur eveniet doloremque expedita illo molestias nemo? Unde tempora voluptatum quisquam atque magni! In ducimus architecto, rem minus mollitia totam labore iste ab culpa quis vero sed asperiores aspernatur eveniet eligendi vel veritatis similique sapiente dolore deserunt tenetur facilis sint omnis? Pariatur non, voluptatibus molestias porro dolorem repudiandae soluta possimus numquam aliquam eos, neque aperiam quibusdam ipsa quas. In, reiciendis dolores? Dolor nam facilis totam commodi iste minima perferendis magni amet a, dolorum sint, et dolorem nostrum, asperiores maiores quis nemo? Rerum odio repellendus molestiae praesentium quo animi veniam consectetur corrupti magni eius, ad expedita, perspiciatis ipsum aperiam error voluptatum nihil, nulla delectus. Dignissimos accusamus repellendus aspernatur, facere atque cumque numquam ex incidunt, architecto sint beatae nam animi dolorum odio accusantium qui modi repellat consequuntur, quo sed! Laboriosam porro recusandae voluptatibus temporibus distinctio omnis dolores consequatur commodi ipsa cumque reiciendis facilis molestiae obcaecati esse magni atque hic aspernatur, eum placeat. Sit dignissimos dolorem eaque, qui optio perferendis alias! Quasi at quis id explicabo, blanditiis atque, quod molestiae non hic numquam dolorum enim error doloribus, placeat odit amet. Similique, laudantium corrupti!</div>
                 </div>
