@@ -521,6 +521,11 @@ Ensure the default browser behavior of the `hidden` attribute.
   margin-right: 0.75rem;
 }
 
+.t-my-2 {
+  margin-top: 0.5rem;
+  margin-bottom: 0.5rem;
+}
+
 .t-mt-3 {
   margin-top: 0.75rem;
 }
@@ -547,6 +552,14 @@ Ensure the default browser behavior of the `hidden` attribute.
 
 .t-ml-1 {
   margin-left: 0.25rem;
+}
+
+.t-mb-2 {
+  margin-bottom: 0.5rem;
+}
+
+.t-mb-6 {
+  margin-bottom: 1.5rem;
 }
 
 .t-inline-block {
@@ -581,6 +594,10 @@ Ensure the default browser behavior of the `hidden` attribute.
   height: 2.5rem;
 }
 
+.t-h-8 {
+  height: 2rem;
+}
+
 .t-min-h-screen {
   min-height: 100vh;
 }
@@ -607,6 +624,10 @@ Ensure the default browser behavior of the `hidden` attribute.
 
 .t-w-full {
   width: 100%;
+}
+
+.t-w-8 {
+  width: 2rem;
 }
 
 .t-flex-none {
@@ -890,6 +911,11 @@ Ensure the default browser behavior of the `hidden` attribute.
 .t-text-gray-600 {
   --tw-text-opacity: 1;
   color: rgb(75 85 99 / var(--tw-text-opacity));
+}
+
+.t-text-gray-700 {
+  --tw-text-opacity: 1;
+  color: rgb(55 65 81 / var(--tw-text-opacity));
 }
 
 .hover\:t-bg-teal-500:hover {
