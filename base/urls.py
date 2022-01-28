@@ -8,7 +8,8 @@ from accounts import views
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('accounts/', include('accounts.urls')),
     path('', auth_views.LoginView.as_view(template_name='accounts_login.html'), name='accounts'),
+    path('accounts/', include('accounts.urls')),
     path('chat/', include('chat.urls')),
-]+static(settings.MEDIA_URL,document_root=settings.MEDIA_ROOT)
+    path('m/chat/', include('m_chat.urls')),
+]
