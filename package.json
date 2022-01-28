@@ -2,7 +2,11 @@
   "devDependencies": {
     "tailwindcss": "^3.0.17"
   },
+<<<<<<< HEAD
   "scripts": {
     "css": "npx tailwindcss -i ./base/static/common.base.css -o ./base/static/common.css --watch"
   }
+=======
+  "scripts":{ "css" : "npx tailwindcss -i ./base/static/common.base.css -o ./base/static/common.css --watch"}
+>>>>>>> 12cb58ae9b855847933d561c15be35cb6a2bd689
 }
