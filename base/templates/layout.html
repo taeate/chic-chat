@@ -2,7 +2,7 @@
 {% load static %}
 <html lang="ko">
 <head>
-    <title>메인레이아웃</title>
+    <title>Paracord</title>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -76,31 +76,30 @@
         <div class="t-flex t-flex-col t-min-h-screen t-h-screen t-flex-1">
             <div class="t-flex t-text-white t-h-12">
             <div class="t-bg-gray-800 t-w-56 t-flex-none t-flex t-items-center t-justify-between t-px-3 t-py-2 t-border-b t-border-gray-900">
-                <div>{{ room.name }}</div>
-                <button>
-                    <i class="fas fa-caret-down"></i>
-                </button>
+              
+                <div># {{ room.name }}</div>
+                
+                
             </div>
             <div class="t-flex-1 t-bg-gray-700 t-flex t-items-center t-justify-between t-px-4 t-border-b t-border-gray-900">
-                <div class="t-flex t-items-center">
-                    <div class="t-text-gray-500 t-text-2xl">#</div>
-                    <div class="t-ml-2 t-text-sm t-text-white">general</div>
-                    <div class="t-border-l t-pl-3 t-ml-3 t-border-gray-600 t-text-xs t-text-gray-400">general discussion of Tailwind CSS</div>
-                </div>
-                <div class="t-flex t-items-center">
-                    <a href="#" class="t-ml-4">icon</a>
-                    <a href="#" class="t-ml-4">icon</a>
-                    <a href="#" class="t-ml-4">icon</a>
-                    <a href="#" class="t-ml-4">
-                        <form action="#" class="t-relative">
-                            <input ype="text" placeholder="Search" class="t-rounded t-bg-gray-900 t-text-gray-200 t-text-xs t-px-2 t-py-1">
-                            <span class="t-absolute t-right-0 t-top-0 t-mr-1 " style="top:2px">
-                                <i class="fas fa-search"></i>
-                            </span>
-                        </form>
+                
+                <div class="t-flex t-items-center t-whitespace-nowrap">
+                    <i class="fas fa-user-friends t-text-gray-200"></i>
+                    <div class="t-font-bold t-text-green-300 t-ml-2">친구</div>
+                    <a href="{% url 'accounts:user_list_online' %}">
+                    <button class="t-ml-4 t-bg-gray-600 t-rounded t-w-14 hover:t-bg-gray-800">온라인</button>
                     </a>
-                    <a href="#" class="t-ml-4">icon</a>
+                    <button class="t-ml-4 t-bg-gray-600 t-rounded t-w-12 hover:t-bg-gray-800">모두</button>
+                    <button class="t-ml-4 t-bg-green-400 t-rounded t-w-20 ">친구추가</button>
                 </div>
+                <a href="#" class="t-ml-4">
+                    <form action="#" class="t-relative">
+                        <input ype="text" placeholder="검색하기" class="t-rounded t-bg-gray-900 t-text-gray-200 t-text-xs t-px-8 t-py-2">
+                        <span class="t-absolute t-right-0 t-top-0 t-mr-1 " style="top:3px">
+                            <i class="fas fa-search"></i>
+                        </span>
+                    </form>
+                </a>
             </div>
             </div>
             <div class="t-flex-1  t-flex t-overflow-y-hidden">

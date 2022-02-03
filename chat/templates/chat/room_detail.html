@@ -4,12 +4,7 @@
 {% if room %}
 {% include 'chat/js/chat_logic.html' %}
 
-<hr>
-<h3 id="exit_page" class="d-flex justify-content-between px-3">
-    <span>{{ room.name }}</span>
-    <button class="btn btn-danger" onclick="history.back()">이전 페이지</button>
-</h3>
-<hr>
+
 <div class="chat-messages t-text-gray-300 my-4 pb-5" ></div>
 
 
