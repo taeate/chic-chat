@@ -14,14 +14,13 @@
     <button class="t-px-2 t-py-2 t-h-10 t-bg-gray-600 t-rounded-l t-text-gray-700 hover:t-text-white t-border-r t-border-gray-600">
         <i class="fas fa-plus-circle"></i>
     </button>
-    <div id="message_form" class="t-flex-1 ">
-        <form action="{% url 'chat:message_write' %}" onsubmit="ChickChatForm__submit(this); return false;">
+        <form id="message_form" class="t-flex-1 t-py-2 t-h-10" action="{% url 'chat:message_write' %}" onsubmit="ChickChatForm__submit(this); return false;">
         {% csrf_token %}
         <input type="hidden" name="room_id" value="{{room.id}}">
         <input type="hidden" placeholder="작성자" name="writer">
         <input id="message_input" placeholder="메세지보내기.." name="body" type="text" class="t-w-full t-text-sm t-h-10 t-px-2 t-py-2 t-bg-gray-600 t-text-gray-200 focus:t-outline-none t-rounded">
         </form>
-    </div>
+    
 </div>
 {% endif %}
 {% endblock %}

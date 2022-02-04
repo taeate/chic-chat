@@ -1,6 +1,55 @@
-<!DOCTYPE html>
-{% load static %}
-<html lang="ko">
+<style>
+    #btn-7 {
+      border-radius: 50%;
+      font-size: 15px;
+      border: #363434 solid 1px;
+      border: 5px solid transparent;
+      transition: all 0.2s cubic-bezier(.10, .24, 0, 1);
+    }
+    #btn-7:hover {
+      border-radius: 30%;
+      transition: all 0.4s cubic-bezier(.10, .24, 0, 1);
+    }
+    #btn-8 {
+      border-radius: 50%;
+      font-size: 15px;
+      border: #363434 solid 1px;
+      border: 5px solid transparent;
+      transition: all 0.2s cubic-bezier(.10, .24, 0, 1);
+    }
+    #btn-8:hover {
+      border-radius: 30%;
+      transition: all 0.4s cubic-bezier(.10, .24, 0, 1);
+    }
+    #btn-9 {
+      border-radius: 50%;
+      font-size: 15px;
+      border: #363434 solid 1px;
+      border: 5px solid transparent;
+      transition: all 0.2s cubic-bezier(.10, .24, 0, 1);
+    }
+    #btn-9:hover {
+      border-radius: 30%;
+      transition: all 0.4s cubic-bezier(.10, .24, 0, 1);
+    }
+    #btn-10 {
+      border-radius: 50%;
+      font-size: 15px;
+      border: #363434 solid 1px;
+      border: 5px solid transparent;
+      transition: all 0.2s cubic-bezier(.10, .24, 0, 1);
+    }
+    #btn-10:hover {
+      border-radius: 30%;
+      transition: all 0.4s cubic-bezier(.10, .24, 0, 1);
+    }
+    </style>
+    
+    
+    
+    <!DOCTYPE html>
+    {% load static %}
+    <html lang="ko">
     <head>
         <title>Paracord</title>
         <meta charset="UTF-8">
@@ -16,27 +65,26 @@
     <body>
         <div class="t-flex">
             <div class="t-bg-gray-900 t-w-20 t-flex-none t-flex t-flex-col t-min-h-screen t-h-screen t-px-2 t-py-2">
-            <div id="side_scroll" class="t-overflow-y-auto">
+               <div id="side_scroll" class="t-overflow-y-auto">
                     <ul class="t-text-center">
                         <li>
                             <a href="{% url 'chat:list' %}" class="nav-link py-2" aria-current="page" title=""
                                 data-bs-toggle="tooltip"
                                 data-bs-placement="right" data-bs-original-title="Home">
-                            <button type="button" class="t-w-14 t-h-14 t-bg-green-400 t-text-white t-text-lg t-rounded-full t-mx-auto hover:t-bg-teal-500 hover:t-rounded-[30%]
-                            t-transition-all t-duration-500">
+                            <button id="btn-7" type="button" class="hover:t-bg-teal-500 hover:t-text-white t-w-14 t-h-14 t-bg-green-400 t-text-white t-text-lg t-rounded-full t-mx-auto">
                                 <i class="fas fa-feather-alt fa-lg"></i>
                             </button>
-                        <div class="t-text-gray-500 t-font-semibold t-text-sm">Paracord</div>
+                           <div class="t-text-gray-500 t-font-semibold t-text-sm">Paracord</div>
                         </li>
                         <li class="t-border-b t-border-gray-700 t-mx-4 t-mt-3">
                         </li>
                         {% if user %}
                         {% for room in user.part_server.all %}
                         <li class="nav-item w-100">
-                            <a href="{% url 'chat:detail' room.id %}" class="nav-link py-2 margin" title="" data-bs-toggle="tooltip"
-                            data-bs-placement="right"
-                            data-bs-original-title="Customers">
-                                <button title="{{ room.name }}" type="button" class="t-text-center t-flex  t-items-center t-justify-center t-overflow-hidden t-whitespace-nowrap hover:t-bg-teal-500 hover:t-text-white t-inline-block t-w-14 t-h-14 t-bg-gray-700 t-text-white t-rounded-full t-mx-auto t-mt-3">
+                             <a href="{% url 'chat:detail' room.id %}" class="nav-link py-2 margin" title="" data-bs-toggle="tooltip"
+                              data-bs-placement="right"
+                             data-bs-original-title="Customers">
+                                <button id="btn-8" title="{{ room.name }}" type="button" class="t-text-center t-flex  t-items-center t-justify-center t-overflow-hidden t-whitespace-nowrap hover:t-bg-teal-500 hover:t-text-white t-inline-block t-w-14 t-h-14 t-bg-gray-700 t-text-white t-rounded-full t-mx-auto t-mt-3">
                                 {{ room.name }}
                                 </button>
                             </a>
@@ -48,7 +96,7 @@
                             data-bs-toggle="tooltip"
                             data-bs-placement="right" data-bs-original-title="Home">
                             <span>
-                                <button type="button" class="hover:t-bg-teal-500 hover:t-text-white t-w-14 t-h-14 t-bg-gray-700 t-text-green-400 t-rounded-full t-mx-auto t-mt-3">
+                                <button id="btn-9" type="button" class="hover:t-bg-teal-500 hover:t-text-white t-w-14 t-h-14 t-bg-gray-700 t-text-green-400 t-rounded-full t-mx-auto t-mt-3">
                                     <i class="fas fa-plus fa-1x"></i>
                                 </button>
                             </span>
@@ -58,26 +106,26 @@
                             <a href="{% url 'chat:my_server_list' %}" class="" title="" data-bs-toggle="tooltip"
                             data-bs-placement="right"
                             data-bs-original-title="Customers">
-                            <button type="button" class="hover:t-bg-teal-500 hover:t-text-white t-w-14 t-h-14 t-bg-gray-700 t-text-green-400 t-rounded-full t-mx-auto t-mt-3">
+                            <button id="btn-10" type="button" class="hover:t-bg-teal-500 hover:t-text-white t-w-14 t-h-14 t-bg-gray-700 t-text-green-400 t-rounded-full t-mx-auto t-mt-3">
                                 <i class="fas fa-sign-out-alt fs-4"></i>
                             </button>
                             </a>
                         </li>
                         <li>
                             <a href="/" title="" data-bs-toggle="tooltip" data-bs-placement="right"
-                                data-bs-original-title="Dashboard">
+                                  data-bs-original-title="Dashboard">
                                 <button type="button" class="hover:t-bg-teal-500 hover:t-text-white t-w-14 t-h-14 t-bg-gray-700 t-text-green-400 t-rounded-full t-mx-auto t-mt-3" id="btn-7">
                                     <i class="fas fa-user-plus fa-1x"></i>
                                 </button>
                             </a>
                         </li>
                     </ul>
-            </div>
+               </div>
             </div>
             <div class="t-flex t-flex-col t-min-h-screen t-h-screen t-flex-1">
                 <div class="t-flex t-text-white t-h-12">
                 <div class="t-bg-gray-800 t-w-56 t-flex-none t-flex t-items-center t-justify-between t-px-3 t-py-2 t-border-b t-border-gray-900">
-                
+                  
                     <div># {{ room.name }}</div>
                     
                     
@@ -108,7 +156,7 @@
                 <div class="t-flex-1  t-flex t-overflow-y-hidden">
                     <div class="t-bg-gray-800 t-w-56 t-flex-none t-flex t-flex-col t-justify-between">
                         <div class="t-text-sm t-overflow-y-auto">
-                        
+                           
                             <button class="t-flex t-items-center t-text-gray-500 hover:t-text-gray-200 t-py-3">
                                 <i class="fas fa-caret-down t-uppercase t-tracking-wide"> 다이렉트 메세지</i>
                             </button>
@@ -154,4 +202,4 @@
             </div>
         </div>
     </body>
-</html>
+    </html>
