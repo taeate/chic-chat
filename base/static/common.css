@@ -686,6 +686,10 @@ Ensure the default browser behavior of the `hidden` attribute.
   border-radius: 9999px;
 }
 
+.t-rounded-\[30\%\] {
+  border-radius: 30%;
+}
+
 .t-rounded-l {
   border-top-left-radius: 0.25rem;
   border-bottom-left-radius: 0.25rem;
@@ -804,6 +808,10 @@ Ensure the default browser behavior of the `hidden` attribute.
 
 .t-pl-3 {
   padding-left: 0.75rem;
+}
+
+.t-pb-5 {
+  padding-bottom: 1.25rem;
 }
 
 .t-text-center {
@@ -936,6 +944,10 @@ Ensure the default browser behavior of the `hidden` attribute.
   transition-duration: 700ms;
 }
 
+.t-ease-in-out {
+  transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+}
+
 .hover\:t-box-border:hover {
   box-sizing: border-box;
 }
@@ -968,6 +980,14 @@ Ensure the default browser behavior of the `hidden` attribute.
   border-radius: 1rem;
 }
 
+.hover\:t-rounded-md:hover {
+  border-radius: 0.375rem;
+}
+
+.hover\:t-rounded-xl:hover {
+  border-radius: 0.75rem;
+}
+
 .hover\:t-bg-teal-500:hover {
   --tw-bg-opacity: 1;
   background-color: rgb(20 184 166 / var(--tw-bg-opacity));
@@ -991,6 +1011,22 @@ Ensure the default browser behavior of the `hidden` attribute.
 .hover\:t-text-gray-200:hover {
   --tw-text-opacity: 1;
   color: rgb(229 231 235 / var(--tw-text-opacity));
+}
+
+.hover\:t-transition:hover {
+  transition-property: color, background-color, border-color, fill, stroke, opacity, box-shadow, transform, filter, -webkit-text-decoration-color, -webkit-backdrop-filter;
+  transition-property: color, background-color, border-color, text-decoration-color, fill, stroke, opacity, box-shadow, transform, filter, backdrop-filter;
+  transition-property: color, background-color, border-color, text-decoration-color, fill, stroke, opacity, box-shadow, transform, filter, backdrop-filter, -webkit-text-decoration-color, -webkit-backdrop-filter;
+  transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+  transition-duration: 150ms;
+}
+
+.hover\:t-duration-500:hover {
+  transition-duration: 500ms;
+}
+
+.hover\:t-duration-700:hover {
+  transition-duration: 700ms;
 }
 
 .focus\:t-outline-none:focus {

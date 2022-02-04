@@ -1,3 +1,52 @@
+<style>
+#btn-7 {
+  border-radius: 50%;
+  font-size: 15px;
+  border: #363434 solid 1px;
+  border: 5px solid transparent;
+  transition: all 0.2s cubic-bezier(.10, .24, 0, 1);
+}
+#btn-7:hover {
+  border-radius: 30%;
+  transition: all 0.4s cubic-bezier(.10, .24, 0, 1);
+}
+#btn-8 {
+  border-radius: 50%;
+  font-size: 15px;
+  border: #363434 solid 1px;
+  border: 5px solid transparent;
+  transition: all 0.2s cubic-bezier(.10, .24, 0, 1);
+}
+#btn-8:hover {
+  border-radius: 30%;
+  transition: all 0.4s cubic-bezier(.10, .24, 0, 1);
+}
+#btn-9 {
+  border-radius: 50%;
+  font-size: 15px;
+  border: #363434 solid 1px;
+  border: 5px solid transparent;
+  transition: all 0.2s cubic-bezier(.10, .24, 0, 1);
+}
+#btn-9:hover {
+  border-radius: 30%;
+  transition: all 0.4s cubic-bezier(.10, .24, 0, 1);
+}
+#btn-10 {
+  border-radius: 50%;
+  font-size: 15px;
+  border: #363434 solid 1px;
+  border: 5px solid transparent;
+  transition: all 0.2s cubic-bezier(.10, .24, 0, 1);
+}
+#btn-10:hover {
+  border-radius: 30%;
+  transition: all 0.4s cubic-bezier(.10, .24, 0, 1);
+}
+</style>
+
+
+
 <!DOCTYPE html>
 {% load static %}
 <html lang="ko">
@@ -22,7 +71,7 @@
                         <a href="{% url 'chat:list' %}" class="nav-link py-2" aria-current="page" title=""
                             data-bs-toggle="tooltip"
                             data-bs-placement="right" data-bs-original-title="Home">
-                        <button type="button" class="hover:t-bg-teal-500 hover:t-text-white t-w-14 t-h-14 t-bg-green-400 t-text-white t-text-lg t-rounded-full t-mx-auto  hover:t-rounded-[30%] t-transition t-duration-700">
+                        <button id="btn-7" type="button" class="hover:t-bg-teal-500 hover:t-text-white t-w-14 t-h-14 t-bg-green-400 t-text-white t-text-lg t-rounded-full t-mx-auto">
                             <i class="fas fa-feather-alt fa-lg"></i>
                         </button>
                        <div class="t-text-gray-500 t-font-semibold t-text-sm">Paracord</div>
@@ -35,7 +84,7 @@
                          <a href="{% url 'chat:detail' room.id %}" class="nav-link py-2 margin" title="" data-bs-toggle="tooltip"
                           data-bs-placement="right"
                          data-bs-original-title="Customers">
-                            <button title="{{ room.name }}" type="button" class="t-text-center t-flex  t-items-center t-justify-center t-overflow-hidden t-whitespace-nowrap hover:t-bg-teal-500 hover:t-text-white t-inline-block t-w-14 t-h-14 t-bg-gray-700 t-text-white t-rounded-full t-mx-auto t-mt-3">
+                            <button id="btn-8" title="{{ room.name }}" type="button" class="t-text-center t-flex  t-items-center t-justify-center t-overflow-hidden t-whitespace-nowrap hover:t-bg-teal-500 hover:t-text-white t-inline-block t-w-14 t-h-14 t-bg-gray-700 t-text-white t-rounded-full t-mx-auto t-mt-3">
                             {{ room.name }}
                             </button>
                         </a>
@@ -47,7 +96,7 @@
                         data-bs-toggle="tooltip"
                         data-bs-placement="right" data-bs-original-title="Home">
                         <span>
-                            <button type="button" class="hover:t-bg-teal-500 hover:t-text-white t-w-14 t-h-14 t-bg-gray-700 t-text-green-400 t-rounded-full t-mx-auto t-mt-3">
+                            <button id="btn-9" type="button" class="hover:t-bg-teal-500 hover:t-text-white t-w-14 t-h-14 t-bg-gray-700 t-text-green-400 t-rounded-full t-mx-auto t-mt-3">
                                 <i class="fas fa-plus fa-1x"></i>
                             </button>
                         </span>
@@ -57,7 +106,7 @@
                         <a href="{% url 'chat:my_server_list' %}" class="" title="" data-bs-toggle="tooltip"
                         data-bs-placement="right"
                         data-bs-original-title="Customers">
-                        <button type="button" class="hover:t-bg-teal-500 hover:t-text-white t-w-14 t-h-14 t-bg-gray-700 t-text-green-400 t-rounded-full t-mx-auto t-mt-3">
+                        <button id="btn-10" type="button" class="hover:t-bg-teal-500 hover:t-text-white t-w-14 t-h-14 t-bg-gray-700 t-text-green-400 t-rounded-full t-mx-auto t-mt-3">
                             <i class="fas fa-sign-out-alt fs-4"></i>
                         </button>
                         </a>
