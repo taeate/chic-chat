@@ -43,10 +43,9 @@
     }
 
     function ChickChat__renderMessage(chat) {
-        console.log(chat);
         $('.chat-messages').append(`<div>${chat.nickname} : ${chat.message}</div>`);
         var box_center = document.getElementById("box-center");
-        box_center.scrollTop = box_center.scrollHeight;
+        //box_center.scrollTop = box_center.scrollHeight;
     }
     ChickChat__loadMore();
 
