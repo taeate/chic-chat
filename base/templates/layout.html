@@ -22,7 +22,7 @@
                         <a href="{% url 'chat:list' %}" class="nav-link py-2" aria-current="page" title=""
                             data-bs-toggle="tooltip"
                             data-bs-placement="right" data-bs-original-title="Home">
-                        <button type="button" class="hover:t-bg-teal-500 hover:t-text-white t-w-14 t-h-14 t-bg-green-400 t-text-white t-text-lg t-rounded-full t-mx-auto">
+                        <button type="button" class="hover:t-bg-teal-500 hover:t-text-white t-w-14 t-h-14 t-bg-green-400 t-text-white t-text-lg t-rounded-full t-mx-auto  hover:t-rounded-[30%] t-transition t-duration-700">
                             <i class="fas fa-feather-alt fa-lg"></i>
                         </button>
                        <div class="t-text-gray-500 t-font-semibold t-text-sm">Paracord</div>
@@ -89,7 +89,9 @@
                     <a href="{% url 'accounts:user_list_online' %}">
                     <button class="t-ml-4 t-bg-gray-600 t-rounded t-w-14 hover:t-bg-gray-800">온라인</button>
                     </a>
+                    <a href="{% url 'accounts:user_list_all' %}">
                     <button class="t-ml-4 t-bg-gray-600 t-rounded t-w-12 hover:t-bg-gray-800">모두</button>
+                    </a>
                     <button class="t-ml-4 t-bg-green-400 t-rounded t-w-20 ">친구추가</button>
                 </div>
                 <a href="#" class="t-ml-4">
