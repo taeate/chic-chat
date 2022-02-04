@@ -14,45 +14,14 @@
     <link rel="stylesheet" href="{% static 'common.css' %}" type="text/css">
     <link rel="shortcut icon" href="#">
 </head>
-<body class="t-max-w-[768px] t-mx-auto t-mt-[3.5rem]">
-
-    <nav class="navbar navbar-expand-md navbar-dark fixed-top bg-dark">
-        <div class="container-fluid">
-          <a class="navbar-brand" href="#">Fixed navbar</a>
-          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
-            <span class="navbar-toggler-icon"></span>
-          </button>
-          <div class="collapse navbar-collapse" id="navbarCollapse">
-            <ul class="navbar-nav me-auto mb-2 mb-md-0">
-              <li class="nav-item">
-                <a class="nav-link active" aria-current="page" href="#">Home</a>
-              </li>
-              <li class="nav-item">
-                <a class="nav-link" href="#">Link</a>
-              </li>
-              <li class="nav-item">
-                <a class="nav-link disabled" href="#" tabindex="-1" aria-disabled="true">Disabled</a>
-              </li>
-            </ul>
-            <form class="d-flex">
-              <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
-              <button class="btn btn-outline-success" type="submit">Search</button>
-            </form>
-          </div>
-        </div>
-      </nav>
-    <div class="t-h-screen t-grid t-grid-rows-3">
-        <div class="t-bg-red-300">
-            채팅방 리스트
-        </div>
-        <div class="t-bg-blue-300">
-            채팅방 navbar
-        </div>
-        <div class="t-grid t-grid-rows-2">
+<body class="t-max-w-[1024] t-mt-[2rem]">
+    {% include 'm_navbar.html' %}
+    <div class="">
+        <div class="t-w-full">
             <div class="t-bg-green-300">
                 채팅 내용
             </div>
-            <div class="t-bg-indigo-300">
+            <div class="t-bg-indigo-300 t-w-full t-fixed t-inset-x-0 t-bottom-0">
                 채팅 인풋
             </div>
         </div>

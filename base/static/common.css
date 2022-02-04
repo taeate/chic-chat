@@ -502,6 +502,10 @@ Ensure the default browser behavior of the `hidden` attribute.
   }
 }
 
+.t-fixed {
+  position: fixed;
+}
+
 .t-absolute {
   position: absolute;
 }
@@ -510,12 +514,37 @@ Ensure the default browser behavior of the `hidden` attribute.
   position: relative;
 }
 
+.t-inset-0 {
+  top: 0px;
+  right: 0px;
+  bottom: 0px;
+  left: 0px;
+}
+
+.t-inset-y-0 {
+  top: 0px;
+  bottom: 0px;
+}
+
+.t-inset-x-0 {
+  left: 0px;
+  right: 0px;
+}
+
 .t-right-0 {
   right: 0px;
 }
 
 .t-top-0 {
   top: 0px;
+}
+
+.t--bottom-0 {
+  bottom: -0px;
+}
+
+.t-bottom-0 {
+  bottom: 0px;
 }
 
 .t-mx-auto {
@@ -546,6 +575,11 @@ Ensure the default browser behavior of the `hidden` attribute.
 .t-my-2 {
   margin-top: 0.5rem;
   margin-bottom: 0.5rem;
+}
+
+.t-mx-0 {
+  margin-left: 0px;
+  margin-right: 0px;
 }
 
 .t-mt-3 {
@@ -604,6 +638,14 @@ Ensure the default browser behavior of the `hidden` attribute.
   margin-top: 3.5rem;
 }
 
+.t-mt-\[1rem\] {
+  margin-top: 1rem;
+}
+
+.t-mt-\[2rem\] {
+  margin-top: 2rem;
+}
+
 .t-inline-block {
   display: inline-block;
 }
@@ -614,6 +656,10 @@ Ensure the default browser behavior of the `hidden` attribute.
 
 .t-grid {
   display: grid;
+}
+
+.t-hidden {
+  display: none;
 }
 
 .t-h-screen {
@@ -636,6 +682,10 @@ Ensure the default browser behavior of the `hidden` attribute.
   height: 2.5rem;
 }
 
+.t-h-full {
+  height: 100%;
+}
+
 .t-min-h-screen {
   min-height: 100vh;
 }
@@ -656,8 +706,24 @@ Ensure the default browser behavior of the `hidden` attribute.
   width: 100%;
 }
 
+.t-min-w-\[320px\] {
+  min-width: 320px;
+}
+
+.t-min-w-\[50\%\] {
+  min-width: 50%;
+}
+
 .t-max-w-\[768px\] {
   max-width: 768px;
+}
+
+.t-max-w-\[1024px\] {
+  max-width: 1024px;
+}
+
+.t-max-w-\[1024\] {
+  max-width: 1024;
 }
 
 .t-flex-none {
@@ -991,6 +1057,22 @@ Ensure the default browser behavior of the `hidden` attribute.
       max-width: 1536px;
     }
   }
+
+  .md\:t-block {
+    display: block;
+  }
+
+  .md\:t-inline {
+    display: inline;
+  }
+
+  .md\:t-flex {
+    display: flex;
+  }
+
+  .md\:t-hidden {
+    display: none;
+  }
 }
 
 @media (min-width: 1024px) {
@@ -1026,6 +1108,19 @@ Ensure the default browser behavior of the `hidden` attribute.
     .lg\:t-container {
       max-width: 1536px;
     }
+  }
+
+  .lg\:t-mx-\[20\%\] {
+    margin-left: 20%;
+    margin-right: 20%;
+  }
+
+  .lg\:t-block {
+    display: block;
+  }
+
+  .lg\:t-flex {
+    display: flex;
   }
 }
 
