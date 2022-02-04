@@ -1,154 +1,157 @@
 <!DOCTYPE html>
 {% load static %}
 <html lang="ko">
-<head>
-    <title>Paracord</title>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Paracord</title>
-    <link rel="stylesheet" href="{% static 'common.css' %}" type="text/css">
-    <link rel="stylesheet" href="{% static 'base.css' %}" type="text/css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
-    <link rel="shorticut icon" href="/favicon.ico"/>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
-</head>
-<body>
-    <div class="t-flex">
-        <div id="side_scroll" class="t-bg-gray-900 t-w-20 t-flex-none t-flex t-flex-col t-min-h-screen t-h-screen t-px-2 t-py-2">
-           <div class=" t-overflow-y-auto">
-                <ul class="t-text-center">
-                    <li>
-                        <a href="{% url 'chat:list' %}" class="nav-link py-2" aria-current="page" title=""
+    <head>
+        <title>Paracord</title>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Paracord</title>
+        <link rel="stylesheet" href="{% static 'common.css' %}" type="text/css">
+        <link rel="stylesheet" href="{% static 'base.css' %}" type="text/css">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+        <link rel="shorticut icon" href="/favicon.ico"/>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    </head>
+    <body>
+        <div class="t-flex">
+            <div class="t-bg-gray-900 t-w-20 t-flex-none t-flex t-flex-col t-min-h-screen t-h-screen t-px-2 t-py-2">
+            <div id="side_scroll" class="t-overflow-y-auto">
+                    <ul class="t-text-center">
+                        <li>
+                            <a href="{% url 'chat:list' %}" class="nav-link py-2" aria-current="page" title=""
+                                data-bs-toggle="tooltip"
+                                data-bs-placement="right" data-bs-original-title="Home">
+                            <button type="button" class="t-w-14 t-h-14 t-bg-green-400 t-text-white t-text-lg t-rounded-full t-mx-auto hover:t-bg-teal-500 hover:t-rounded-[30%]
+                            t-transition-all t-duration-500">
+                                <i class="fas fa-feather-alt fa-lg"></i>
+                            </button>
+                        <div class="t-text-gray-500 t-font-semibold t-text-sm">Paracord</div>
+                        </li>
+                        <li class="t-border-b t-border-gray-700 t-mx-4 t-mt-3">
+                        </li>
+                        {% if user %}
+                        {% for room in user.part_server.all %}
+                        <li class="nav-item w-100">
+                            <a href="{% url 'chat:detail' room.id %}" class="nav-link py-2 margin" title="" data-bs-toggle="tooltip"
+                            data-bs-placement="right"
+                            data-bs-original-title="Customers">
+                                <button title="{{ room.name }}" type="button" class="t-text-center t-flex  t-items-center t-justify-center t-overflow-hidden t-whitespace-nowrap hover:t-bg-teal-500 hover:t-text-white t-inline-block t-w-14 t-h-14 t-bg-gray-700 t-text-white t-rounded-full t-mx-auto t-mt-3">
+                                {{ room.name }}
+                                </button>
+                            </a>
+                        </li>
+                        {% endfor %}
+                        {% endif %}
+                        <li>
+                            <a href="{% url 'chat:create' %}" class="" aria-current="page" title=""
                             data-bs-toggle="tooltip"
                             data-bs-placement="right" data-bs-original-title="Home">
-                        <button type="button" class="hover:t-bg-teal-500 hover:t-text-white t-w-14 t-h-14 t-bg-green-400 t-text-white t-text-lg t-rounded-full t-mx-auto">
-                            <i class="fas fa-feather-alt fa-lg"></i>
-                        </button>
-                       <div class="t-text-gray-500 t-font-semibold t-text-sm">Paracord</div>
-                    </li>
-                    <li class="t-border-b t-border-gray-700 t-mx-4 t-mt-3">
-                    </li>
-                    {% if user %}
-                    {% for room in user.part_server.all %}
-                    <li class="nav-item w-100">
-                         <a href="{% url 'chat:detail' room.id %}" class="nav-link py-2 margin" title="" data-bs-toggle="tooltip"
-                          data-bs-placement="right"
-                         data-bs-original-title="Customers">
-                            <button title="{{ room.name }}" type="button" class="t-text-center t-flex  t-items-center t-justify-center t-overflow-hidden t-whitespace-nowrap hover:t-bg-teal-500 hover:t-text-white t-inline-block t-w-14 t-h-14 t-bg-gray-700 t-text-white t-rounded-full t-mx-auto t-mt-3">
-                            {{ room.name }}
-                            </button>
+                            <span>
+                                <button type="button" class="hover:t-bg-teal-500 hover:t-text-white t-w-14 t-h-14 t-bg-gray-700 t-text-green-400 t-rounded-full t-mx-auto t-mt-3">
+                                    <i class="fas fa-plus fa-1x"></i>
+                                </button>
+                            </span>
                         </a>
-                    </li>
-                    {% endfor %}
-                    {% endif %}
-                    <li>
-                        <a href="{% url 'chat:create' %}" class="" aria-current="page" title=""
-                        data-bs-toggle="tooltip"
-                        data-bs-placement="right" data-bs-original-title="Home">
-                        <span>
+                        </li>
+                        <li>
+                            <a href="{% url 'chat:my_server_list' %}" class="" title="" data-bs-toggle="tooltip"
+                            data-bs-placement="right"
+                            data-bs-original-title="Customers">
                             <button type="button" class="hover:t-bg-teal-500 hover:t-text-white t-w-14 t-h-14 t-bg-gray-700 t-text-green-400 t-rounded-full t-mx-auto t-mt-3">
-                                <i class="fas fa-plus fa-1x"></i>
+                                <i class="fas fa-sign-out-alt fs-4"></i>
                             </button>
-                        </span>
-                    </a>
-                    </li>
-                    <li>
-                        <a href="{% url 'chat:my_server_list' %}" class="" title="" data-bs-toggle="tooltip"
-                        data-bs-placement="right"
-                        data-bs-original-title="Customers">
-                        <button type="button" class="hover:t-bg-teal-500 hover:t-text-white t-w-14 t-h-14 t-bg-gray-700 t-text-green-400 t-rounded-full t-mx-auto t-mt-3">
-                            <i class="fas fa-sign-out-alt fs-4"></i>
-                        </button>
-                        </a>
-                    </li>
-                    <li>
-                        <a href="/" title="" data-bs-toggle="tooltip" data-bs-placement="right"
-                              data-bs-original-title="Dashboard">
-                            <button type="button" class="hover:t-bg-teal-500 hover:t-text-white t-w-14 t-h-14 t-bg-gray-700 t-text-green-400 t-rounded-full t-mx-auto t-mt-3" id="btn-7">
-                                <i class="fas fa-user-plus fa-1x"></i>
-                            </button>
-                        </a>
-                    </li>
-                </ul>
-           </div>
-        </div>
-        <div class="t-flex t-flex-col t-min-h-screen t-h-screen t-flex-1">
-            <div class="t-flex t-text-white t-h-12">
-            <div class="t-bg-gray-800 t-w-56 t-flex-none t-flex t-items-center t-justify-between t-px-3 t-py-2 t-border-b t-border-gray-900">
-              
-                <div># {{ room.name }}</div>
-                
-                
-            </div>
-            <div class="t-flex-1 t-bg-gray-700 t-flex t-items-center t-justify-between t-px-4 t-border-b t-border-gray-900">
-                
-                <div class="t-flex t-items-center t-whitespace-nowrap">
-                    <i class="fas fa-user-friends t-text-gray-200"></i>
-                    <div class="t-font-bold t-text-green-300 t-ml-2">친구</div>
-                    <a href="{% url 'accounts:user_list_online' %}">
-                    <button class="t-ml-4 t-bg-gray-600 t-rounded t-w-14 hover:t-bg-gray-800">온라인</button>
-                    </a>
-                    <button class="t-ml-4 t-bg-gray-600 t-rounded t-w-12 hover:t-bg-gray-800">모두</button>
-                    <button class="t-ml-4 t-bg-green-400 t-rounded t-w-20 ">친구추가</button>
-                </div>
-                <a href="#" class="t-ml-4">
-                    <form action="#" class="t-relative">
-                        <input ype="text" placeholder="검색하기" class="t-rounded t-bg-gray-900 t-text-gray-200 t-text-xs t-px-8 t-py-2">
-                        <span class="t-absolute t-right-0 t-top-0 t-mr-1 " style="top:3px">
-                            <i class="fas fa-search"></i>
-                        </span>
-                    </form>
-                </a>
-            </div>
-            </div>
-            <div class="t-flex-1  t-flex t-overflow-y-hidden">
-                <div class="t-bg-gray-800 t-w-56 t-flex-none t-flex t-flex-col t-justify-between">
-                    <div class="t-text-sm t-overflow-y-auto">
-                       
-                        <button class="t-flex t-items-center t-text-gray-500 hover:t-text-gray-200 t-py-3">
-                            <i class="fas fa-caret-down t-uppercase t-tracking-wide"> 다이렉트 메세지</i>
-                        </button>
-                    </div>
-                    <div class="t-bg-gray-900 t-py-4 t-px-2 t-flex t-items-center t-justify-between">
-                        <div class="t-flex t-items-center">
-                            <a href="#">
-                                <i class="fas fa-user-circle fa-2x t-text-white"></i>
                             </a>
-                            <div class="t-text-xs t-ml-2">
-                                <div class="t-text-white">닉네임</div>
+                        </li>
+                        <li>
+                            <a href="/" title="" data-bs-toggle="tooltip" data-bs-placement="right"
+                                data-bs-original-title="Dashboard">
+                                <button type="button" class="hover:t-bg-teal-500 hover:t-text-white t-w-14 t-h-14 t-bg-gray-700 t-text-green-400 t-rounded-full t-mx-auto t-mt-3" id="btn-7">
+                                    <i class="fas fa-user-plus fa-1x"></i>
+                                </button>
+                            </a>
+                        </li>
+                    </ul>
+            </div>
+            </div>
+            <div class="t-flex t-flex-col t-min-h-screen t-h-screen t-flex-1">
+                <div class="t-flex t-text-white t-h-12">
+                <div class="t-bg-gray-800 t-w-56 t-flex-none t-flex t-items-center t-justify-between t-px-3 t-py-2 t-border-b t-border-gray-900">
+                
+                    <div># {{ room.name }}</div>
+                    
+                    
+                </div>
+                <div class="t-flex-1 t-bg-gray-700 t-flex t-items-center t-justify-between t-px-4 t-border-b t-border-gray-900">
+                    
+                    <div class="t-flex t-items-center t-whitespace-nowrap">
+                        <i class="fas fa-user-friends t-text-gray-200"></i>
+                        <div class="t-font-bold t-text-green-300 t-ml-2">친구</div>
+                        <a href="{% url 'accounts:user_list_online' %}">
+                        <button class="t-ml-4 t-bg-gray-600 t-rounded t-w-14 hover:t-bg-gray-800">온라인</button>
+                        </a>
+                        <a href="{% url 'accounts:user_list_all' %}">
+                        <button class="t-ml-4 t-bg-gray-600 t-rounded t-w-12 hover:t-bg-gray-800">모두</button>
+                        </a>
+                        <button class="t-ml-4 t-bg-green-400 t-rounded t-w-20 ">친구추가</button>
+                    </div>
+                    <a href="#" class="t-ml-4">
+                        <form action="#" class="t-relative">
+                            <input ype="text" placeholder="검색하기" class="t-rounded t-bg-gray-900 t-text-gray-200 t-text-xs t-px-8 t-py-2">
+                            <span class="t-absolute t-right-0 t-top-0 t-mr-1 " style="top:3px">
+                                <i class="fas fa-search"></i>
+                            </span>
+                        </form>
+                    </a>
+                </div>
+                </div>
+                <div class="t-flex-1  t-flex t-overflow-y-hidden">
+                    <div class="t-bg-gray-800 t-w-56 t-flex-none t-flex t-flex-col t-justify-between">
+                        <div class="t-text-sm t-overflow-y-auto">
+                        
+                            <button class="t-flex t-items-center t-text-gray-500 hover:t-text-gray-200 t-py-3">
+                                <i class="fas fa-caret-down t-uppercase t-tracking-wide"> 다이렉트 메세지</i>
+                            </button>
+                        </div>
+                        <div class="t-bg-gray-900 t-py-4 t-px-2 t-flex t-items-center t-justify-between">
+                            <div class="t-flex t-items-center">
+                                <a href="#">
+                                    <i class="fas fa-user-circle fa-2x t-text-white"></i>
+                                </a>
+                                <div class="t-text-xs t-ml-2">
+                                    <div class="t-text-white">닉네임</div>
+                                </div>
+                            </div>
+                            <div class="t-flex t-items-center t-text-gray-500">
+                            
+                                <a href="#" class="t-ml-2 t-text-xs t-text-gray-300">로그아웃</a>
                             </div>
                         </div>
-                        <div class="t-flex t-items-center t-text-gray-500">
-                        
-                            <a href="#" class="t-ml-2 t-text-xs t-text-gray-300">로그아웃</a>
-                        </div>
                     </div>
-                </div>
-                <div class="t-bg-green-500 t-flex-1 t-flex t-justify-between">
-                    <div class="t-bg-gray-700 t-flex-1 t-flex t-flex-col t-justify-between">
-                        <div id="chat_scroll" class="t-text-sm t-text-gray-400 t-overflow-y-auto">
-                            {% block content%}
+                    <div class="t-bg-green-500 t-flex-1 t-flex t-justify-between">
+                        <div class="t-bg-gray-700 t-flex-1 t-flex t-flex-col t-justify-between">
+                            <div id="chat_scroll" class="t-text-sm t-text-gray-400 t-overflow-y-auto">
+                                {% block content%}
+                                {% endblock %}
+                            </div>
+                            {% block input %}
                             {% endblock %}
                         </div>
-                        {% block input %}
-                        {% endblock %}
-                    </div>
-                    <div id="on_off_scroll" class="t-bg-gray-800 t-w-56 t-px-3 t-py-3 t-flex-none  t-overflow-y-auto">
-                        <h3 class="t-uppercase t-tracking-wide t-font-semibold t-text-xs t-text-gray-400 t-mb-2">온라인 -</h3>
-                        <ul class="t-mb-6">
-                            <li class="t-text-sm t-text-gray-400 t-px-2 hover:t-text-gray-200 hover:t-bg-gray-700 t-py-1 t-my-2 ">
-                                <a href="#" class="t-flex t-items-center">
-                                    <span><a href="#"><i class="fas fa-user fa-1x"></i></a></span>
-                                    <span class="t-ml-2">마스터</span>
-                                </a>
-                            </li>
-                        </ul>
-                        <h3 class="t-uppercase t-tracking-wide t-font-semibold t-text-xs t-text-gray-400 t-mb-2">오프라인 -</h3>
+                        <div id="on_off_scroll" class="t-bg-gray-800 t-w-56 t-px-3 t-py-3 t-flex-none  t-overflow-y-auto">
+                            <h3 class="t-uppercase t-tracking-wide t-font-semibold t-text-xs t-text-gray-400 t-mb-2">온라인 -</h3>
+                            <ul class="t-mb-6">
+                                <li class="t-text-sm t-text-gray-400 t-px-2 hover:t-text-gray-200 hover:t-bg-gray-700 t-py-1 t-my-2 ">
+                                    <a href="#" class="t-flex t-items-center">
+                                        <span><a href="#"><i class="fas fa-user fa-1x"></i></a></span>
+                                        <span class="t-ml-2">마스터</span>
+                                    </a>
+                                </li>
+                            </ul>
+                            <h3 class="t-uppercase t-tracking-wide t-font-semibold t-text-xs t-text-gray-400 t-mb-2">오프라인 -</h3>
+                        </div>
                     </div>
                 </div>
             </div>
         </div>
-    </div>
-</body>
+    </body>
 </html>

@@ -1,14 +1,12 @@
 {% extends 'layout.html' %}
 
 {% block content %}
-
-
 <!-- 부모의 content위치에 -->
     {% block app %}
     <!-- 자식의 app을 위치시킴 -->
-    
     {% endblock %}
 {% endblock %}
+
 {% block input %}
 <!-- chat페이지 공용 -->
 {% if room %}

@@ -1,3 +1,11 @@
+#chat_scroll {
+    scrollbar-width: thin;
+}
+
+#side_scroll {
+    scrollbar-width: none;
+}
+
 #chat_scroll::-webkit-scrollbar {
     width: 12px;
     background: black;
