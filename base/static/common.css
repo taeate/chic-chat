@@ -497,6 +497,10 @@ Ensure the default browser behavior of the `hidden` attribute.
   bottom: 0px;
 }
 
+.t-m-auto {
+  margin: auto;
+}
+
 .t-mx-4 {
   margin-left: 1rem;
   margin-right: 1rem;
@@ -558,6 +562,10 @@ Ensure the default browser behavior of the `hidden` attribute.
   margin-left: 0.75rem;
 }
 
+.t-block {
+  display: block;
+}
+
 .t-inline-block {
   display: inline-block;
 }
@@ -590,6 +598,22 @@ Ensure the default browser behavior of the `hidden` attribute.
   height: 3.5rem;
 }
 
+.t-h-full {
+  height: 100%;
+}
+
+.t-h-\[3000px\] {
+  height: 3000px;
+}
+
+.t-max-h-\[1366px\] {
+  max-height: 1366px;
+}
+
+.t-max-h-full {
+  max-height: 100%;
+}
+
 .t-min-h-screen {
   min-height: 100vh;
 }
@@ -620,6 +644,10 @@ Ensure the default browser behavior of the `hidden` attribute.
 
 .t-max-w-\[1024\] {
   max-width: 1024;
+}
+
+.t-max-w-\[1024px\] {
+  max-width: 1024px;
 }
 
 .t-flex-1 {
@@ -868,20 +896,6 @@ Ensure the default browser behavior of the `hidden` attribute.
 .t-text-gray-400 {
   --tw-text-opacity: 1;
   color: rgb(156 163 175 / var(--tw-text-opacity));
-}
-
-.t-transition-all {
-  transition-property: all;
-  transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
-  transition-duration: 150ms;
-}
-
-.t-duration-500 {
-  transition-duration: 500ms;
-}
-
-.hover\:t-rounded-\[30\%\]:hover {
-  border-radius: 30%;
 }
 
 .hover\:t-bg-teal-500:hover {
