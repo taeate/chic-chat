@@ -729,6 +729,14 @@ Ensure the default browser behavior of the `hidden` attribute.
   margin-top: 0px;
 }
 
+.t--ml-4 {
+  margin-left: -1rem;
+}
+
+.t-mb-5 {
+  margin-bottom: 1.25rem;
+}
+
 .t-inline-block {
   display: inline-block;
 }
@@ -859,6 +867,10 @@ Ensure the default browser behavior of the `hidden` attribute.
   width: 75%;
 }
 
+.t-w-64 {
+  width: 16rem;
+}
+
 .t-max-w-\[1024\] {
   max-width: 1024;
 }
@@ -953,6 +965,11 @@ Ensure the default browser behavior of the `hidden` attribute.
 .t-border-gray-900 {
   --tw-border-opacity: 1;
   border-color: rgb(17 24 39 / var(--tw-border-opacity));
+}
+
+.t-border-gray-500 {
+  --tw-border-opacity: 1;
+  border-color: rgb(107 114 128 / var(--tw-border-opacity));
 }
 
 .t-bg-gray-700 {
@@ -1185,6 +1202,15 @@ Ensure the default browser behavior of the `hidden` attribute.
   color: rgb(75 85 99 / var(--tw-text-opacity));
 }
 
+.t-text-gray-800 {
+  --tw-text-opacity: 1;
+  color: rgb(31 41 55 / var(--tw-text-opacity));
+}
+
+.hover\:t-rounded:hover {
+  border-radius: 0.25rem;
+}
+
 .hover\:t-bg-teal-500:hover {
   --tw-bg-opacity: 1;
   background-color: rgb(20 184 166 / var(--tw-bg-opacity));
@@ -1198,6 +1224,11 @@ Ensure the default browser behavior of the `hidden` attribute.
 .hover\:t-bg-gray-700:hover {
   --tw-bg-opacity: 1;
   background-color: rgb(55 65 81 / var(--tw-bg-opacity));
+}
+
+.hover\:t-bg-gray-600:hover {
+  --tw-bg-opacity: 1;
+  background-color: rgb(75 85 99 / var(--tw-bg-opacity));
 }
 
 .hover\:t-text-white:hover {

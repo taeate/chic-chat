@@ -8,7 +8,7 @@
 </div>
 
     <form action="{% url 'accounts:searching_user' %}" method="GET" class="t-text-center">
-        <input name="kw" type="text" placeholder="사용자명" class="t-px-4 t-text-lg t-rounded t-bg-gray-900 t-text-gray-200 t-w-4/5 t-h-12 t-py-2">
+        <input name="kw" type="text" placeholder="사용자명" class="t-p-4 t-text-lg t-rounded t-bg-gray-900 t-text-gray-200 t-w-4/5 t-h-12 t-py-2">
         <button class="t--ml-24 t-text-lg t-bg-green-400 t-text-white t-rounded t-w-20">검색하기</button>
     </form>
 
@@ -23,9 +23,9 @@
     <div class="t-ml-8 t-mb-6 t-text-gray-400">
         친구를 찾았어요! 친구추가 버튼을 누르면 우린 친구!
     </div>
-    <div class="t-ml-8">
+    <div class="t-ml-8>
         {{i.nickname}}
-        <a href="{% url 'accounts:add_friend' i.id %}" class="btn btn-success t-ml-4">
+        <a href="{% url 'accounts:add_friend' i.id %}" class="btn btn-success">
             <button class="t-bg-green-400 t-text-white t-rounded t-w-14">친구추가</button>
         </a>
     </div>
