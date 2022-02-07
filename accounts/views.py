@@ -85,10 +85,14 @@ def user_list_online(request):
     return render(request, 'online_user_list.html', context)
 
 
+def add_friend_searchpage(request):
+    return render(request, 'add_friend_search.html')
+
+
 def searching_user(request):
     kw = request.GET.get('kw')
     find_friend = User.objects.get(nickname=kw)
     if kw:
         find_friend = User.objects.filter(nickname__icontains=kw)
 
-    return render(request, 'friend_search.html', {'find_friend': find_friend})
+    return render(request, 'add_friend_search.html', {'find_friend': find_friend})

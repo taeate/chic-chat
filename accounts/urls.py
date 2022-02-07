@@ -14,4 +14,5 @@ urlpatterns = [
     path('user_list_online/', views.user_list_online, name='user_list_online'),
     path('add_friend/<int:user_id>/', views.add_friend, name='add_friend'),
     path('searching_user/', views.searching_user, name='searching_user'),
+    path('add_friend_searchpage/', views.add_friend_searchpage, name='add_friend_searchpage'),
 ]

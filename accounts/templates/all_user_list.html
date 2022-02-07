@@ -1,9 +1,11 @@
 {% extends 'layout.html' %}
 {% block content %}
-
-<h1>모든 친구</h1>
+<div class="t-ml-8 t-mt-4 t-mb-2 t-text-white t-text-lg">
+    모든 유저
+</div>
+<div class="t-text-gray-200 t-border-b t-border-gray-600 t-mx-4 t-mt-2 t-h-12 t-my-4 ">
 {% for use in users %}
-<div class="text-white my-3 border-top py-2">
+
     {% if user == use %}
     <span class="badge bg-secondary">본인</span>
     {% endif %}
@@ -17,4 +19,5 @@
     </a>
 </div>
 {% endfor %}
+
 {% endblock %}

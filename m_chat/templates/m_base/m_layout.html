@@ -15,22 +15,22 @@
     <script defer src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.1.3/js/bootstrap.min.js"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
     <link rel="stylesheet" href="{% static 'common.css' %}" type="text/css">
+    <link rel="stylesheet" href="{% static 'base.css' %}" type="text/css">
     <link rel="shortcut icon" href="#">
 </head>
 
 <body>
-    <div class="t-relative t-max-w-[1024px] t-min-h-screen t-m-auto t-mt-[2rem]">
-        <div class="t-w-full t-h-full t-fixed t-top-0">
+    <div class="t-max-w-[1024px] t-w-screen t-min-h-screen t-m-auto">
+        <div class="t-flex t-bg-indigo-300 t-w-full">
+            {% include 'm_base/m_my_server.html' %}
+        </div>
+        <div class="t-flex t-w-full">
             {% include 'm_base/m_navbar.html' %}
         </div>
-        <div class="t-w-full t-h-full t-flex t-items-center">
-            <div class="t-bg-green-300 t-w-full t-h-full">
-                채팅 내용
-            </div>
-            <div class="t-bg-indigo-300 t-w-full">
-                채팅 인풋
-            </div>
+        <div class="t-flex t-bg-green-300 t-w-full t-h-screen">
+            block content
         </div>
+
     </div>
 </body>
 
