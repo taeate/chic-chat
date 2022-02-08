@@ -18,5 +18,4 @@ class ChatMessage(models.Model):
     writer = models.ForeignKey(User, on_delete=models.DO_NOTHING)
     message = models.TextField('메시지 내용')
     timestamp = models.DateTimeField('메시지 전송 시간', auto_now_add=True)
-
     

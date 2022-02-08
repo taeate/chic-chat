@@ -91,8 +91,6 @@ def add_friend_searchpage(request):
 
 def searching_user(request):
     kw = request.GET.get('kw')
-    find_friend = User.objects.get(nickname=kw)
-    if kw:
-        find_friend = User.objects.filter(nickname__icontains=kw)
+    find_friend = User.objects.filter(nickname__icontains=kw) | User.objects.filter(nickname__startswith=kw)
 
     return render(request, 'add_friend_search.html', {'find_friend': find_friend})
