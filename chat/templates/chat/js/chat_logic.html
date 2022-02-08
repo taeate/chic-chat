@@ -43,7 +43,19 @@
     }
 
     function ChickChat__renderMessage(chat) {
-        $('.chat-messages').append(`<div>${chat.nickname} : ${chat.message}</div>`);
+        let lastNickname = null;
+        $('.chat-messages').append(`
+        <div class="t-mb-2">
+            <div class="t-text-lg t-text-white t-font-semibold">
+                {% if lastNickname == chat.nickname %}
+                ${chat.nickname}
+                {%else%}
+                ${lastNickname}
+                {% endif %}
+            </div>
+            ${chat.message}
+        </div>`);
+        lastNickname = chat.nickname;
         var box_center = document.getElementById("box-center");
         //box_center.scrollTop = box_center.scrollHeight;
     }

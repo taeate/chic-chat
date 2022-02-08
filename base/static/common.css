@@ -781,6 +781,10 @@ Ensure the default browser behavior of the `hidden` attribute.
   margin-left: -2rem;
 }
 
+.t-mb-3 {
+  margin-bottom: 0.75rem;
+}
+
 .t-inline-block {
   display: inline-block;
 }
