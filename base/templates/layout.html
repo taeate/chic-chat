@@ -134,8 +134,8 @@
                     
                     <div class="t-flex t-items-center t-whitespace-nowrap">
                         <i class="fas fa-user-friends t-text-gray-200"></i>
-                        <a href="{% url 'accounts:user_list'%}">
-                            <div class="t-font-bold t-text-green-300 t-ml-2">친구</div>
+                        <a href="{% url 'accounts:user_list' %}">
+                        <div class="t-font-bold t-text-green-300 t-ml-2">친구</div>
                         </a>
                         <a href="{% url 'accounts:user_list_online' %}">
                         <button class="t-ml-4 t-bg-gray-600 t-rounded t-w-14 hover:t-bg-gray-800">온라인</button>
@@ -176,8 +176,8 @@
                             </div>
                             <div class="t-flex t-items-center t-text-gray-500">
 
-                                <a href="{% url 'accounts:logout' %}" data-bs-toggle="tooltip" class="t-ml-2 t-text-xs t-text-gray-300">로그아웃</a>
-
+                                <a href="{% url 'chat:my_server_list' %}" data-bs-toggle="tooltip" class="t-ml-2 t-text-xs t-text-gray-300">로그아웃</a>
+                                
                             </div>
                         </div>
                     </div>
