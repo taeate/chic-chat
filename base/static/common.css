@@ -813,6 +813,10 @@ Ensure the default browser behavior of the `hidden` attribute.
   height: 1.5rem;
 }
 
+.t-h-\[35px\] {
+  height: 35px;
+}
+
 .t-min-h-screen {
   min-height: 100vh;
 }
@@ -1079,12 +1083,21 @@ Ensure the default browser behavior of the `hidden` attribute.
   background-color: rgb(239 68 68 / var(--tw-bg-opacity));
 }
 
+.t-bg-black {
+  --tw-bg-opacity: 1;
+  background-color: rgb(0 0 0 / var(--tw-bg-opacity));
+}
+
 .t-p-4 {
   padding: 1rem;
 }
 
 .t-p-2 {
   padding: 0.5rem;
+}
+
+.t-p-3 {
+  padding: 0.75rem;
 }
 
 .t-px-2 {
@@ -1153,6 +1166,14 @@ Ensure the default browser behavior of the `hidden` attribute.
 
 .t-pl-5 {
   padding-left: 1.25rem;
+}
+
+.t-pt-1 {
+  padding-top: 0.25rem;
+}
+
+.t-pb-1 {
+  padding-bottom: 0.25rem;
 }
 
 .t-text-left {
@@ -1296,6 +1317,16 @@ Ensure the default browser behavior of the `hidden` attribute.
 .hover\:t-text-gray-200:hover {
   --tw-text-opacity: 1;
   color: rgb(229 231 235 / var(--tw-text-opacity));
+}
+
+.hover\:t-text-gray-300:hover {
+  --tw-text-opacity: 1;
+  color: rgb(209 213 219 / var(--tw-text-opacity));
+}
+
+.hover\:t-text-gray-400:hover {
+  --tw-text-opacity: 1;
+  color: rgb(156 163 175 / var(--tw-text-opacity));
 }
 
 .focus\:t-outline-none:focus {

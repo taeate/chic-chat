@@ -55,8 +55,8 @@
     <div id="side_scroll" class="t-overflow-x-auto">
         <ul class="t-text-center t-flex t-flex-row">
             <li>
-                <a href="{% url 'chat:list' %}" class="nav-link" aria-current="page" title="" data-bs-toggle="tooltip"
-                    data-bs-placement="right" data-bs-original-title="Home">
+                <a href="{% url 'chat:list' %}" class="nav-link py-2" aria-current="page" title=""
+                    data-bs-toggle="tooltip" data-bs-placement="right" data-bs-original-title="Home">
                     <button id="btn-7" type="button"
                         class="hover:t-bg-teal-500 hover:t-text-white t-w-14 t-h-14 t-bg-green-400 t-text-white t-text-lg t-rounded-full">
                         <i class="fas fa-feather-alt fa-lg"></i>
@@ -66,10 +66,11 @@
             {% if user %}
             {% for room in user.part_server.all %}
             <li>
-                <a href="{% url 'chat:detail' room.id %}" class="nav-link t-px-2" title="" data-bs-toggle="tooltip"
+                <a href="{% url 'chat:detail' room.id %}" class="nav-link t-p-2" title="" data-bs-toggle="tooltip"
                     data-bs-placement="right" data-bs-original-title="Customers">
                     <button id="btn-8" title="{{ room.name }}" type="button"
-                        class="t-text-center t-flex  t-items-center t-justify-center t-overflow-hidden t-whitespace-nowrap hover:t-bg-teal-500 hover:t-text-white t-inline-block t-w-14 t-h-14 t-bg-gray-700 t-text-white t-rounded-full">
+                        class="t-text-center t-flex  t-items-center t-justify-center t-overflow-hidden t-whitespace-nowrap
+                        hover:t-bg-teal-500 hover:t-text-white t-inline-block t-w-14 t-h-14 t-bg-gray-700 t-text-white t-rounded-full">
                         {{ room.name }}
                     </button>
                 </a>
@@ -77,11 +78,11 @@
             {% endfor %}
             {% endif %}
             <li>
-                <a href="{% url 'chat:create' %}" class="nav-link t-px-2" aria-current="page" title="" data-bs-toggle="tooltip"
-                    data-bs-placement="right" data-bs-original-title="Home">
+                <a href="{% url 'chat:create' %}" class="nav-link t-px-2" aria-current="page" title=""
+                    data-bs-toggle="tooltip" data-bs-placement="right" data-bs-original-title="Home">
                     <span>
                         <button id="btn-9" type="button"
-                            class="hover:t-bg-teal-500 hover:t-text-white t-w-14 t-h-14 t-bg-gray-700 t-text-green-400 t-rounded-full">
+                            class="hover:t-bg-teal-500 hover:t-text-white t-w-14 t-h-14 t-bg-gray-700 t-text-green-400 t-rounded-full t-p-auto">
                             <i class="fas fa-plus fa-1x"></i>
                         </button>
                     </span>
@@ -91,7 +92,7 @@
                 <a href="{% url 'chat:my_server_list' %}" class="nav-link t-px-2" title="" data-bs-toggle="tooltip"
                     data-bs-placement="right" data-bs-original-title="Customers">
                     <button id="btn-10" type="button"
-                        class="hover:t-bg-teal-500 hover:t-text-white t-w-14 t-h-14 t-bg-gray-700 t-text-green-400 t-rounded-full">
+                        class="t-pt-1 hover:t-bg-teal-500 hover:t-text-white t-w-14 t-h-14 t-bg-gray-700 t-text-green-400 t-rounded-full">
                         <i class="fas fa-sign-out-alt fs-4"></i>
                     </button>
                 </a>
@@ -100,7 +101,7 @@
                 <a href="/" title="" class="nav-link t-px-2" data-bs-toggle="tooltip" data-bs-placement="right"
                     data-bs-original-title="Dashboard">
                     <button type="button"
-                        class="hover:t-bg-teal-500 hover:t-text-white t-w-14 t-h-14 t-bg-gray-700 t-text-green-400 t-rounded-full"
+                        class="t-p-3 hover:t-bg-teal-500 hover:t-text-white t-w-14 t-h-14 t-bg-gray-700 t-text-green-400 t-rounded-full"
                         id="btn-7">
                         <i class="fas fa-user-plus fa-1x"></i>
                     </button>
