@@ -1,19 +1,35 @@
 {% extends 'layout.html' %}
 {% block content %}
+
+<div class="t-ml-8 t-mt-4 t-mb-2 t-text-white t-text-lg">
+    온라인
+</div>
+<div class="t-text-gray-400 t-ml-8 t-mb-6">
+    온라인 상태인 사람들이예요!
+</div>
 {% for use in users %}
 <br>
-<div class="t-text-gray-200 t-border-b t-border-gray-600 t-mx-4  t-h-10 ">
-    
-    {% if user == use %}
-    <span class="t-bg-gray-700">[본인]</span>
-    {% endif %}
-    {% if use.is_active == 0 %}
-    <i class="fas fa-circle"></i> {{use.nickname}}
-    {% else %}
-    <i class="fas fa-circle t-text-green-400"></i> {{use.nickname}}
-    {% endif %}
+<div class="hover:t-rounded t-ml-24 t-bg-gray-700 hover:t-bg-gray-600 t-w-4/5 t-border-b t-border-gray-600 t-text-white t-flex t-justify-between">
+    <button class="t-mt-4 t-mb-4 t-flex">
+        {% if use.is_active == 0 %}
+        <i class="fas fa-circle t-text-red-300"></i>
+        <div class="t-ml-20">
+         {{use.nickname}}
+        </div>
+        {% else %}
+        <div>
+        <i class="fas fa-circle t-text-green-400 t-mt-1"></i>
+        </div>
+        <div class="t-ml-20">
+         {{use.nickname}}
+         {% if user == use %}
+        <span class="t-bg-gray-700">[본인]</span>
+        {% endif %}
+        </div>
+        {% endif %}
+    </button>
     <a href="{% url 'accounts:add_friend' use.id %}" class="btn btn-success">
-        <button class="t-ml-4 t-bg-green-500 t-rounded t-w-14 ">친구추가</button>
+        <button class="t-bg-green-500 t-rounded t-w-14 t-mt-4 ">친구추가</button>
     </a>
 </div>
 {% endfor %}

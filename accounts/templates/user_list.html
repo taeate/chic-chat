@@ -1,21 +1,31 @@
 {% extends 'layout.html' %}
 {% block content %}
-<div class="t-text-gray-200 t-border-b t-border-gray-600 t-mx-4 t-mt-2 t-h-12 t-my-4 ">
+<div class="t-text-gray-200 t-mx-4 t-mt-2 t-h-12 t-my-4 ">
     <div class="t-ml-6 t-mt-4 t-mb-2 t-text-white t-text-lg">
         친구
     </div>
-{% for friend in user.friends.all %}
+    <div class="t-text-gray-400 t-ml-6 t-mb-6 ">
+        나의 친구들이에요!
+    </div>
 </div>
-<button class="t-text-center t-ml-10 t-bg-gray-600 t-w-4/5">
+<div class="t-ml-10">
+    {% for friend in user.friends.all %}
+<button class="hover:t-rounded t-ml-10 t-bg-gray-700 hover:t-bg-gray-600 t-w-4/5 t-mt-4 t-border-b t-border-gray-600">
 <div class="t-flex t-mt-4">
-    <div class="t-ml-10 t-text-gray-300">
+    <div class="t-ml-4 t-text-gray-300 t-mb-4">
         <i class="fas fa-user-circle fa-2x"></i>
     </div>
-    <div class="t-ml-4 t-m-auto t-text-white t-text-base">
+    <div class="t-ml-4 t-text-white t-text-sm t-y-4 t-m-0">
         {{friend}}
-    </div>
+    </div> 
 </div>
 </button>
-  
+
+    <button>
+        <i class="far fa-envelope"></i>
+    </button>
+
 {% endfor %}
+</div>
+
 {% endblock %}
