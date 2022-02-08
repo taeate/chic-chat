@@ -10,22 +10,22 @@
 </div>
 <div class="t-ml-10">
     {% for friend in user.friends.all %}
-<button class="hover:t-rounded t-ml-10 t-bg-gray-700 hover:t-bg-gray-600 t-w-4/5 t-mt-4 t-border-b t-border-gray-600">
-<div class="t-flex t-mt-4">
-    <div class="t-ml-4 t-text-gray-300 t-mb-4">
-        <i class="fas fa-user-circle fa-2x"></i>
-    </div>
-    <div class="t-ml-4 t-text-white t-text-sm t-y-4 t-m-0">
-        {{friend}}
-    </div> 
-</div>
-</button>
-
-    <button>
-        <i class="far fa-envelope"></i>
+    <button
+        class="hover:t-rounded t-ml-10 t-bg-gray-700 hover:t-bg-gray-600 t-w-4/5 t-mt-4 t-border-b t-border-gray-600 t-flex t-justify-between">
+        <div class="t-flex t-mt-4">
+            <div class="t-ml-4 t-text-gray-300 t-mb-2">
+                <i class="fas fa-user-circle fa-2x"></i>
+            </div>
+            <div class="t-ml-4 t-text-white t-text-sm t-y-4 t-m-0">
+                {{friend}}
+            </div>
+        </div>
+        <a class="t-w-10 t-h-10 t-bg-gray-800 t-rounded-full t-mt-2">
+            <i class="far fa-envelope fa-lg t-bg-gray-700 t-mt-3"></i>
+        </a>
     </button>
 
-{% endfor %}
+    {% endfor %}
 </div>
 
 {% endblock %}
