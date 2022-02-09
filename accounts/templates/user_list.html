@@ -4,10 +4,12 @@
   <div class="text-gray-400 ml-6 mb-6">나의 친구들이에요!</div>
 </div>
 <div class="ml-10">
+  <div id="tooltip-default" role="tooltip" class="inline-block invisible z-10 py-1 px-3 -ml-[33px] text-sm font-medium text-white bg-gray-900 rounded-lg shadow-sm opacity-0 transition-opacity duration-300 tooltip dark:bg-gray-700 ">
+      다이렉트 메시지
+      <div class="tooltip-arrow -ml-1" data-popper-arrow></div>
+  </div>
   {% for friend in user.friends.all %}
-  <button
-    class="hover:rounded ml-10 bg-gray-700 hover:bg-gray-600 w-4/5 mt-4 border-b border-gray-600 flex justify-between"
-  >
+  <button class="hover:rounded ml-10 bg-gray-700 hover:bg-gray-600 w-4/5 mt-4 border-b border-gray-600 flex justify-between">
     <div class="flex mt-4">
       <div class="ml-4 text-gray-300 mb-2">
         <i class="fas fa-user-circle fa-2x"></i>
@@ -21,11 +23,6 @@
     >
       <i class="far fa-envelope fa-lg bg-gray-700 mt-3"></i>
     </a>
-    <div id="tooltip-default" role="tooltip" class="inline-block invisible z-10 py-1 px-3 -ml-[33px] text-sm font-medium text-white bg-gray-900 rounded-lg shadow-sm opacity-0 transition-opacity duration-300 tooltip dark:bg-gray-700 ">
-        다이렉트 메시지
-        <div class="tooltip-arrow -ml-1" data-popper-arrow></div>
-    </div>
-  </div>
   </button>
 
   {% endfor %}
