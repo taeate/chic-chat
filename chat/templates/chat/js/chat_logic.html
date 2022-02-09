@@ -22,6 +22,7 @@
     }
 
     let ChickChat__lastMessageId = 0;
+    let lastNickname;
 
     function ChickChat__loadMore() {
         $.get(
@@ -43,18 +44,21 @@
     }
 
     function ChickChat__renderMessage(chat) {
-        let lastNickname = null;
-        $('.chat-messages').append(`
-        <div class="t-mb-2">
-            <div class="t-text-lg t-text-white t-font-semibold">
-                {% if lastNickname == chat.nickname %}
-                ${chat.nickname}
-                {%else%}
-                ${lastNickname}
-                {% endif %}
-            </div>
-            ${chat.message}
-        </div>`);
+        if (lastNickname != chat.nickname) {
+            $('.chat-messages').append(`
+            <div class="t-mb-2">
+                <div class="t-text-xl t-text-white t-font-semibold">
+                    ${chat.nickname}
+                </div>
+                ${chat.message}
+            </div>`);
+        }
+        else {
+            $('.chat-messages').append(`
+            <div class="t-mb-2">
+                ${chat.message}
+            </div>`);
+            }
         lastNickname = chat.nickname;
         var box_center = document.getElementById("box-center");
         //box_center.scrollTop = box_center.scrollHeight;
