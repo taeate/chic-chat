@@ -46,24 +46,52 @@
     function ChickChat__renderMessage(chat) {
         if (lastNickname != chat.nickname) {
             $('.chat-messages').append(`
-            <div class="flex">
-                <div class="flex">
-                    <i class="fas fa-user-circle fa-2x text-white"></i>
-                </div>
-                <div class="mb-2">
-                    <div class="text-xl text-white font-semibold">
-                        ${chat.nickname}
+            <div class="flex-1 flex justify-between">
+                <div class="bg-gray-700 flex-1 flex flex-col justify-between">
+                    <div class="text-sm overflow-y-auto">
+                        <div class="flex mx-6 my-3 py-4  border-gray-500 border-t">
+                            <div class="flex-none">
+                                <i class="fas fa-user-circle fa-3x text-gray-400"></i>
+                            </div>
+                            <div class="ml-5">
+                                <a class="text-white hover:underline">${chat.nickname}<a>
+                                <span class="text-xs text-gray-500 ml-1">6:00</span>
+                                <div>
+                                    <div>
+                                        ${chat.message}
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
                     </div>
-                    ${chat.message}
                 </div>
             </div>
             `);
         }
         else {
             $('.chat-messages').append(`
-            <div class="mb-2 ml-auto">
-                ${chat.message}
-            </div>`);
+            <div class="flex-1 flex justify-between">
+                <div class="bg-gray-700 flex-1 flex flex-col justify-between">
+                    <div class="text-sm overflow-y-auto">
+                        <div class="flex mx-6 my-3 py-4  border-gray-500 border-t">
+                            <div class="flex-none">
+                                <i class="fas fa-user-circle fa-3x text-gray-400"></i>
+                            </div>
+                            <div class="ml-5">
+                                <a class="text-white hover:underline">${chat.nickname}<a>
+                                <span class="text-xs text-gray-500 ml-1">6:01</span>
+                                <div>
+                                    <div>
+                                        ${chat.message}
+
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>     
+            `);
             }
         lastNickname = chat.nickname;
         var box_center = document.getElementById("box-center");
