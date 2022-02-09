@@ -46,16 +46,22 @@
     function ChickChat__renderMessage(chat) {
         if (lastNickname != chat.nickname) {
             $('.chat-messages').append(`
-            <div class="mb-2">
-                <div class="text-xl text-white font-semibold">
-                    ${chat.nickname}
+            <div class="flex">
+                <div class="flex">
+                    <i class="fas fa-user-circle fa-2x text-white"></i>
                 </div>
-                ${chat.message}
-            </div>`);
+                <div class="mb-2">
+                    <div class="text-xl text-white font-semibold">
+                        ${chat.nickname}
+                    </div>
+                    ${chat.message}
+                </div>
+            </div>
+            `);
         }
         else {
             $('.chat-messages').append(`
-            <div class="mb-2">
+            <div class="mb-2 ml-[30px]">
                 ${chat.message}
             </div>`);
             }
