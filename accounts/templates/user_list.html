@@ -1,31 +1,44 @@
-{% extends 'layout.html' %}
-{% block content %}
-<div class="t-text-gray-200 t-mx-4 t-mt-2 t-h-12 t-my-4 ">
-    <div class="t-ml-6 t-mt-4 t-mb-2 t-text-white t-text-lg">
-        친구
-    </div>
-    <div class="t-text-gray-400 t-ml-6 t-mb-6 ">
-        나의 친구들이에요!
-    </div>
+{% extends 'layout.html' %} {% block content %}
+<div class="text-gray-200 mx-4 mt-2 h-12 my-4">
+  <div class="ml-6 mt-4 mb-2 text-white text-lg">친구</div>
+  <div class="text-gray-400 ml-6 mb-6">나의 친구들이에요!</div>
 </div>
-<div class="t-ml-10">
-    {% for friend in user.friends.all %}
-    <button
-        class="hover:t-rounded t-ml-10 t-bg-gray-700 hover:t-bg-gray-600 t-w-4/5 t-mt-4 t-border-b t-border-gray-600 t-flex t-justify-between">
-        <div class="t-flex t-mt-4">
-            <div class="t-ml-4 t-text-gray-300 t-mb-2">
-                <i class="fas fa-user-circle fa-2x"></i>
-            </div>
-            <div class="t-ml-4 t-text-white t-text-sm t-y-4 t-m-0">
-                {{friend}}
-            </div>
-        </div>
-        <a class="t-w-10 t-h-10 t-bg-gray-800 t-rounded-full t-mt-2">
-            <i class="far fa-envelope fa-lg t-bg-gray-700 t-mt-3"></i>
-        </a>
-    </button>
+<div class="ml-10">
+  {% for friend in user.friends.all %}
+  <button
+    class="hover:rounded ml-10 bg-gray-700 hover:bg-gray-600 w-4/5 mt-4 border-b border-gray-600 flex justify-between"
+  >
+    <div class="flex mt-4">
+      <div class="ml-4 text-gray-300 mb-2">
+        <i class="fas fa-user-circle fa-2x"></i>
+      </div>
+      <div class="ml-4 text-white text-sm y-4 m-0">{{friend}}</div>
+    </div>
+    <a
+      class="w-10 h-10 bg-gray-800 rounded-full mt-2"
+      href="/"
+      data-tooltip-target="tooltip-default"
+    >
+      <i class="far fa-envelope fa-lg bg-gray-700 mt-3"></i>
+    </a>
+  </button>
 
-    {% endfor %}
+  {% endfor %}
 </div>
 
+<button
+  data-tooltip-target="tooltip-default"
+  type="button"
+  class="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800"
+>
+  Default tooltip
+</button>
+<div
+  id="tooltip-default"
+  role="tooltip"
+  class="inline-block absolute invisible z-10 py-2 px-3 text-sm font-medium text-white bg-gray-900 rounded-lg shadow-sm opacity-0 transition-opacity duration-300 tooltip dark:bg-gray-700"
+>
+  Tooltip content
+  <div class="tooltip-arrow" data-popper-arrow></div>
+</div>
 {% endblock %}

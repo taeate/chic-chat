@@ -3,10 +3,10 @@
 <div class="text-white">
     {% if rooms %}
     {% for room in rooms %}
-    <div class="t-border-b t-border-gray-600 t-mx-4 t-mt-3">
+    <div class="border-b border-gray-600 mx-4 mt-3">
         <div>
-            <button class="t-bg-gray-700 t-text-white t-w-24 t-h-24">
-                <i class="fas fa-users fa-2x t-w-24 t-h-12"></i>
+            <button class="bg-gray-700 text-white w-24 h-24">
+                <i class="fas fa-users fa-2x w-24 h-12"></i>
                 {{ room.name }}
             </button>
             {% if room.part_server %}

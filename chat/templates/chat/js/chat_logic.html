@@ -22,7 +22,6 @@
     }
 
     let ChickChat__lastMessageId = 0;
-    let lastNickname;
 
     function ChickChat__loadMore() {
         $.get(
@@ -43,11 +42,12 @@
         );
     }
 
+    let lastNickname = null;
     function ChickChat__renderMessage(chat) {
         if (lastNickname != chat.nickname) {
             $('.chat-messages').append(`
-            <div class="t-mb-2">
-                <div class="t-text-xl t-text-white t-font-semibold">
+            <div class="mb-2">
+                <div class="text-xl text-white font-semibold">
                     ${chat.nickname}
                 </div>
                 ${chat.message}
@@ -55,7 +55,7 @@
         }
         else {
             $('.chat-messages').append(`
-            <div class="t-mb-2">
+            <div class="mb-2">
                 ${chat.message}
             </div>`);
             }

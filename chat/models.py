@@ -1,3 +1,4 @@
+import re
 from accounts.models import User
 from django.db import models
 from django.core.exceptions import ValidationError
@@ -19,3 +20,8 @@ class ChatMessage(models.Model):
     message = models.TextField('메시지 내용')
     timestamp = models.DateTimeField('메시지 전송 시간', auto_now_add=True)
     
+class DirectRoom(Room):
+    part_user = False
+    host = False
+    user1 = models.ForeignKey(User, on_delete=models.DO_NOTHING, related_name="user1")
+    user2 = models.ForeignKey(User, on_delete=models.DO_NOTHING, related_name="user2")
