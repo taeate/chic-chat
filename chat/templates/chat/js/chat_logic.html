@@ -1,3 +1,6 @@
+<script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.24.0/moment.min.js"></script>
+
+
 <script type="text/javascript">
     function ChickChatForm__submit(form) {
         form.writer.value = form.writer.value.trim();
@@ -43,21 +46,25 @@
     }
 
     let lastNickname = null;
+    let lastTimeStamp = null;
     function ChickChat__renderMessage(chat) {
-        if (lastNickname != chat.nickname) {
+        let chat_timestamp = moment(chat.timestamp).format('LT')
+        if (lastNickname != chat.nickname || lastTimeStamp != chat_timestamp) {
             $('.chat-messages').append(`
             <div class="flex-1 flex justify-between">
                 <div class="bg-gray-700 flex-1 flex flex-col justify-between">
                     <div class="text-sm overflow-y-auto">
-                        <div class="flex mx-6 my-3 py-4  border-gray-500 border-t">
+                        <div class="flex mx-6 pt-3 mt-3 border-gray-500 border-t">
                             <div class="flex-none">
                                 <i class="fas fa-user-circle fa-3x text-gray-400"></i>
                             </div>
                             <div class="ml-5">
-                                <a class="text-white hover:underline">${chat.nickname}<a>
-                                <span class="text-xs text-gray-500 ml-1">6:00</span>
+                                <a class="text-white hover:underline text-[1.5rem]">${chat.nickname}<a>
+                                <span class="text-xs text-gray-500 ml-1">
+                                    ${chat_timestamp}
+                                </span>
                                 <div>
-                                    <div>
+                                    <div class="mt-2">
                                         ${chat.message}
                                     </div>
                                 </div>
@@ -72,19 +79,11 @@
             $('.chat-messages').append(`
             <div class="flex-1 flex justify-between">
                 <div class="bg-gray-700 flex-1 flex flex-col justify-between">
-                    <div class="text-sm overflow-y-auto">
-                        <div class="flex mx-6 my-3 py-4  border-gray-500 border-t">
-                            <div class="flex-none">
-                                <i class="fas fa-user-circle fa-3x text-gray-400"></i>
-                            </div>
-                            <div class="ml-5">
-                                <a class="text-white hover:underline">${chat.nickname}<a>
-                                <span class="text-xs text-gray-500 ml-1">6:01</span>
-                                <div>
-                                    <div>
-                                        ${chat.message}
-
-                                    </div>
+                    <div class="text-sm overflow-y-auto mt-1">
+                        <div class="flex mx-6">
+                            <div class="ml-[3em]">
+                                <div class="ml-5">
+                                    ${chat.message}
                                 </div>
                             </div>
                         </div>
@@ -94,6 +93,7 @@
             `);
             }
         lastNickname = chat.nickname;
+        lastTimeStamp = chat_timestamp;
         var box_center = document.getElementById("box-center");
         //box_center.scrollTop = box_center.scrollHeight;
     }
