@@ -685,10 +685,6 @@ Ensure the default browser behavior of the `hidden` attribute.
   margin-left: 0.25rem;
 }
 
-.ml-\[3rem\] {
-  margin-left: 3rem;
-}
-
 .ml-\[3em\] {
   margin-left: 3em;
 }
@@ -829,6 +825,14 @@ Ensure the default browser behavior of the `hidden` attribute.
   border-radius: 9999px;
 }
 
+.rounded-\[100\%\] {
+  border-radius: 100%;
+}
+
+.rounded-\[50\%\] {
+  border-radius: 50%;
+}
+
 .rounded-l {
   border-top-left-radius: 0.25rem;
   border-bottom-left-radius: 0.25rem;
@@ -905,6 +909,11 @@ Ensure the default browser behavior of the `hidden` attribute.
   background-color: rgb(239 68 68 / var(--tw-bg-opacity));
 }
 
+.bg-teal-500 {
+  --tw-bg-opacity: 1;
+  background-color: rgb(20 184 166 / var(--tw-bg-opacity));
+}
+
 .p-4 {
   padding: 1rem;
 }
@@ -957,6 +966,10 @@ Ensure the default browser behavior of the `hidden` attribute.
   padding-bottom: 0.5rem;
 }
 
+.pt-3 {
+  padding-top: 0.75rem;
+}
+
 .text-center {
   text-align: center;
 }
@@ -984,18 +997,6 @@ Ensure the default browser behavior of the `hidden` attribute.
 .text-base {
   font-size: 1rem;
   line-height: 1.5rem;
-}
-
-.text-\[3rem\] {
-  font-size: 3rem;
-}
-
-.text-\[2rem\] {
-  font-size: 2rem;
-}
-
-.text-\[1rem\] {
-  font-size: 1rem;
 }
 
 .text-\[1\.5rem\] {
@@ -1096,12 +1097,30 @@ Ensure the default browser behavior of the `hidden` attribute.
   transition-duration: 150ms;
 }
 
+.transition-all {
+  transition-property: all;
+  transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+  transition-duration: 150ms;
+}
+
 .duration-300 {
   transition-duration: 300ms;
 }
 
+.duration-1000 {
+  transition-duration: 1000ms;
+}
+
 .hover\:rounded:hover {
   border-radius: 0.25rem;
+}
+
+.hover\:rounded-\[30\%\]:hover {
+  border-radius: 30%;
+}
+
+.hover\:rounded-\[10\%\]:hover {
+  border-radius: 10%;
 }
 
 .hover\:bg-gray-600:hover {
