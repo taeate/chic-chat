@@ -14,11 +14,17 @@ class Room(models.Model):
 
 
 class ChatMessage(models.Model):
+    class Message_Type(models.TextChoices):
+        ENTER = "ENTER"
+        EXIT = "EXIT"
+        NORMAL = "NORMAL"
     room = models.ForeignKey(Room, on_delete=models.CASCADE)
     nickname = models.CharField(max_length=30, null=True, blank=True)
     writer = models.ForeignKey(User, on_delete=models.DO_NOTHING)
     message = models.TextField('메시지 내용')
     timestamp = models.DateTimeField('메시지 전송 시간', auto_now_add=True)
+    m_type = models.CharField('메세지타입', max_length=10 , choices= Message_Type.choices, default= Message_Type.NORMAL )
+
     
 class DirectRoom(Room):
     part_user = False
