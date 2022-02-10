@@ -1,108 +1,31 @@
-{% extends 'layout.html' %}
-{% block head %}
-<style> 
- #modal.modal-overlay {
-            width: 100%;
-            height: 100%;
-            position: absolute;
-            left: 0;
-            top: 0;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            justify-content: center;
-            background: rgba(58, 57, 57, 0.25);
-       
-            backdrop-filter: blur(1.5px);
-            -webkit-backdrop-filter: blur(1.5px);
-            border-radius: 10px;
-            border: 1px solid rgba(255, 255, 255, 0.18);
-        }
-        #modal .modal-window {
-            background: rgba(33, 35, 36, 0.7);
-            
-            backdrop-filter: blur( 13.5px );
-            -webkit-backdrop-filter: blur( 13.5px );
-            border-radius: 10px;
-            border: 1px solid rgba( 255, 255, 255, 0.18 );
-            width: 500px;
-            margin-left: 300px;
-            height: 500px;
-            position: relative;
-            top: -100px;
-            padding: 10px;
-        }
-        #modal .title {
-            padding-left: 10px;
-            display: inline;
-            color: white;
-            
-        }
-        #modal .title h2 {
-            text-align: center;
-            font-size: x-large;
-        }
-        #modal .close-area {
-            display: inline;
-            float: right;
-            padding-right: 10px;
-            cursor: pointer;
-            text-shadow: 1px 1px 2px gray;
-            color: white;
-        }
-        
-        #modal .content {
-            margin-top: 20px;
-            padding: 0px 10px;
-            color: white;
-        }
-
-
-</style>
-{% endblock %}
+{% extends 'layout.html' %} {% block head %}
+{% endblock %} 
 {% block content %}
-
-
-
-
-<div id="modal" class="modal-overlay">
-    <div class="modal-window">
-        <div class="title">
-            <h2>
-                서버만들기
-            </h2>
-        </div>
-        <div class="close-area">X</div>
-        <div class="content">
-            
-                <div class="p-10 card bg-base-200">
-                    <div class="form-control">
-                    <label class="label">
-                        <span class="label-text">서버 이름</span>
-                    </label> 
-                    <input type="text" placeholder="username" class="input">
-                    </div>
-                </div>
-  
-            
-        </div>
+<label for="my-modal-2" class="cursor-pointer flex items-center justify-center overflow-hidden whitespace-nowrap w-14 h-14 mt-3 text-green-400 transition-all hover:duration-[300ms] bg-gray-800 rounded-[50%] hover:text-white hover:bg-teal-500 hover:rounded-[30%]">
+    <i class="fas fa-plus fa-1x"></i>
+</label> 
+<input type="checkbox" id="my-modal-2" class="modal-toggle hidden"> 
+<div class="modal">
+  <div class="modal-box">
+    <p>Enim dolorem dolorum omnis atque necessitatibus. Consequatur aut adipisci qui iusto illo eaque. Consequatur repudiandae et. Nulla ea quasi eligendi. Saepe velit autem minima.</p> 
+    <div class="modal-action">
+      <label for="my-modal-2" class="btn btn-primary">Accept</label> 
+      <label for="my-modal-2" class="btn">Close</label>
     </div>
+  </div>
 </div>
-{% endblock %}
+{% endblock %} 
 
 {% block foot %}
-
 <script>
-            $(function(){ 
+  $(function () {
+    $("#modal_button").click(function () {
+      $(".modal-overlay").fadeIn();
+    });
 
-            $("#modal_button").click(function(){
-            $(".modal-overlay").fadeIn();
-            });
-
-            $(".close-area").click(function(){
-            $(".modal-overlay").fadeOut();
-            });
-
-            });
+    $(".close-area").click(function () {
+      $(".modal-overlay").fadeOut();
+    });
+  });
 </script>
 {% endblock %}
