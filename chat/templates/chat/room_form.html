@@ -35,7 +35,6 @@
         #modal .title {
             padding-left: 10px;
             display: inline;
-            text-shadow: 1px 1px 2px gray;
             color: white;
             
         }
@@ -55,7 +54,6 @@
         #modal .content {
             margin-top: 20px;
             padding: 0px 10px;
-            text-shadow: 1px 1px 2px gray;
             color: white;
         }
 
@@ -76,10 +74,16 @@
         </div>
         <div class="close-area">X</div>
         <div class="content">
-            <p>가나다라마바사 아자차카타파하</p>
-            <p>가나다라마바사 아자차카타파하</p>
-            <p>가나다라마바사 아자차카타파하</p>
-            <p>가나다라마바사 아자차카타파하</p>
+            
+                <div class="p-10 card bg-base-200">
+                    <div class="form-control">
+                    <label class="label">
+                        <span class="label-text">서버 이름</span>
+                    </label> 
+                    <input type="text" placeholder="username" class="input">
+                    </div>
+                </div>
+  
             
         </div>
     </div>
@@ -89,16 +93,16 @@
 {% block foot %}
 
 <script>
-$(function(){ 
+            $(function(){ 
 
-$("#modal_button").click(function(){
-  $(".modal-overlay").fadeIn();
-});
+            $("#modal_button").click(function(){
+            $(".modal-overlay").fadeIn();
+            });
 
-$(".close-area").click(function(){
-  $(".modal-overlay").fadeOut();
-});
+            $(".close-area").click(function(){
+            $(".modal-overlay").fadeOut();
+            });
 
-});
+            });
 </script>
 {% endblock %}

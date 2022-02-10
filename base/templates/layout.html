@@ -22,65 +22,7 @@
 <body>
     <div class="flex">
         <div class="bg-gray-900 w-20 flex-none flex flex-col min-h-screen h-screen px-2 py-2">
-            <div id="side_scroll" class="overflow-y-auto">
-                <ul class="text-center">
-                    <li>
-                        <a href="{% url 'chat:list' %}" class="nav-link py-2" aria-current="page" title=""
-                            data-bs-toggle="tooltip" data-bs-placement="right" data-bs-original-title="Home">
-                            <button type="button"
-                                class="w-14 h-14 mx-auto text-white text-lg transition-all duration-1000
-                                bg-green-400 rounded-[50%] hover:bg-teal-500 hover:rounded-[30%]"
-                                >
-                                <i class="fas fa-feather-alt fa-lg"></i>
-                            </button>
-                            <div class="text-gray-500 font-semibold text-sm">Paracord</div>
-                    </li>
-                    <li class="border-b border-gray-700 mx-4 mt-3">
-                    </li>
-                    {% if user %}
-                    {% for room in user.part_server.all %}
-                    <li class="nav-item w-100">
-                        <a href="{% url 'chat:detail' room.id %}" class="nav-link py-2 margin" title=""
-                            data-bs-toggle="tooltip" data-bs-placement="right" data-bs-original-title="Customers">
-                            <button title="{{ room.name }}" type="button"
-                                class="flex items-center justify-center overflow-hidden whitespace-nowrap w-14 h-14 mx-auto mt-3 text-white transition-all hover:duration-[300ms] bg-gray-700 rounded-[50%] hover:bg-teal-500 hover:rounded-[30%]">
-                                {{ room.name }}
-                            </button>
-                        </a>
-                    </li>
-                    {% endfor %}
-                    {% endif %}
-                    <li>
-                        <a href="{% url 'chat:create' %}" class="" aria-current="page" title="" data-bs-toggle="tooltip"
-                            data-bs-placement="right" data-bs-original-title="Home">
-                            <span>
-                                <button type="button" id="나다"
-                                class="flex items-center justify-center overflow-hidden whitespace-nowrap w-14 h-14 mx-auto mt-3 text-green-400 transition-all hover:duration-[300ms] bg-gray-700 rounded-[50%] hover:text-white hover:bg-teal-500 hover:rounded-[30%]">
-                                    <i class="fas fa-plus fa-1x"></i>
-                                </button>
-                            </span>
-                        </a>
-                    </li>
-                    <li>
-                        <a href="{% url 'chat:my_server_list' %}" class="" title="" data-bs-toggle="tooltip"
-                            data-bs-placement="right" data-bs-original-title="Customers">
-                            <button type="button"
-                            class="flex items-center justify-center overflow-hidden whitespace-nowrap w-14 h-14 mx-auto mt-3 text-green-400 transition-all hover:duration-[300ms] bg-gray-700 rounded-[50%] hover:text-white hover:bg-teal-500 hover:rounded-[30%]">
-                                <i class="fas fa-sign-out-alt fs-4"></i>
-                            </button>
-                        </a>
-                    </li>
-                    <li>
-                        <a href="/" title="" data-bs-toggle="tooltip" data-bs-placement="right"
-                            data-bs-original-title="Dashboard">
-                            <button type="button"
-                            class="flex items-center justify-center overflow-hidden whitespace-nowrap w-14 h-14 mx-auto mt-3 text-green-400 transition-all hover:duration-[300ms] bg-gray-700 rounded-[50%] hover:text-white hover:bg-teal-500 hover:rounded-[30%]">
-                                <i class="fas fa-user-plus fa-1x"></i>
-                            </button>
-                        </a>
-                    </li>
-                </ul>
-            </div>
+            {% include "left_bar.html" %}
         </div>
         <div class="flex flex-col min-h-screen h-screen flex-1">
             <div class="flex text-white h-12">
@@ -91,60 +33,10 @@
 
 
                 </div>
-                <div
-                    class="flex-1 bg-gray-700 flex items-center justify-between px-4 border-b border-gray-900">
-
-                    <div class="flex items-center whitespace-nowrap">
-                        <i class="fas fa-user-friends text-gray-200"></i>
-                        <a href="{% url 'accounts:user_list' %}">
-                            <div class="font-bold text-green-300 ml-2">친구</div>
-                        </a>
-                        <a href="{% url 'accounts:user_list_online' %}">
-                            <button class="ml-4 bg-gray-600 rounded w-14 hover:bg-gray-800">온라인</button>
-                        </a>
-                        <a href="{% url 'accounts:user_list_all' %}">
-                            <button class="ml-4 bg-gray-600 rounded w-12 hover:bg-gray-800">모두</button>
-                        </a>
-                        <a href="{% url 'accounts:add_friend_searchpage' %}">
-                            <button class="ml-4 bg-green-400 rounded w-20 ">친구추가</button>
-                        </a>
-                    </div>
-                    <a href="#" class="ml-4">
-                        <form action="#" class="relative">
-                            <input ype="text" placeholder="검색하기"
-                                class="rounded bg-gray-900 text-gray-200 text-xs px-8 py-2">
-                            <span class="absolute right-0 top-0 mr-1 " style="top:3px">
-                                <i class="fas fa-search"></i>
-                            </span>
-                        </form>
-                    </a>
-                </div>
+                {% include "header.html" %}
             </div>
             <div class="flex-1  flex overflow-y-hidden">
-                <div class="bg-gray-800 w-56 flex-none flex flex-col justify-between">
-                    <div class="text-sm overflow-y-auto">
-
-                        <button class="flex items-center text-gray-500 hover:text-gray-200 py-3">
-                            <i class="fas fa-caret-down uppercase tracking-wide"> 다이렉트 메세지</i>
-                        </button>
-                    </div>
-                    <div class="bg-gray-900 py-4 px-2 flex items-center justify-between">
-                        <div class="flex items-center">
-                            <a href="#">
-                                <i class="fas fa-user-circle fa-2x text-white"></i>
-                            </a>
-                            <div class="text-xs ml-2">
-                                <div class="text-white">{{user.nickname}}</div>
-                            </div>
-                        </div>
-                        <div class="flex items-center text-gray-500">
-
-                            <a href="{% url 'accounts:logout' %}" data-bs-toggle="tooltip"
-                                class="ml-2 text-xs text-gray-300">로그아웃</a>
-
-                        </div>
-                    </div>
-                </div>
+                {% include "direct_messages.html" %}
                 <div class="bg-green-500 flex-1 flex justify-between">
                     <div class="bg-gray-700 flex-1 flex flex-col justify-between">
                         <div id="chat_scroll" class="text-sm text-gray-400 overflow-y-auto">
@@ -155,48 +47,7 @@
                         {% endblock %}
                     </div>
                     {% if room_detail %}
-                    <div id="on_off_scroll" class="bg-gray-800 w-56 px-3 py-3 flex-none  overflow-y-auto">
-                        <h3 class="uppercase tracking-wide font-semibold text-xs text-gray-400 mb-2">온라인 -
-                        </h3>
-                        {% for user in room.part_user.all %}
-                        {% if user.is_active %}
-                        <ul>
-                            <li
-                                class="text-sm text-gray-400 px-2 hover:text-gray-200 hover:bg-gray-700 py-1 my-2 ">
-                                <a href="#" class="flex items-center">
-                                    <span>
-                                        <a href="#">
-                                            <i class="fas fa-circle text-green-400"></i>
-                                    </a>
-                                </span>
-                                    <span class="ml-2">
-                                        {{user}}
-                                    </span>
-                                </a>
-                            </li>
-                        </ul>
-                        {% endif %}
-                        {% endfor %}
-                        <h3 class="uppercase tracking-wide font-semibold text-xs text-gray-400 mb-2">오프라인 -
-                        </h3>
-                        {% for user in room.part_user.all %}
-                        {% if not user.is_active %}
-                        <ul>
-                            <li
-                                class="text-sm text-gray-400 px-2 hover:text-gray-200 hover:bg-gray-700 py-1 my-2 ">
-                                <a href="#" class="flex items-center">
-                                    <span><a href="#">
-                                        <i class="fas fa-circle text-red-600"></i>
-                                    </a></span>
-                                    <span class="ml-2">
-                                        {{user}}
-                                    </span>
-                                </a>
-                            </li>
-                        </ul>
-                        {% endif %}
-                        {% endfor %}
-                    </div>
+                    {% include "right_bar.html" %} 
                     {% endif %}
                 </div>
             </div>
