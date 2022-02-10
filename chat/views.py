@@ -33,13 +33,15 @@ def room_create(request):
 def room_list(request):
     rooms = Room.objects.prefetch_related(
         Prefetch('part_user', queryset=User.objects.filter(id=request.user.id), to_attr='part_server'))
-    context = {'rooms': rooms}
+    users = User.objects.all()
+    context = {'rooms': rooms, 'users': users}
     return render(request, 'chat/room_list.html', context)
 
 
 def room_detail(request, room_id):
     room = Room.objects.get(id=room_id)
-    context = {'room': room}
+    room_detail = "집에 보내줘"
+    context = {'room': room, 'room_detail': room_detail}
 
     return render(request, 'chat/room_detail.html', context)
 

@@ -152,6 +152,7 @@
                         {% block input %}
                         {% endblock %}
                     </div>
+                    {% if room_detail %}
                     <div id="on_off_scroll" class="bg-gray-800 w-56 px-3 py-3 flex-none  overflow-y-auto">
                         <h3 class="uppercase tracking-wide font-semibold text-xs text-gray-400 mb-2">온라인 -
                         </h3>
@@ -194,6 +195,7 @@
                         {% endif %}
                         {% endfor %}
                     </div>
+                    {% endif %}
                 </div>
             </div>
         </div>

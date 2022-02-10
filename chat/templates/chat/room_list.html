@@ -1,70 +1,66 @@
-{% extends 'chat_layout.html' %}
-{% block app %}
+{% extends 'chat_layout.html' %} {% block app %}
 <div class="m-24">
-    <h1 class="text-center text-4xl text-white m-10">
-        Welcome to Paracord !
-    </h1>
-    <h2 class="text-center text-gray-300 text-base m-8">
-        채팅방을 검색해서 들어가볼게요
-    </h2>
-    <form
-  action="{% url 'accounts:searching_user' %}"
-  method="GET"
-  class="text-center"
->
-  <input
-    name="kw"
-    type="text"
-    placeholder="채팅방 찾기"
-    class="p-4 text-lg rounded bg-gray-900 text-gray-200 w-4/5 h-12 py-2"
-  />
-  <button
-    class="-ml-24 text-lg bg-green-400 text-white rounded w-20"
+  <h1 class="text-center text-4xl text-white m-10">Welcome to Paracord !</h1>
+  <h2 class="text-center text-gray-300 text-base m-8">
+    채팅방을 검색해서 들어가볼게요
+  </h2>
+  <form
+    action="{% url 'accounts:searching_user' %}"
+    method="GET"
+    class="text-center"
   >
-    검색하기
-  </button>
-</form>
-    <div class="text-white grid grid-cols-3 gap-2 mt-12">
-        {% if rooms %}
-        {% for room in rooms %}
-        <div class="text-center border-gray-500 ">
-            <i class="fas fa-users fa-4x mt-10 mb-12"></i>
-            <div class="mb-10">
-                <div>
-                    {{ room.name }}
-                </div>
-                <div class="mb-4 mt-4">
-                    {% if room.part_server %}
-                    
-                    <button class="bg-green-500 rounded-full w-32 text-lg">
-                        <a href="{% url 'chat:detail' room.id %}" class="btn btn-success">
-                            서버 참가중
-                        </a>
-                    </button>
-                </div>
-                <div>
-                    <button class="bg-red-500 rounded-full w-32 text-lg">
-                        <a href="{% url 'chat:exit_server' room.id %}" class="btn btn-danger">
-                            서버 나가기
-                        </a>
-                    </button>
-                {% else %}
-                <button class="bg-green-500 rounded-full w-32 text-lg">
-                    <a href="{% url 'chat:access_server' room.id %}" class="btn btn-success ">
-                        서버 참가
-                    </a>
-                </button>
-                
+    <input
+      name="kw"
+      type="text"
+      placeholder="채팅방 찾기"
+      class="p-4 text-lg rounded bg-gray-900 text-gray-200 w-4/5 h-12 py-2"
+    />
+    <button class="-ml-24 text-lg bg-green-400 text-white rounded w-20">
+      검색하기
+    </button>
+  </form>
+  <div class="text-white grid grid-cols-4 gap-4 mt-12">
+    {% if rooms %} {% for room in rooms %}
+    
+    <div class="w-[80%] bg-[#202225] text-center border-gray-800 border rounded-[3%]">
+        <i class="fas fa-users fa-4x mt-10 mb-12"></i>
+        <div class="mb-10">
+          <div>{{ room.name }}</div>
+          <div class="mb-4 mt-4">
+            {% if room.part_server %}
+
+            <button class="bg-green-500 rounded-full w-32 text-lg">
+              <a href="{% url 'chat:detail' room.id %}" class="btn btn-success">
+                서버 참가중
+              </a>
+            </button>
+          </div>
+          <div>
+            <button class="bg-red-500 rounded-full w-32 text-lg">
+              <a
+                href="{% url 'chat:exit_server' room.id %}"
+                class="btn btn-danger"
+              >
+                서버 나가기
+              </a>
+            </button>
+            {% else %}
+            <button class="bg-green-500 rounded-full w-32 text-lg">
+              <a
+                href="{% url 'chat:access_server' room.id %}"
+                class="btn btn-success"
+              >
+                서버 참가
+              </a>
+            </button>
+
             {% endif %}
-        </div>
             </div>
         </div>
-        
-    
-        {% endfor %}
-        {% else %}
-        <h1>채팅방 is lonely...</h1>
-        {% endif %}
     </div>
+    {% endfor %} {% else %}
+    <h1>채팅방 is lonely...</h1>
+    {% endif %}
+  </div>
 </div>
 {% endblock %}
