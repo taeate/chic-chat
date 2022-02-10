@@ -4,5 +4,8 @@
   },
   "scripts": {
     "css": "npx tailwindcss -i ./base/static/common.base.css -o ./base/static/common.css --watch"
+  },
+  "dependencies": {
+    "daisyui": "^1.25.4"
   }
 }

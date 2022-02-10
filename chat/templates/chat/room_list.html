@@ -1,11 +1,11 @@
 {% extends 'chat_layout.html' %} {% block app %}
 <div class="m-24">
-  <h1 class="text-center text-4xl text-white m-10">Welcome to Paracord !</h1>
-  <h2 class="text-center text-gray-300 text-base m-8">
-    채팅방을 검색해서 들어가볼게요
+  <h1 class="text-center text-4xl text-white m-10 text-gray-200 font-semibold">Welcome to Paracord</h1>
+  <h2 class="text-center mb-4">
+    파라코드에서는 여러 사람들이랑 소통할 수 있습니다
   </h2>
   <form
-    action="{% url 'accounts:searching_user' %}"
+    action="{% url 'chat:list' %}"
     method="GET"
     class="text-center"
   >
@@ -20,8 +20,8 @@
     </button>
   </form>
   <div class="text-white grid grid-cols-4 gap-4 mt-12">
-    {% if rooms %} {% for room in rooms %}
-    
+    {% if rooms %}
+     {% for room in rooms %}
     <div class="w-[80%] bg-[#202225] text-center border-gray-800 border rounded-[3%]">
         <i class="fas fa-users fa-4x mt-10 mb-12"></i>
         <div class="mb-10">
@@ -30,7 +30,7 @@
             {% if room.part_server %}
 
             <button class="bg-green-500 rounded-full w-32 text-lg">
-              <a href="{% url 'chat:detail' room.id %}" class="btn btn-success">
+              <a href="{% url 'chat:detail' room.id %}">
                 서버 참가중
               </a>
             </button>
@@ -39,7 +39,7 @@
             <button class="bg-red-500 rounded-full w-32 text-lg">
               <a
                 href="{% url 'chat:exit_server' room.id %}"
-                class="btn btn-danger"
+                
               >
                 서버 나가기
               </a>

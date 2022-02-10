@@ -11,6 +11,7 @@ from django.utils import timezone
 from chat.form import RoomForm
 from chat.models import *
 
+import json
 
 @login_required(login_url='accounts:login')
 def room_create(request):
@@ -31,8 +32,13 @@ def room_create(request):
 
 
 def room_list(request):
-    rooms = Room.objects.prefetch_related(
-        Prefetch('part_user', queryset=User.objects.filter(id=request.user.id), to_attr='part_server'))
+    
+    kw = request.GET.get('kw')
+    if kw:
+        rooms = Room.objects.filter(name__icontains=kw) | Room.objects.filter(name__startswith=kw)
+    else:
+        rooms = Room.objects.prefetch_related(
+            Prefetch('part_user', queryset=User.objects.filter(id=request.user.id), to_attr='part_server'))
     users = User.objects.all()
     context = {'rooms': rooms, 'users': users}
     return render(request, 'chat/room_list.html', context)

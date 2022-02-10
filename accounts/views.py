@@ -7,6 +7,7 @@ from django.contrib.auth import logout as auth_logout
 from django.shortcuts import render, redirect
 
 from accounts.form import UserForm, SearchUserForm, LoginForm
+from chat.models import Room
 
 
 def accounts(request):
@@ -94,3 +95,4 @@ def searching_user(request):
     find_friend = User.objects.filter(nickname__icontains=kw) | User.objects.filter(nickname__startswith=kw)
 
     return render(request, 'add_friend_search.html', {'find_friend': find_friend})
+
