@@ -1111,6 +1111,14 @@ Ensure the default browser behavior of the `hidden` attribute.
   transition-duration: 1000ms;
 }
 
+.duration-\[200ms\] {
+  transition-duration: 200ms;
+}
+
+.duration-\[3000ms\] {
+  transition-duration: 3000ms;
+}
+
 .hover\:rounded:hover {
   border-radius: 0.25rem;
 }

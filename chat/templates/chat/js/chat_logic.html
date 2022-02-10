@@ -1,56 +1,78 @@
 <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.24.0/moment.min.js"></script>
 
-
 <script type="text/javascript">
-    function ChickChatForm__submit(form) {
-        form.writer.value = form.writer.value.trim();
+  function ChickChatForm__submit(form) {
+    form.writer.value = form.writer.value.trim();
 
-        const writer = form.writer.value;
-        const body = form.body.value;
-        const room_id = form.room_id.value;
+    const writer = form.writer.value;
+    const body = form.body.value;
+    const room_id = form.room_id.value;
 
-        $.post(
-            form.action,
-            {
-                csrfmiddlewaretoken: form.csrfmiddlewaretoken.value,
-                writer,
-                body,
-                room_id
-            },
-            'json'
-        );
+    $.post(
+      form.action,
+      {
+        csrfmiddlewaretoken: form.csrfmiddlewaretoken.value,
+        writer,
+        body,
+        room_id,
+      },
+      "json"
+    );
 
-        form.body.value = '';
-        form.body.focus();
-    }
+    form.body.value = "";
+    form.body.focus();
+  }
 
-    let ChickChat__lastMessageId = 0;
+  let ChickChat__lastMessageId = 0;
 
-    function ChickChat__loadMore() {
-        $.get(
-            "{% url 'chat:chat' room.id %}",
-            {
-                from_id: ChickChat__lastMessageId
-            },
-            function(data) {
-                for ( const chatKey in data.chats ) {
-                    const chat = data.chats[chatKey];
-                    ChickChat__lastMessageId = chat.id;
-                    ChickChat__renderMessage(chat);
-                }
-                console.log(1)
-                setTimeout(ChickChat__loadMore, 200);
-            },
-            'json'
-        );
-    }
+  function ChickChat__loadMore() {
+    $.get(
+      "{% url 'chat:chat' room.id %}",
+      {
+        from_id: ChickChat__lastMessageId,
+      },
+      function (data) {
+        for (const chatKey in data.chats) {
+          const chat = data.chats[chatKey];
+          ChickChat__lastMessageId = chat.id;
+          ChickChat__renderMessage(chat);
+        }
+        console.log(1);
+        setTimeout(ChickChat__loadMore, 200);
+      },
+      "json"
+    );
+  }
 
-    let lastNickname = null;
-    let lastTimeStamp = null;
-    function ChickChat__renderMessage(chat) {
-        let chat_timestamp = moment(chat.timestamp).format('LT')
+  let lastNickname = null;
+  let lastTimeStamp = null;
+  function ChickChat__renderMessage(chat) {
+    let chat_timestamp = moment(chat.timestamp).format("LT");
+    console.log(chat["m_type"]);
+    if (chat.m_type != "NOMAL") {
+      if (chat.m_type == "ENTER") {
+        $(".chat-messages").append(`
+            <div class="m-8">
+                <form class="bg-gray-800 text-center">
+                ${chat.message}
+                    <span class="text-gray-500 text-xs">
+                    ${chat_timestamp}
+                    </span>
+                </form>
+            </div>`);
+      } else if (chat.m_type == "EXIT") {
+        $(".chat-messages").append(`
+            <div class="m-8">
+                <form class="bg-gray-800 text-center">
+                ${chat.message}
+                    <span class="text-gray-500 text-xs">
+                    ${chat_timestamp}
+                    </span>
+                </form>
+            </div>`);
+      } else {
         if (lastNickname != chat.nickname || lastTimeStamp != chat_timestamp) {
-            $('.chat-messages').append(`
+          $(".chat-messages").append(`
             <div class="flex-1 flex justify-between">
                 <div class="bg-gray-700 flex-1 flex flex-col justify-between">
                     <div class="text-sm overflow-y-auto">
@@ -59,7 +81,7 @@
                                 <i class="fas fa-user-circle fa-3x text-gray-400"></i>
                             </div>
                             <div class="ml-5">
-                                <a class="text-white hover:underline text-[1.5rem]">${chat.nickname}<a>
+                                <a class="text-white hover:underline text-sm">${chat.nickname}<a>
                                 <span class="text-xs text-gray-500 ml-1">
                                     ${chat_timestamp}
                                 </span>
@@ -74,9 +96,8 @@
                 </div>
             </div>
             `);
-        }
-        else {
-            $('.chat-messages').append(`
+        } else {
+          $(".chat-messages").append(`
             <div class="flex-1 flex justify-between">
                 <div class="bg-gray-700 flex-1 flex flex-col justify-between">
                     <div class="text-sm overflow-y-auto mt-1">
@@ -86,18 +107,19 @@
                                     ${chat.message}
                                 </div>
                             </div>
-                        </div>
+                        </div> 
                     </div>
                 </div>
             </div>     
             `);
-            }
+        }
+        
         lastNickname = chat.nickname;
         lastTimeStamp = chat_timestamp;
-        var box_center = document.getElementById("box-center");
-        //box_center.scrollTop = box_center.scrollHeight;
+      }
     }
-    ChickChat__loadMore();
-
-
+    console.log($("#chat_scroll").scrollTop($("#chat_scroll")[0].scrollHeight));
+    //console.log($('#chat_scroll')[0].scrollHeight)
+  }
+  ChickChat__loadMore();
 </script>

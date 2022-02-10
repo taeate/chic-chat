@@ -1,3 +1,4 @@
+from asyncore import write
 from django.contrib import messages
 from django.contrib.auth.decorators import login_required
 from django.core.exceptions import ValidationError
@@ -47,16 +48,22 @@ def room_detail(request, room_id):
 def access_server(request, room_id):
     room = Room.objects.get(id=room_id)
     request.user.part_server.add(room)
+    writer = request.user
+    body = f"{writer} 님이 등장하셨어요."
+    ChatMessage(room=room, writer=writer, nickname=writer.nickname, message=body, m_type = ChatMessage.Message_Type.ENTER).save()
     return redirect('chat:detail', room_id=room_id)
 
 
 @login_required(login_url='accounts:login')
 def exit_server(request, room_id):
     room = Room.objects.get(id=room_id)
+    writer = request.user
+    body = f"{writer} 님이 나가셨습니다."
     if room.host == request.user:
         messages.warning(request, "내가 만든 서버는 못 나감")
     else:
         request.user.part_server.remove(room)
+        ChatMessage(room=room, writer=writer, nickname=writer.nickname, message=body, m_type = ChatMessage.Message_Type.EXIT).save()
     return redirect('chat:list')
 
 
