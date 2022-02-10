@@ -1166,6 +1166,18 @@ Ensure the default browser behavior of the `hidden` attribute.
           text-decoration-line: underline;
 }
 
+.hover\:duration-\[3000ms\]:hover {
+  transition-duration: 3000ms;
+}
+
+.hover\:duration-\[400ms\]:hover {
+  transition-duration: 400ms;
+}
+
+.hover\:duration-\[300ms\]:hover {
+  transition-duration: 300ms;
+}
+
 .focus\:outline-none:focus {
   outline: 2px solid transparent;
   outline-offset: 2px;
