@@ -260,3 +260,5 @@ fabric.properties
 node_modules/
 
 .vscode/
+
+base/settings.py
