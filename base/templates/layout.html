@@ -27,20 +27,26 @@
         </div>
         <div class="flex flex-col min-h-screen h-screen flex-1">
             <div class="flex text-white h-12">
+                
                 <div
                     class="bg-gray-800 w-56 flex-none flex items-center justify-between px-3 py-2 border-b border-gray-900">
+                    {% if room_detail %}
                     <div># {{ room.name }}</div>
                     <button class="dropdown dropdown-end">
                         <div tabindex="0">
-                            <i class="fas fa-caret-down uppercase tracking-wide"></i>
+                            <i class="fa-solid fa-gear"></i>
                             <ul tabindex="0" class="shadow menu dropdown-content rounded-box w-52 bg-gray-900 mt-4">
                                 <li class="text-red-500">
-                                  <a>서버나가기</a>
-                                  <i class="fa-solid fa-person-to-door text-white"></i>
+                                    <a href="{% url 'chat:exit_server' room.id %}">
+                                      서버나가기
+                                      <i class="fa-solid fa-door-open ml-20"></i>
+                                    </a>
+                                  
                                 </li> 
                             </ul>
                         </div>
                     </button>
+                    {% endif %}
                     
 
 
