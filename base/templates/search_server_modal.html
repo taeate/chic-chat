@@ -1,0 +1,29 @@
+<label for="my-modals-2" class="cursor-pointer flex items-center justify-center overflow-hidden whitespace-nowrap w-14 h-14 mx-auto mt-3 text-green-400 transition-all hover:duration-[300ms] bg-gray-700 rounded-[50%] hover:text-white hover:bg-teal-500 hover:rounded-[30%] modal-button">
+    <i class="fa-solid fa-magnifying-glass"></i>
+</label>
+<input type="checkbox" id="my-modals-2" class="modal-toggle" />
+<div class="modal">
+    <div class="modal-box">
+        <form action="{% url 'chat:list' %}" method="GET" class="text-center">
+            <input
+                name="kw"
+                type="text"
+                placeholder="채팅방 찾기"
+                class="p-4 text-lg rounded bg-gray-900 text-gray-200 w-4/5 h-12 py-2"
+            />
+            <button class="-ml-24 text-lg bg-green-400 text-white rounded w-20">
+                검색하기
+            </button>
+        </form>
+        <div class="modal-action">
+            <label for="my-modals-2" class="btn btn-primary">
+                
+            </label>
+            <label for="my-modals-2" class="btn">Close</label>
+        </div>
+    </div>
+    <div class="modal">
+        <div class="modal-box">
+        </div>
+    </div>
+</div>
