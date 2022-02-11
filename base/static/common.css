@@ -1,5 +1,5 @@
 /*
-! tailwindcss v3.0.21 | MIT License | https://tailwindcss.com
+! tailwindcss v3.0.18 | MIT License | https://tailwindcss.com
 */
 
 /*
@@ -2506,6 +2506,10 @@ html {
   margin: 2rem;
 }
 
+.m-4 {
+  margin: 1rem;
+}
+
 .mx-4 {
   margin-left: 1rem;
   margin-right: 1rem;
@@ -2526,11 +2530,6 @@ html {
   margin-right: 0.75rem;
 }
 
-.mx-\[2px\] {
-  margin-left: 2px;
-  margin-right: 2px;
-}
-
 .my-2 {
   margin-top: 0.5rem;
   margin-bottom: 0.5rem;
@@ -2544,6 +2543,11 @@ html {
 .mx-6 {
   margin-left: 1.5rem;
   margin-right: 1.5rem;
+}
+
+.mx-\[2px\] {
+  margin-left: 2px;
+  margin-right: 2px;
 }
 
 .mb-3 {
@@ -2650,6 +2654,18 @@ html {
   margin-left: 3em;
 }
 
+.ml-12 {
+  margin-left: 3rem;
+}
+
+.ml-14 {
+  margin-left: 3.5rem;
+}
+
+.ml-16 {
+  margin-left: 4rem;
+}
+
 .mb-5 {
   margin-bottom: 1.25rem;
 }
@@ -2734,16 +2750,24 @@ html {
   width: 3rem;
 }
 
-.w-52 {
-  width: 13rem;
-}
-
 .w-\[80\%\] {
   width: 80%;
 }
 
 .w-32 {
   width: 8rem;
+}
+
+.w-52 {
+  width: 13rem;
+}
+
+.w-4 {
+  width: 1rem;
+}
+
+.w-8 {
+  width: 2rem;
 }
 
 .max-w-sm {
@@ -2764,6 +2788,10 @@ html {
 
 .cursor-pointer {
   cursor: pointer;
+}
+
+.cursor-wait {
+  cursor: wait;
 }
 
 .grid-cols-4 {
@@ -2912,14 +2940,19 @@ html {
   background-color: rgb(239 68 68 / var(--tw-bg-opacity));
 }
 
+.bg-base-100 {
+  --tw-bg-opacity: 1;
+  background-color: hsla(var(--b1) / var(--tw-bg-opacity));
+}
+
 .bg-base-200 {
   --tw-bg-opacity: 1;
   background-color: hsla(var(--b2) / var(--tw-bg-opacity));
 }
 
-.bg-base-100 {
+.bg-gray-500 {
   --tw-bg-opacity: 1;
-  background-color: hsla(var(--b1) / var(--tw-bg-opacity));
+  background-color: rgb(107 114 128 / var(--tw-bg-opacity));
 }
 
 .p-4 {
@@ -2993,10 +3026,6 @@ html {
   line-height: 1rem;
 }
 
-.text-\[0\.9em\] {
-  font-size: 0.9em;
-}
-
 .text-4xl {
   font-size: 2.25rem;
   line-height: 2.5rem;
@@ -3005,6 +3034,10 @@ html {
 .text-5xl {
   font-size: 3rem;
   line-height: 1;
+}
+
+.text-\[0\.9em\] {
+  font-size: 0.9em;
 }
 
 .font-medium {
