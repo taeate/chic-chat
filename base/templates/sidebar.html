@@ -1,0 +1,77 @@
+
+            <div id="side_scroll" class="overflow-y-auto">
+                <ul class="text-center">
+                    <li>
+                        <a href="{% url 'chat:list' %}" class="nav-link py-2" aria-current="page" title=""
+                            data-bs-toggle="tooltip" data-bs-placement="right" data-bs-original-title="Home">
+                            <button type="button"
+                                class="w-14 h-14 mx-auto text-white text-lg transition-all duration-1000
+                                bg-green-400 rounded-[50%] hover:bg-teal-500 hover:rounded-[30%]"
+                                >
+                                <i class="fas fa-feather-alt fa-lg"></i>
+                            </button>
+                            <div class="text-gray-500 font-semibold text-sm">Paracord</div>
+                    </li>
+                    <li class="border-b border-gray-700 mx-4 mt-3">
+                    </li>
+                    {% if user.nickname %}
+                    {% for room in user.part_server.all %}
+                    <li class="nav-item w-100">
+                        <a href="{% url 'chat:detail' room.id %}" class="nav-link py-2 margin" title=""
+                            data-bs-toggle="tooltip" data-bs-placement="right" data-bs-original-title="Customers">
+                            <button title="{{ room.name }}" type="button"
+                                class="flex items-center justify-center overflow-hidden whitespace-nowrap w-14 h-14 mx-auto mt-3 text-white transition-all hover:duration-[300ms] bg-gray-700 rounded-[50%] hover:bg-teal-500 hover:rounded-[30%]">
+                                {{ room.name }}
+                            </button>
+                        </a>
+                    </li>
+                    {% endfor %}
+                    <li>
+                        {% include 'chat/search_room_modal.html' %}
+                    </li>
+                    <li>
+                            <label for="my-modal-2" class="cursor-pointer flex items-center justify-center overflow-hidden whitespace-nowrap w-14 h-14 mt-3 mx-auto text-green-400 transition-all hover:duration-[300ms] bg-gray-700 rounded-[50%] hover:text-white hover:bg-teal-500 hover:rounded-[30%]">
+                                <i class="fas fa-plus fa-1x"></i>
+                            </label> 
+                            <input type="checkbox" id="my-modal-2" class="modal-toggle hidden">
+                            <div class="modal">
+                              <div class="modal-box">
+                                <input type="text" placeholder="Room Name" class="input text-black">
+                                <div class="modal-action">
+                                  <label for="my-modal-2" class="btn btn-primary">Accept</label> 
+                                  <label for="my-modal-2" class="btn">Close</label>
+                                </div>
+                              </div>
+                            </div>
+                    </li>
+                    <li>
+                        <a href="{% url 'chat:my_server_list' %}" class="" title="" data-bs-toggle="tooltip"
+                            data-bs-placement="right" data-bs-original-title="Customers">
+                            <button type="button"
+                            class="flex items-center justify-center overflow-hidden whitespace-nowrap w-14 h-14 mx-auto mt-3 text-green-400 transition-all hover:duration-[300ms] bg-gray-700 rounded-[50%] hover:text-white hover:bg-teal-500 hover:rounded-[30%]">
+                            <i class="fa-solid fa-house-user"></i>
+                            </button>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="{% url 'accounts:logout' %}" class="" title="" data-bs-toggle="tooltip"
+                            data-bs-placement="right" data-bs-original-title="Customers">
+                            <button type="button"
+                            class="flex items-center justify-center overflow-hidden whitespace-nowrap w-14 h-14 mx-auto mt-3 text-green-400 transition-all hover:duration-[300ms] bg-gray-700 rounded-[50%] hover:text-white hover:bg-teal-500 hover:rounded-[30%]">
+                            <i class="fa-solid fa-right-from-bracket"></i>
+                            </button>
+                        </a>
+                    </li>
+                    {% else %}
+                    <li>
+                        <a href="/" title="" data-bs-toggle="tooltip" data-bs-placement="right"
+                            data-bs-original-title="Dashboard">
+                            <button type="button"
+                            class="flex items-center justify-center overflow-hidden whitespace-nowrap w-14 h-14 mx-auto mt-3 text-green-400 transition-all hover:duration-[300ms] bg-gray-700 rounded-[50%] hover:text-white hover:bg-teal-500 hover:rounded-[30%]">
+                            <i class="fa-solid fa-user"></i>
+                            </button>
+                        </a>
+                    </li>
+                    {% endif %}
+                </ul>
+            </div>

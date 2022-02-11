@@ -69,7 +69,7 @@ def add_friend(request, user_id):
 def user_list(request):
     users = User.objects.all()
     context = {'users': users}
-    return render(request, 'user_list.html', context)
+    return render(request, 'all_user_list.html', context)
 
 
 
@@ -87,12 +87,12 @@ def user_list_online(request):
 
 
 def add_friend_searchpage(request):
-    return render(request, 'add_friend_search.html')
+    return render(request, 'friend_search.html')
 
 
 def searching_user(request):
     kw = request.GET.get('kw')
     find_friend = User.objects.filter(nickname__icontains=kw) | User.objects.filter(nickname__startswith=kw)
 
-    return render(request, 'add_friend_search.html', {'find_friend': find_friend})
+    return render(request, 'friend_search.html', {'find_friend': find_friend})
 
