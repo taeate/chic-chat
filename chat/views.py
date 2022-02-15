@@ -70,9 +70,7 @@ def room_detail(request, room_id):
 def dm_detail(request, room_id):
     room = Room.objects.get(id=room_id)
     room_detail = "집에 보내줘"
-    room_name = room.part_user.all().exclude(nickname=request.user.nickname).first().nickname
-    print(room_name)
-    context = {'room': room, 'room_detail': room_detail,"room_name":room_name}
+    context = {'room': room, 'room_detail': room_detail}
 
     return render(request, 'chat/room_detail.html', context)
 
@@ -91,11 +89,8 @@ def exit_server(request, room_id):
     room = Room.objects.get(id=room_id)
     writer = request.user
     body = f"{writer} 님이 나가셨습니다."
-    if room.host == request.user:
-        messages.warning(request, "내가 만든 서버는 못 나감")
-    else:
-        request.user.part_server.remove(room)
-        ChatMessage(room=room, writer=writer, nickname=writer.nickname, message=body, m_type = ChatMessage.Message_Type.EXIT).save()
+    request.user.part_server.remove(room)
+    ChatMessage(room=room, writer=writer, nickname=writer.nickname, message=body, m_type = ChatMessage.Message_Type.EXIT).save()
     return redirect('chat:list')
 
 
