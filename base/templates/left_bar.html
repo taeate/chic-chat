@@ -6,21 +6,23 @@
             <i class="fas fa-caret-down uppercase tracking-wide">
                 다이렉트 메세지</i>
         </button>
-        {% if user.nickname %}
-            {% for room in user.part_server.all %}
-            {% if room.room_type == 'direct' %}
-            <ul class="nav-item w-100 bg-gray-800">
-                <a href="{% url 'chat:detail' room.id %}" class="nav-link py-2 margin" title=""
-                    data-bs-toggle="tooltip" data-bs-placement="right" data-bs-original-title="Customers">
-                    <button title="{{ room.name }}" type="button"
-                        class="flex items-center justify-center overflow-hidden ">
-                        {{ room.name }}
-                    </button>
-                </a>
-            </ul>
+        <div>
+            {% if user.nickname %}
+            {% for friend in user.friends.all %}
+                <ul class="nav-item w-100 bg-gray-800">
+                    <a href="{% url 'chat:create_dm' friend.nickname %}" class="nav-link py-2 margin" title=""
+                        data-bs-toggle="tooltip" data-bs-placement="right" data-bs-original-title="Customers">
+                        <button title="{{ friend.nickname }}" type="button"
+                            class="flex items-center justify-center overflow-hidden bg-blue-300 ">
+                        
+                            {{friend}}
+                            
+                        </button>
+                    </a>
+                </ul>
+                {% endfor %}
             {% endif %}
-            {% endfor %}
-        {% endif %}  
+        </div>
     </div>
     <div class="bg-gray-900 py-4 px-2 flex items-center justify-between">
         {% if user.nickname %}
