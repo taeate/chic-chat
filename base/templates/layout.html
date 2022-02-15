@@ -31,8 +31,13 @@
                 
                 <div
                     class="bg-gray-800 w-56 flex-none flex items-center justify-between px-3 py-2 border-b border-gray-900">
+                    
                     {% if room_detail %}
+                    {% if room_name %}
+                    {{room_name}}
+                    {% else %}
                     <div># {{ room.name }}</div>
+                    {% endif %}
                     <button class="dropdown dropdown-end">
                         <div tabindex="0">
                             <i class="fa-solid fa-gear"></i>

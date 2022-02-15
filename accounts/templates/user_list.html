@@ -3,27 +3,28 @@
   <div class="ml-6 mt-4 mb-2 text-white text-lg">친구</div>
   <div class="text-gray-400 ml-6 mb-6">나의 친구들이에요!</div>
 </div>
-<div class="ml-10">
+<div class="ml-10 mt-8">
   <div id="tooltip-default" role="tooltip" class="inline-block invisible z-10 py-1 px-3 -ml-[33px] text-sm font-medium text-white bg-gray-900 rounded-lg shadow-sm opacity-0 transition-opacity duration-300 tooltip dark:bg-gray-700 ">
       다이렉트 메시지
       <div class="tooltip-arrow -ml-1" data-popper-arrow></div>
   </div>
   {% for friend in user.friends.all %}
-  <button class="hover:rounded ml-10 bg-gray-700 hover:bg-gray-600 w-4/5 mt-4 border-b border-gray-500 flex justify-between">
+  <button class="hover:rounded ml-20 bg-gray-700 hover:bg-gray-600 w-3/4 mt-6 border-b border-gray-500 flex justify-between">
     <div class="flex mt-4">
       <div class="ml-4 text-gray-300 mb-2">
         <i class="fas fa-user-circle fa-2x"></i>
       </div>
-      <div class="ml-4 text-white text-sm y-4 m-0">{{friend}}</div>
+      <div class="ml-4 text-white text-sm y-4 m-0 mt-1">{{friend}}</div>
     </div>
     <a
-      class="w-10 h-10 bg-gray-800 rounded-full mt-2 z-9"
-      href="/"
+      class="w-10 h-10 bg-gray-800 rounded-full mt-1 z-9 mr-4"
+      href="{% url 'chat:create_dm' friend.nickname %}"
       data-tooltip-target="tooltip-default"
     >
-      <i class="far fa-envelope fa-lg bg-gray-700 mt-3"></i>
+      <i class="far fa-envelope fa-lg bg-gray-700 mt-5"></i>
     </a>
   </button>
+  <form action=""></form>
 
   {% endfor %}
 </div>

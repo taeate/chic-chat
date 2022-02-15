@@ -4,13 +4,20 @@ from django.db import models
 from django.core.exceptions import ValidationError
 
 class Room(models.Model):
+    class RoomType(models.TextChoices):
+        PUBLIC = "PUBLIC"
+        PRIVATE = "PRIAVATE"
+        DM = "DM"
     reg_date = models.DateTimeField('채팅방 생성 날짜', auto_now_add=True)
     name = models.CharField('채팅방 이름', max_length=100, unique=True)
     host = models.ForeignKey(User, on_delete=models.DO_NOTHING)
     part_user = models.ManyToManyField(User, related_name="part_server")
-
+    #status = models.CharField(default="PUBLIC",max_length=20,choices=RoomType.choices)
     def __str__(self):
         return self.name
+
+
+    
 
 
 class ChatMessage(models.Model):

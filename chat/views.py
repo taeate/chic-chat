@@ -30,6 +30,21 @@ def room_create(request):
     context = {'form': form}
     return render(request, 'chat/room_form.html', context)
 
+def dm_create(request,user_nickname):
+    otheruser=User.objects.get(nickname=user_nickname)
+    code1 = otheruser.nickname
+    code2 = request.user.nickname
+    code = sorted([code1,code2])
+    code = code[0]+code[1]
+    room = Room.objects.filter(name=code)
+    if room:
+        return redirect('chat:dm_detail', room_id=room.first().id)
+    room = Room(host=request.user,name=(code1+code2))
+    room.save()
+    room.part_user.add(request.user)
+    room.part_user.add(otheruser)
+    return redirect('chat:dm_detail',room_id=room.id)
+
 
 def room_list(request):
     
@@ -51,6 +66,14 @@ def room_detail(request, room_id):
 
     return render(request, 'chat/room_detail.html', context)
 
+def dm_detail(request, room_id):
+    room = Room.objects.get(id=room_id)
+    room_detail = "집에 보내줘"
+    room_name = room.part_user.all().exclude(nickname=request.user.nickname).first().nickname
+    print(room_name)
+    context = {'room': room, 'room_detail': room_detail,"room_name":room_name}
+
+    return render(request, 'chat/room_detail.html', context)
 
 @login_required(login_url='accounts:login')
 def access_server(request, room_id):
