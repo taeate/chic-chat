@@ -16,6 +16,7 @@
                     </li>
                     {% if user.nickname %}
                     {% for room in user.part_server.all %}
+                    {% if room.room_type == 'basic' %}
                     <li class="nav-item w-100">
                         <a href="{% url 'chat:detail' room.id %}" class="nav-link py-2 margin" title=""
                             data-bs-toggle="tooltip" data-bs-placement="right" data-bs-original-title="Customers">
@@ -25,6 +26,7 @@
                             </button>
                         </a>
                     </li>
+                    {% endif %}
                     {% endfor %}
                     <li>
                         {% include 'chat/search_room_modal.html' %}

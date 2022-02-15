@@ -12,6 +12,7 @@ class Room(models.Model):
     name = models.CharField('채팅방 이름', max_length=100, unique=True)
     host = models.ForeignKey(User, on_delete=models.DO_NOTHING)
     part_user = models.ManyToManyField(User, related_name="part_server")
+    room_type = models.CharField('채팅방타입', max_length=100, default='basic')
     #status = models.CharField(default="PUBLIC",max_length=20,choices=RoomType.choices)
     def __str__(self):
         return self.name
