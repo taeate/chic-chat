@@ -40,6 +40,7 @@ def dm_create(request,user_nickname):
     if room:
         return redirect('chat:dm_detail', room_id=room.first().id)
     room = Room(host=request.user,name=(code1+code2))
+    room.room_type = 'direct'
     room.save()
     room.part_user.add(request.user)
     room.part_user.add(otheruser)
