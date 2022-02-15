@@ -26,6 +26,7 @@
 #side_scroll::-webkit-scrollbar {
     width: 12px;
     background: black;
+    display: none;
 }
 
 #side_scroll::-webkit-scrollbar-thumb {
@@ -33,11 +34,13 @@
     border-radius: 10px;
     background-clip: padding-box;
     border: 2px solid transparent;
+    display: none;
 }
 
 #side_scroll::-webkit-scrollbar-track {
     background-color: rgb(61, 69, 90);
     box-shadow: inset 0px 0px 5px rgb(64, 64, 66);
+    display: none;
 }
 
 #on_off_scroll::-webkit-scrollbar {
