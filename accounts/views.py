@@ -28,7 +28,7 @@ def login(request: HttpRequest):
         else:
             messages.warning(request, "잘못된 아이디/비밀번호 입니다.")
             return redirect('accounts:login')
-    return render(request, 'accounts_login.html')
+    return render(request, 'main.html')
 
 
 def signup(request: HttpRequest):
