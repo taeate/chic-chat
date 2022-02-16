@@ -7,7 +7,14 @@
 <input type="checkbox" id="my-modal-2" class="modal-toggle hidden" />
 <div class="modal">
     <div class="modal-box">
-        <input type="text" placeholder="Room Name" class="input text-black" />
+        <form method="post" class="post-form my-3" action="{% url 'chat:create' %}">
+            <input
+                name="kw"
+                type="text"
+                placeholder="채팅방 찾기"
+                class="p-4 text-lg rounded bg-gray-900 text-gray-200 h-12 py-2 w-[15em] mr-3"
+            />
+        </form>
         <div class="modal-action">
             <label for="my-modal-2" class="btn btn-primary">Accept</label>
             <label for="my-modal-2" class="btn">Close</label>
