@@ -60,7 +60,7 @@ def room_list(request):
     context = {'rooms': rooms, 'users': users}
     return render(request, 'chat/room_list.html', context)#?저긴 뭐 다른데서 가져오나??ㅋㅋㅋㅋㅋ 서버 db 날리고 다시 해볼까요? ㄱㄷ
 #test rooms = Room.objects.prefetch_related(Prefetch('part_user', queryset=User.objects.all(), to_attr='part_server')).exclude(room_type="direct")
-
+#
 def room_detail(request, room_id):
     room = Room.objects.get(id=room_id)
     room_detail = "집에 보내줘"
