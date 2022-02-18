@@ -54,11 +54,12 @@ def room_list(request):
         rooms = Room.objects.filter(name__icontains=kw) | Room.objects.filter(name__startswith=kw)
     else:
         rooms = Room.objects.prefetch_related(
-            Prefetch('part_user', queryset=User.objects.filter(id=request.user.id), to_attr='part_server')).exclude(room_type="direct")
+            Prefetch('part_user', queryset=User.objects.filter(id=request.user.id), to_attr='part_server'))
+        rooms = rooms.exclude(room_type="direct")
     users = User.objects.all()
     context = {'rooms': rooms, 'users': users}
-    return render(request, 'chat/room_list.html', context)
-
+    return render(request, 'chat/room_list.html', context)#?저긴 뭐 다른데서 가져오나??ㅋㅋㅋㅋㅋ 서버 db 날리고 다시 해볼까요? ㄱㄷ
+#test rooms = Room.objects.prefetch_related(Prefetch('part_user', queryset=User.objects.all(), to_attr='part_server')).exclude(room_type="direct")
 
 def room_detail(request, room_id):
     room = Room.objects.get(id=room_id)
