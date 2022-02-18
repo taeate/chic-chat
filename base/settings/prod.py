@@ -19,4 +19,4 @@ DATABASES = {
 #go to jenkins
 #where is git_pull_rerun.sh 
 # 고 투 터미널
-##
+###
