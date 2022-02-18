@@ -10,5 +10,3 @@ services:
       - 8022:8022
     volumes:
       - .:/usr/src/app
-    depends_on:
-      - redis
