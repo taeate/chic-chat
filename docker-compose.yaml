@@ -2,7 +2,7 @@ version: '3'
 services:
   django:
     build : .
-    command : bash -c "gunicorn --reload --bind :8022 base.wsgi"
+    command : bash -c "gunicorn --reload --bind :8022 base.wsgi:application"
     # command : tail -f /dev/null
     container_name: python__2
     hostname: root
