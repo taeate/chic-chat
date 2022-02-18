@@ -14,7 +14,7 @@ from pathlib import Path
 import pymysql
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
-BASE_DIR = Path(__file__).resolve().parent.parent
+BASE_DIR = Path(__file__).resolve().parent.parent.parent
 
 
 # Quick-start development settings - unsuitable for production
@@ -84,10 +84,10 @@ pymysql.install_as_MySQLdb()
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.mysql',
-        'NAME': 'chickenstalk',
-        'USER': 'root',
-        'PASSWORD': '',
-        'HOST': '127.0.0.1',
+        'NAME': 'paracord_dev',
+        'USER': 'taeate',
+        'PASSWORD': 'tjdwls1451',
+        'HOST': '192.168.0.13',
         'PORT': '3306',
         'OPTIONS': {
             'init_command': "SET sql_mode='STRICT_TRANS_TABLES'"
@@ -137,3 +137,5 @@ STATICFILES_DIRS = [
     BASE_DIR / 'base/static',
 ]
 STATIC_ROOT = BASE_DIR / 'static'
+
+CSRF_TRUSTED_ORIGINS = ['https://paracord.public.ahncod.co.kr']

@@ -1,5 +1,1 @@
-Django
-mysqlclient
-pymysql
-tailwindcss
-daisyui
+-r requirements/prod.txt
