@@ -54,7 +54,7 @@ def room_list(request):
         rooms = Room.objects.filter(name__icontains=kw) | Room.objects.filter(name__startswith=kw)
     else:
         rooms = Room.objects.prefetch_related(
-            Prefetch('part_user', queryset=User.objects.filter(id=request.user.id), to_attr='part_server')).exclude(room_type="dm")
+            Prefetch('part_user', queryset=User.objects.filter(id=request.user.id), to_attr='part_server')).exclude(room_type="direct")
     users = User.objects.all()
     context = {'rooms': rooms, 'users': users}
     return render(request, 'chat/room_list.html', context)
