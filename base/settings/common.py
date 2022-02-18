@@ -80,7 +80,7 @@ WSGI_APPLICATION = 'base.wsgi.application'
 # https://docs.djangoproject.com/en/3.2/ref/settings/#databases
 
 pymysql.install_as_MySQLdb()
-
+#d
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.mysql',
