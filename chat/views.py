@@ -39,7 +39,7 @@ def dm_create(request,user_nickname):
     room = Room.objects.filter(name=code)
     if room:
         return redirect('chat:dm_detail', room_id=room.first().id)
-    room = Room(host=request.user,name=(code1+code2))
+    room = Room(host=request.user,name=(code1+code2),room_type="dm")
     room.room_type = 'direct'
     room.save()
     room.part_user.add(request.user)
@@ -54,7 +54,7 @@ def room_list(request):
         rooms = Room.objects.filter(name__icontains=kw) | Room.objects.filter(name__startswith=kw)
     else:
         rooms = Room.objects.prefetch_related(
-            Prefetch('part_user', queryset=User.objects.filter(id=request.user.id), to_attr='part_server'))
+            Prefetch('part_user', queryset=User.objects.filter(id=request.user.id), to_attr='part_server')).exclude(room_type="dm")
     users = User.objects.all()
     context = {'rooms': rooms, 'users': users}
     return render(request, 'chat/room_list.html', context)
