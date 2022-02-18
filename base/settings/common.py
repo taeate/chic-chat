@@ -87,7 +87,7 @@ DATABASES = {
         'NAME': 'paracord_dev',
         'USER': 'taeate',
         'PASSWORD': 'tjdwls1451',
-        'HOST': '192.168.0.13',
+        'HOST': '192.168.219.101',
         'PORT': '3306',
         'OPTIONS': {
             'init_command': "SET sql_mode='STRICT_TRANS_TABLES'"
