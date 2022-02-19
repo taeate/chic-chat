@@ -1,5 +1,3 @@
-from asyncore import write
-from django.contrib import messages
 from django.contrib.auth.decorators import login_required
 from django.core.exceptions import ValidationError
 from django.db.models import Prefetch
@@ -11,7 +9,6 @@ from django.utils import timezone
 from chat.form import RoomForm
 from chat.models import *
 
-import json
 
 @login_required(login_url='accounts:login')
 def room_create(request):
@@ -23,12 +20,8 @@ def room_create(request):
             room.reg_date = timezone.now()
             room.save()
             request.user.part_server.add(room)
-            return redirect('chat'
-                            ':detail', room_id=room.id)
-    else:
-        form = RoomForm()
-    context = {'form': form}
-    return render(request, 'chat/room_form.html', context)
+            return redirect('chat:detail', room_id=room.id)
+    return redirect(request.META.get('HTTP_REFERER'))
 
 def dm_create(request,user_nickname):
     otheruser=User.objects.get(nickname=user_nickname)

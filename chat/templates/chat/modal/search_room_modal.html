@@ -8,16 +8,15 @@
 <div class="modal">
     <div class="modal-box flex justify-center">
         <form action="{% url 'chat:list' %}" method="GET" class="text-center">
+            {% csrf_token %}
             <input
                 name="kw"
                 type="text"
                 placeholder="채팅방 찾기"
-                class="p-4 text-lg rounded bg-gray-900 text-gray-200 h-12 py-2 w-[15em] mr-3"
+                class="p-4 text-lg rounded bg-gray-900 text-gray-200 h-12 py-1 w-[16em]"
             />
-        </form>
-        <div class="modal-action mt-0">
-            <label for="my-modals-2" class="btn btn-primary"> 검색하기 </label>
+            <label for="my-modals-2" class="btn btn-ghost bg-green-500 hover:bg-white hover:text-green-500"> 검색하기 </label>
             <label for="my-modals-2" class="btn close-are">취소</label>
-        </div>
+        </form>
     </div>
 </div>
