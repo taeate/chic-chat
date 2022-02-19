@@ -55,11 +55,20 @@
         </li>
         {% else %}
         <li>
-            <a href="/" title="" data-bs-toggle="tooltip" data-bs-placement="right"
+            <a href="{% url 'accounts:login' %}" title="" data-bs-toggle="tooltip" data-bs-placement="right"
                 data-bs-original-title="Dashboard">
                 <button type="button"
                 class="flex items-center justify-center overflow-hidden whitespace-nowrap w-14 h-14 mx-auto mt-3 text-green-400 transition-all hover:duration-[300ms] bg-gray-700 rounded-[50%] hover:text-white hover:bg-teal-500 hover:rounded-[30%]">
                 <i class="fa-solid fa-user"></i>
+                </button>
+            </a>
+        </li>
+        <li>
+            <a href="{% url 'accounts:signup' %}" title="" data-bs-toggle="tooltip" data-bs-placement="right"
+                data-bs-original-title="Dashboard">
+                <button type="button"
+                class="flex items-center justify-center overflow-hidden whitespace-nowrap w-14 h-14 mx-auto mt-3 text-green-400 transition-all hover:duration-[300ms] bg-gray-700 rounded-[50%] hover:text-white hover:bg-teal-500 hover:rounded-[30%]">
+                <i class="fas fa-plus fa-1x"></i>
                 </button>
             </a>
         </li>
