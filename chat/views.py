@@ -1,10 +1,10 @@
 from django.contrib.auth.decorators import login_required
 from django.core.exceptions import ValidationError
 from django.db.models import Prefetch
-from django.http.request import HttpRequest
 from django.http.response import JsonResponse
 from django.shortcuts import render, redirect
 from django.utils import timezone
+from django.contrib import messages
 
 from chat.form import RoomForm
 from chat.models import *
@@ -20,6 +20,7 @@ def room_create(request):
             room.reg_date = timezone.now()
             room.save()
             request.user.part_server.add(room)
+            messages.success(request, f"{room.name} 채팅방이 생성되었습니다.")
             return redirect('chat:detail', room_id=room.id)
     return redirect(request.META.get('HTTP_REFERER'))
 
@@ -58,7 +59,6 @@ def room_detail(request, room_id):
     room = Room.objects.get(id=room_id)
     room_detail = "집에 보내줘"
     context = {'room': room, 'room_detail': room_detail}
-
     return render(request, 'chat/room_detail.html', context)
 
 def dm_detail(request, room_id):
@@ -129,5 +129,7 @@ def my_server_list(request):
 
 @login_required(login_url='accounts:login')
 def delete_server(request, room_id):
-    Room.objects.get(id=room_id).delete()
+    room = Room.objects.get(id=room_id)
+    messages.warning(request, f"{room.name} 채팅방이 삭제되었습니다.")
+    room.delete()
     return redirect('chat:my_server_list')

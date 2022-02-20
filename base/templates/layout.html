@@ -1,6 +1,5 @@
 <!DOCTYPE html>
-{% load static %}
-{% load tags %}
+{% load static %} {% load tags %}
 <html lang="ko">
     <head>
         <title>Paracord</title>
@@ -46,8 +45,7 @@
                     <div
                         class="bg-gray-800 w-56 flex-none flex items-center justify-between px-3 py-2 border-b border-gray-900"
                     >
-                        {% if room_detail %}
-                        {% if room.room_type == 'direct' %}
+                        {% if room_detail %} {% if room.room_type == 'direct' %}
                         <div># {{room.name|namefilter:user.nickname}}</div>
                         {% else %}
                         <div># {{ room.name }}</div>
@@ -84,8 +82,9 @@
                         >
                             <div
                                 id="chat_scroll"
-                                class="text-sm text-gray-400 overflow-y-auto"
+                                class="text-sm text-gray-400 overflow-y-auto relative"
                             >
+                                {% include 'messages.html' %}
                                 {% block content%} {% endblock %}
                             </div>
                             {% block input %} {% endblock %}
@@ -95,6 +94,11 @@
                 </div>
             </div>
         </div>
+        <script>
+            $('.flex-none').click(function(){
+                $('.alert').addClass('hidden');
+            });
+        </script>
     </body>
     {% block foot %} {% endblock %}
 </html>

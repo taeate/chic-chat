@@ -26,7 +26,7 @@ def login(request: HttpRequest):
             messages.success(request, f"돌아오셨군요ㅠㅠ {user.nickname}님..")
             return redirect('chat:list')
         else:
-            messages.warning(request, "잘못된 아이디/비밀번호 입니다.")
+            messages.error(request, "잘못된 아이디/비밀번호 입니다.")
             return redirect('accounts:login')
     return render(request, 'main.html')
 
@@ -61,7 +61,7 @@ def add_friend(request, user_id):
     if user != request.user:
         request.user.friends.add(user)
     else:
-        messages.warning(request, '자기 자신은 친구 추가 하지 않아도 영원한 친구입니다.')
+        messages.error(request, '자기 자신은 친구 추가 하지 않아도 영원한 친구입니다.')
     return redirect('accounts:user_list')
 
 
