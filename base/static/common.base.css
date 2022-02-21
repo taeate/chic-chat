@@ -1,3 +1,33 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+
+/* 안내 메시지 스타일(tailwind daisyui) */
+.alert-info {
+    --tw-bg-opacity: 0.1;
+    background-color: hsla(var(--in) / var(--tw-bg-opacity, 1));
+    --tw-text-opacity: 1;
+    color: hsla(var(--in) / var(--tw-text-opacity, 1));
+}
+
+.alert-success {
+    --tw-bg-opacity: 0.1;
+    background-color: hsla(var(--su) / var(--tw-bg-opacity, 1));
+    --tw-text-opacity: 1;
+    color: hsla(var(--su) / var(--tw-text-opacity, 1));
+}
+
+.alert-warning {
+    --tw-bg-opacity: 0.1;
+    background-color: hsla(var(--wa) / var(--tw-bg-opacity, 1));
+    --tw-text-opacity: 1;
+    color: hsla(var(--wa) / var(--tw-text-opacity, 1));
+}
+
+.alert-error {
+    --tw-bg-opacity: 0.1;
+    background-color: hsla(var(--er) / var(--tw-bg-opacity, 1));
+    --tw-text-opacity: 1;
+    color: hsla(var(--er) / var(--tw-text-opacity, 1));
+}

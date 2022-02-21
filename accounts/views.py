@@ -23,7 +23,7 @@ def login(request: HttpRequest):
             auth_login(request, user)
             user.is_active = 1
             user.save()
-            messages.success(request, f"돌아오셨군요ㅠㅠ {user.nickname}님..")
+            messages.info(request, f"돌아오셨군요ㅠㅠ {user.nickname}님..")
             return redirect('chat:list')
         else:
             messages.error(request, "잘못된 아이디/비밀번호 입니다.")
@@ -52,6 +52,7 @@ def logout(request):
     request.user.is_active = 0
     request.user.save()
     auth_logout(request)
+    messages.warning(request, "로그아웃 되었습니다.")
     return redirect('/')
 
 

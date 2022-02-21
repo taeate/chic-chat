@@ -22,6 +22,11 @@ def room_create(request):
             request.user.part_server.add(room)
             messages.success(request, f"{room.name} 채팅방이 생성되었습니다.")
             return redirect('chat:detail', room_id=room.id)
+        else: 
+            messages.error(request, "이미 존재하는 채팅방 이름입니다.")
+    else:
+        messages.error(request, "정상적이지 않은 접근입니다.")
+        return redirect('chat:list')
     return redirect(request.META.get('HTTP_REFERER'))
 
 def dm_create(request,user_nickname):
@@ -45,7 +50,9 @@ def room_list(request):
     
     kw = request.GET.get('kw')
     if kw:
-        rooms = Room.objects.filter(name__icontains=kw) | Room.objects.filter(name__startswith=kw)        
+        rooms = Room.objects.filter(name__icontains=kw) | Room.objects.filter(name__startswith=kw)
+        if not rooms:
+            messages.error(request, "검색된 채팅방이 없습니다.")
     else:
         rooms = Room.objects.prefetch_related(
             Prefetch('part_user', queryset=User.objects.filter(id=request.user.id), to_attr='part_server'))
