@@ -6,18 +6,17 @@
 </label>
 <input type="checkbox" id="my-modal-2" class="modal-toggle hidden" />
 <div class="modal">
-    <div class="modal-box">
-        <form method="post" class="post-form my-3" action="{% url 'chat:create' %}">
+    <div class="modal-box flex justify-center">
+        <form method="post" action="{% url 'chat:create' %}">
+            {% csrf_token %}
             <input
-                name="kw"
+                name="name"
                 type="text"
-                placeholder="채팅방 찾기"
-                class="p-4 text-lg rounded bg-gray-900 text-gray-200 h-12 py-2 w-[15em] mr-3"
+                placeholder="채팅방 생성"
+                class="p-4 text-lg rounded bg-gray-900 text-gray-200 h-12 py-1 w-[16em]"
             />
+            <label for="my-modal-2" class="btn btn-ghost bg-green-500 hover:bg-white hover:text-green-500">생성하기</label>
+            <label for="my-modal-2" class="btn">취소</label>
         </form>
-        <div class="modal-action">
-            <label for="my-modal-2" class="btn btn-primary">Accept</label>
-            <label for="my-modal-2" class="btn">Close</label>
-        </div>
     </div>
 </div>

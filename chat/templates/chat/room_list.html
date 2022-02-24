@@ -38,7 +38,7 @@
                 </div>
                 <div>
                     <button class="bg-red-500 rounded-full w-32 text-lg">
-                        <a href="{% url 'chat:exit_server' room.id %}">
+                        <a href="{% url 'chat:exit_server' room.id %}" onclick="if (confirm('정말 나가시겠습니까?') == false) return false;">
                             서버 나가기
                         </a>
                     </button>

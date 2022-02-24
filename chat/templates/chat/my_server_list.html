@@ -5,7 +5,7 @@
 <h5 class="my-3 border-top p-2">
     채팅방 이름 : {{ room.name }}
 </h5>
-<a href="{% url 'chat:delete_server' room.id %}" class="btn btn-danger">서버 삭제</a>
+<a onclick="if (confirm('정말 삭제하시겠습니까?') == false);" href="{% url 'chat:delete_server' room.id %}" class="btn btn-danger">서버 삭제</a>
 {% endfor %}
 {% else %}
 <h1>채팅방 is lonely...</h1>
