@@ -38,6 +38,7 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'accounts.apps.AccountsConfig',
+    'django_extensions',
     'chat.apps.ChatConfig',
     'm_chat.apps.MChatConfig',
     'base',
@@ -80,20 +81,20 @@ WSGI_APPLICATION = 'base.wsgi.application'
 # https://docs.djangoproject.com/en/3.2/ref/settings/#databases
 
 pymysql.install_as_MySQLdb()
-#d
-# DATABASES = {
-#     'default': {
-#         'ENGINE': 'django.db.backends.mysql',
-#         'NAME': 'paracord_dev',
-#         'USER': 'taeate',
-#         'PASSWORD': 'tjdwls1451',
-#         'HOST': '192.168.219.101',
-#         'PORT': '3306',
-#         'OPTIONS': {
-#             'init_command': "SET sql_mode='STRICT_TRANS_TABLES'"
-#         },
-#     }
-# }
+
+DATABASES = {
+    'default': {
+        'ENGINE': 'django.db.backends.mysql',
+        'NAME': 'paracord_dev',
+        'USER': 'taeate',
+        'PASSWORD': 'tjdwls1451',
+        'HOST': '192.168.219.101',
+        'PORT': '3306',
+        'OPTIONS': {
+            'init_command': "SET sql_mode='STRICT_TRANS_TABLES'"
+        },
+    }
+}
 
 # Password validation
 # https://docs.djangoproject.com/en/3.2/ref/settings/#auth-password-validators
@@ -139,3 +140,8 @@ STATICFILES_DIRS = [
 STATIC_ROOT = BASE_DIR / 'static'
 
 CSRF_TRUSTED_ORIGINS = ['https://paracord.public.ahncod.co.kr']
+
+GRAPH_MODELS = {
+  'all_applications': True,
+  'group_models': True,
+}
