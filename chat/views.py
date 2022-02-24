@@ -112,7 +112,8 @@ def message_write(request):
         'resultCode': "S-1",
     })
 
-
+#평균응답속도가 0.15~0.2초사이네여
+#로컬에서 실행시켜봐여
 def chat(request, room_id):
     id = request.GET.get('from_id')
     room = Room.objects.get(id=room_id)
