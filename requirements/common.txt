@@ -1,3 +1,4 @@
 Django
 mysqlclient
 pymysql
+django_extensions

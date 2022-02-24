@@ -262,3 +262,6 @@ node_modules/
 .vscode/
 
 base/settings.py
+sftp
+sftp/
+/sftp
