@@ -108,20 +108,20 @@ HOME = {
         },
     }
 }
-DB = {
-    "HOME":HOME,
-    "ACADEMY":ACADEMY
-}
-import platform
-import os
-
-if platform.system().strip()=="Windows":
-    if os.environ['USERNAME'] == "USER":
-        DATABASES = DB['HOME']
-    else:
-        DATABASES = DB['ACADEMY']
-else:
-    DATABASES = DB['ACADEMY']
+DATABASES = ACADEMY
+# DB = {
+#     "HOME":HOME,
+#     "ACADEMY":ACADEMY
+# }
+# import platform 
+# import os
+# if platform.system().strip()=="Windows":
+#     if os.environ['USERNAME'] == "USER":
+#         DATABASES = DB['HOME']
+#     else:
+#         DATABASES = DB['ACADEMY']
+# else:
+#     DATABASES = DB['ACADEMY']
 
 # Password validation
 # https://docs.djangoproject.com/en/3.2/ref/settings/#auth-password-validators
