@@ -12,4 +12,7 @@ class TimeChecker(MiddlewareMixin):
         start_time = request.COOKIES.get('start_time')
         print(f"{time()-start_time:0.5f}sec")
         return response
-    
+    #로거 설치 해놨어여? 로거 설치 안했을거예요  messages는여? 
+    #그런데 그럴수가 있나? 네?
+    #아마존 생각해서 서버가 미국 동부쯤에있으면 저정도 걸릴수 있다 생각했는데
+    #님껀 네이버잖아요.
