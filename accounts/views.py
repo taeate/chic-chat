@@ -68,9 +68,7 @@ def add_friend(request, user_id):
 
 
 def user_list(request):
-    users = User.objects.all()
-    context = {'users': users}
-    return render(request, 'friend_list.html', context)
+    return render(request, 'friend_list.html')
 
 
 

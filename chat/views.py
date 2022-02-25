@@ -29,6 +29,7 @@ def room_create(request):
         return redirect('chat:list')
     return redirect(request.META.get('HTTP_REFERER'))
 
+@login_required(login_url='accounts:login')
 def dm_create(request,user_nickname):
     otheruser=User.objects.get(nickname=user_nickname)
     code1 = otheruser.nickname
@@ -45,9 +46,7 @@ def dm_create(request,user_nickname):
     room.part_user.add(otheruser)
     return redirect('chat:dm_detail',room_id=room.id)
 
-
 def room_list(request):
-    
     kw = request.GET.get('kw')
     if kw:
         rooms = Room.objects.filter(name__icontains=kw) | Room.objects.filter(name__startswith=kw)
@@ -59,15 +58,16 @@ def room_list(request):
     rooms = rooms.exclude(room_type="direct")
     users = User.objects.all()
     context = {'rooms': rooms, 'users': users}
-    return render(request, 'chat/room_list.html', context)#?저긴 뭐 다른데서 가져오나??ㅋㅋㅋㅋㅋ 서버 db 날리고 다시 해볼까요? ㄱㄷ
-#test rooms = Room.objects.prefetch_related(Prefetch('part_user', queryset=User.objects.all(), to_attr='part_server')).exclude(room_type="direct")
-#
+    return render(request, 'chat/room_list.html', context)
+
+@login_required(login_url='accounts:login')
 def room_detail(request, room_id):
     room = Room.objects.get(id=room_id)
     room_detail = "집에 보내줘"
     context = {'room': room, 'room_detail': room_detail}
     return render(request, 'chat/room_detail.html', context)
 
+@login_required(login_url='accounts:login')
 def dm_detail(request, room_id):
     room = Room.objects.get(id=room_id)
     room_detail = "집에 보내줘"
@@ -112,7 +112,7 @@ def message_write(request):
         'resultCode': "S-1",
     })
 
-
+@login_required(login_url='accounts:login')
 def chat(request, room_id):
     id = request.GET.get('from_id')
     room = Room.objects.get(id=room_id)

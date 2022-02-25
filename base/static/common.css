@@ -2954,9 +2954,9 @@ html {
   background-color: rgb(75 85 99 / var(--tw-bg-opacity));
 }
 
-.bg-base-200 {
+.bg-\[\#2A2E37\] {
   --tw-bg-opacity: 1;
-  background-color: hsla(var(--b2) / var(--tw-bg-opacity));
+  background-color: rgb(42 46 55 / var(--tw-bg-opacity));
 }
 
 .bg-base-100 {
