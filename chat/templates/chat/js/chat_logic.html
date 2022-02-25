@@ -60,6 +60,7 @@
     let chat_timestamp
     target = `loading${chat['nickname']}`
     if(chat["m_type"]=="LOADING"){
+      chat_timestamp="00000000"
         if (lastNickname != chat.nickname || lastTimeStamp != chat_timestamp) {
           $(".chat-messages").append(`
             <div class="flex-1 flex justify-between ${target}">
@@ -102,6 +103,7 @@
             </div>     
             `);
         }
+      console.log("here")
       return false
       
     }else{
