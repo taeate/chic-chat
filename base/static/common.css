@@ -2979,6 +2979,11 @@ html {
   background-color: rgb(33 37 54 / var(--tw-bg-opacity));
 }
 
+.bg-\[\#b349af\] {
+  --tw-bg-opacity: 1;
+  background-color: rgb(179 73 175 / var(--tw-bg-opacity));
+}
+
 .p-4 {
   padding: 1rem;
 }
