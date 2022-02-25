@@ -3,11 +3,12 @@ services:
   django:
     build : .
     command : bash -c "gunicorn --reload --bind :8022 base.wsgi:application"
-    # command : bash
+    #command : bash
     # command : tail -f /dev/null
     container_name: python__2
     hostname: root
     ports:
       - 8022:8022
     # volumes:
-    #   - .:/usr/src/app
+    #   - .:/usr/src/app ㄱㄷ 님 베이스에 왜 이닛파일이없어여
+    #강사님 저보고는 prune위험하다고 쓰지말라했으면서 쓰라하셨나보네

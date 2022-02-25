@@ -38,12 +38,14 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'accounts.apps.AccountsConfig',
+    'django_extensions',
     'chat.apps.ChatConfig',
     'm_chat.apps.MChatConfig',
     'base',
 ]
 
 MIDDLEWARE = [
+    'base.custom.TimeChecker',
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.common.CommonMiddleware',
@@ -80,8 +82,20 @@ WSGI_APPLICATION = 'base.wsgi.application'
 # https://docs.djangoproject.com/en/3.2/ref/settings/#databases
 
 pymysql.install_as_MySQLdb()
-
-DATABASES = {
+ACADEMY = {
+    'default': {
+        'ENGINE': 'django.db.backends.mysql',
+        'NAME': 'paracord_dev',
+        'USER': 'taeate',
+        'PASSWORD': 'tjdwls1451',
+        'HOST': '127.0.0.1',
+        'PORT': '3306',
+        'OPTIONS': {
+            'init_command': "SET sql_mode='STRICT_TRANS_TABLES'"
+        },
+    }
+}
+HOME = {
     'default': {
         'ENGINE': 'django.db.backends.mysql',
         'NAME': 'chickenstalk',
@@ -94,6 +108,20 @@ DATABASES = {
         },
     }
 }
+DATABASES = ACADEMY
+# DB = {
+#     "HOME":HOME,
+#     "ACADEMY":ACADEMY
+# }
+# import platform 
+# import os
+# if platform.system().strip()=="Windows":
+#     if os.environ['USERNAME'] == "USER":
+#         DATABASES = DB['HOME']
+#     else:
+#         DATABASES = DB['ACADEMY']
+# else:
+#     DATABASES = DB['ACADEMY']
 
 # Password validation
 # https://docs.djangoproject.com/en/3.2/ref/settings/#auth-password-validators
@@ -140,6 +168,7 @@ STATIC_ROOT = BASE_DIR / 'static'
 
 CSRF_TRUSTED_ORIGINS = ['https://paracord.public.ahncod.co.kr']
 
-SESSION_COOKIE_AGE = 1200
-SESSION_SAVE_EVERY_REQUEST = True
-SESSION_EXPIRE_AT_BROWSER_CLOSE = True
+GRAPH_MODELS = {
+  'all_applications': True,
+  'group_models': True,
+}
