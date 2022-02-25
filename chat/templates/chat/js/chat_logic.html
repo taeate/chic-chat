@@ -58,22 +58,56 @@
   let lastTimeStamp = null;
   function ChickChat__renderMessage(chat) {
     let chat_timestamp
+    target = `loading${chat['nickname']}`
     if(chat["m_type"]=="LOADING"){
-
-      target = `loading${chat['nickname']}`
-      $('.chat-messages').append(
-        `
-        <div class= "${target}">loading<div>
-          `
-      )
-      console.log(target)
+        if (lastNickname != chat.nickname || lastTimeStamp != chat_timestamp) {
+          $(".chat-messages").append(`
+            <div class="flex-1 flex justify-between ${target}">
+                <div class="bg-gray-700 flex-1 flex flex-col justify-between">
+                    <div class="text-sm overflow-y-auto">
+                        <div class="flex mx-6 pt-3 mt-3 border-gray-500 border-t">
+                            <div class="flex-none">
+                                <i class="fas fa-user-circle fa-3x text-gray-400"></i>
+                            </div>
+                            <div class="ml-5">
+                                <a class="text-white hover:underline text-sm">${chat.nickname}<a>
+                                <span class="text-xs text-gray-500 ml-1">
+                                    ${chat_timestamp}
+                                </span>
+                                <div>
+                                    <div class="mt-2">
+                                        ${chat.message}
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            `);
+        } else {
+          $(".chat-messages").append(`
+            <div class="flex-1 flex justify-between ${target}">
+                <div class="bg-gray-700 flex-1 flex flex-col justify-between">
+                    <div class="text-sm overflow-y-auto mt-1">
+                        <div class="flex mx-6">
+                            <div class="ml-[3em]">
+                                <div class="ml-5">
+                                    ${chat.message}
+                                </div>
+                            </div>
+                        </div> 
+                    </div>
+                </div>
+            </div>     
+            `);
+        }
       return false
       
     }else{
       chat_timestamp = moment(chat.timestamp).format("LT");
-      target = `.loading${chat['nickname']}`
-      $(target).remove()
-      console.log(target)
+      
+      $('.'+target).remove()
     }
     console.log(chat["m_type"]);
     if (chat.m_type != "NOMAL") {
