@@ -2984,6 +2984,11 @@ html {
   background-color: rgb(179 73 175 / var(--tw-bg-opacity));
 }
 
+.bg-red-300 {
+  --tw-bg-opacity: 1;
+  background-color: rgb(252 165 165 / var(--tw-bg-opacity));
+}
+
 .p-4 {
   padding: 1rem;
 }
