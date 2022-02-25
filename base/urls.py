@@ -7,5 +7,4 @@ urlpatterns = [
     path('', auth_views.LoginView.as_view(template_name='main.html'), name='accounts'),
     path('accounts/', include('accounts.urls')),
     path('chat/', include('chat.urls')),
-    path('m/chat/', include('m_chat.urls')),
 ]
