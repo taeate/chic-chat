@@ -7,7 +7,10 @@
     const writer = form.writer.value;
     const body = form.body.value;
     const room_id = form.room_id.value;
-
+    console.log(writer)
+    msgtest = make_message(writer,body)
+    console.log(msgtest)
+    ChickChat__renderMessage(msgtest)
     $.post(
       form.action,
       {
@@ -43,11 +46,35 @@
       "json"
     );
   }
-
+  function make_message(nickname,msg) {
+      return {
+      "m_type":"LOADING",
+      "nickname":nickname,
+      "message":msg,
+      "timestamp":"asd"
+    }
+  }
   let lastNickname = null;
   let lastTimeStamp = null;
   function ChickChat__renderMessage(chat) {
-    let chat_timestamp = moment(chat.timestamp).format("LT");
+    let chat_timestamp
+    if(chat["m_type"]=="LOADING"){
+
+      target = `loading${chat['nickname']}`
+      $('.chat-messages').append(
+        `
+        <div class= "${target}">loading<div>
+          `
+      )
+      console.log(target)
+      return false
+      
+    }else{
+      chat_timestamp = moment(chat.timestamp).format("LT");
+      target = `.loading${chat['nickname']}`
+      $(target).remove()
+      console.log(target)
+    }
     console.log(chat["m_type"]);
     if (chat.m_type != "NOMAL") {
       if (chat.m_type == "ENTER") {
