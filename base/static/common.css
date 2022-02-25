@@ -1,5 +1,4 @@
 /*
-ㄹㅇㅋㅋ
 ! tailwindcss v3.0.21 | MIT License | https://tailwindcss.com
 */
 
@@ -2955,19 +2954,29 @@ html {
   background-color: rgb(75 85 99 / var(--tw-bg-opacity));
 }
 
-.bg-\[\#2A2E37\] {
+.bg-\[\#17161a\] {
   --tw-bg-opacity: 1;
-  background-color: rgb(42 46 55 / var(--tw-bg-opacity));
+  background-color: rgb(23 22 26 / var(--tw-bg-opacity));
 }
 
-.bg-base-100 {
+.bg-\[\#2A2E47\] {
   --tw-bg-opacity: 1;
-  background-color: hsla(var(--b1) / var(--tw-bg-opacity));
+  background-color: rgb(42 46 71 / var(--tw-bg-opacity));
 }
 
 .bg-red-500 {
   --tw-bg-opacity: 1;
   background-color: rgb(239 68 68 / var(--tw-bg-opacity));
+}
+
+.bg-\[\#26232e\] {
+  --tw-bg-opacity: 1;
+  background-color: rgb(38 35 46 / var(--tw-bg-opacity));
+}
+
+.bg-\[\#212536\] {
+  --tw-bg-opacity: 1;
+  background-color: rgb(33 37 54 / var(--tw-bg-opacity));
 }
 
 .p-4 {
