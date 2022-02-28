@@ -2749,6 +2749,10 @@ html {
   height: 6rem;
 }
 
+.h-16 {
+  height: 4rem;
+}
+
 .min-h-screen {
   min-height: 100vh;
 }
@@ -3026,6 +3030,16 @@ html {
   background-color: rgb(45 47 48 / var(--tw-bg-opacity));
 }
 
+.bg-\[\#2A2E37\] {
+  --tw-bg-opacity: 1;
+  background-color: rgb(42 46 55 / var(--tw-bg-opacity));
+}
+
+.bg-\[\#3D4451\] {
+  --tw-bg-opacity: 1;
+  background-color: rgb(61 68 81 / var(--tw-bg-opacity));
+}
+
 .p-4 {
   padding: 1rem;
 }
@@ -3268,6 +3282,10 @@ html {
 
 .duration-1000 {
   transition-duration: 1000ms;
+}
+
+.\!duration-1000 {
+  transition-duration: 1000ms !important;
 }
 
 /* 안내 메시지 스타일(tailwind daisyui) */

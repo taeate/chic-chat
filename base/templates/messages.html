@@ -1,5 +1,5 @@
 {% if messages %} {% for message in messages %}
-<div class="alert alert-{{ message.tags }} absolute w-full">
+<div class="alert alert-{{ message.tags }} absolute h-16 w-full transition-all !duration-1000">
     <div>
         <span>{{ message }}</span>
     </div>
@@ -8,3 +8,14 @@
     </div>
 </div>
 {% endfor %} {% endif %}
+
+<script>
+<!-- alert 메시지 hidden -->
+$('.flex-none').click(function(){
+    $('.alert').addClass('opacity-0');
+    setTimeout(function(){
+        $('.alert').addClass('hidden');
+    }, 1000)
+});
+
+</script>

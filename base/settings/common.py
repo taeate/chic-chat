@@ -40,7 +40,6 @@ INSTALLED_APPS = [
     'accounts.apps.AccountsConfig',
     'django_extensions',
     'chat.apps.ChatConfig',
-    'm_chat.apps.MChatConfig',
     'base',
 ]
 
