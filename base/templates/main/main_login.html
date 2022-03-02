@@ -1,6 +1,4 @@
-{% extends 'main/main.html' %}
-{% block main_content %}
-<div class="card flex-shrink-0 w-full max-w-sm shadow-2xl bg-[#36393f] ml-20">
+<div class="login_div card flex-shrink-0 w-full max-w-sm shadow-2xl bg-[#36393f] ml-20">
     <form method="post" class="post-form" action="{% url 'accounts:login' %}">
         {% csrf_token %}
         <div class="card-body bg-[#36393F]">
@@ -33,8 +31,7 @@
             <div class="text-sm flex mt-1">
                 <div class="text-gray-300">계정이 필요하신가요?</div>
                 <a
-                    href="accounts/signup/"
-                    class="text-blue-400 ml-2 hover:underline"
+                    class="text-blue-400 ml-2 hover:underline main_btn cursor-pointer"
                     >회원가입</a
                 >
             </div>
@@ -49,4 +46,3 @@
         </div>
     </form>
 </div>
-{% endblock %}

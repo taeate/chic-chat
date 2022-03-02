@@ -31,26 +31,29 @@
         />
     </head>
     <body>
-        {% include 'messages.html' %}
-        <div class="hero min-h-screen bg-[#222324]">
-            <div class="flex-col justify-center hero-content lg:flex-row">
-                <div class="text-center lg:text-left text-white">
-                    <i
-                        class="spin__icon fa-solid fa-feather-pointed fa-4x mb-8 duration-[30s]"
-                    ></i>
-                    <a href="{% url 'chat:list' %}">
-                        <h1
-                            class="mb-5 text-5xl font-bold text-green-400 finger-snapping-title duration-[30s]"
-                        >
-                            Paracord
-                        </h1>
-                    </a>
-                    <p class="mb-5 finger-snapping-body duration-[30s]">
-                        Provident cupiditate voluptatem et in. Quaerat fugiat ut
-                        assumenda excepturi
-                    </p>
+        <div class="bg-[#222324]">
+            {% include 'messages.html' %}
+            <div class="hero min-h-screen">
+                <div class="flex-col justify-center hero-content lg:flex-row">
+                    <div class="text-center lg:text-left text-white">
+                        <i
+                            class="spin__icon fa-solid fa-feather-pointed fa-4x mb-8 duration-[30s]"
+                        ></i>
+                        <a href="{% url 'chat:list' %}">
+                            <h1
+                                class="mb-5 text-5xl font-bold text-green-400 finger-snapping-title duration-[30s]"
+                            >
+                                Paracord
+                            </h1>
+                        </a>
+                        <p class="mb-5 finger-snapping-body duration-[30s]">
+                            Provident cupiditate voluptatem et in. Quaerat fugiat ut
+                            assumenda excepturi
+                        </p>
+                    </div>
+                        {% include 'main/main_login.html' %}
+                        {% include 'main/main_signup.html' %}
                 </div>
-                {% block main_content %} {% endblock %}
             </div>
         </div>
         <script>
@@ -70,6 +73,11 @@
                 $(".spin__icon").removeClass("text-whte");
                 $(".finger-snapping-title").removeClass("text-whte");
                 $(".finger-snapping-body").removeClass("text-whte");
+            });
+
+            $(".main_btn").click(function () {
+                $(".login_div").toggleClass("hidden");
+                $(".signup_div").toggleClass("hidden");
             });
         </script>
     </body>

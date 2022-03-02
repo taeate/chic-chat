@@ -2443,6 +2443,20 @@ html {
   width: 2rem;
 }
 
+.alert-success {
+  --tw-bg-opacity: 0.1;
+  background-color: hsla(var(--su) / var(--tw-bg-opacity, 1));
+  --tw-text-opacity: 1;
+  color: hsla(var(--su) / var(--tw-text-opacity, 1));
+}
+
+.alert-error {
+  --tw-bg-opacity: 0.1;
+  background-color: hsla(var(--er) / var(--tw-bg-opacity, 1));
+  --tw-text-opacity: 1;
+  color: hsla(var(--er) / var(--tw-text-opacity, 1));
+}
+
 .invisible {
   visibility: hidden;
 }
@@ -2457,6 +2471,10 @@ html {
 
 .relative {
   position: relative;
+}
+
+.right-0 {
+  right: 0px;
 }
 
 .z-10 {
@@ -2785,6 +2803,10 @@ html {
 
 .w-\[4rem\] {
   width: 4rem;
+}
+
+.w-\[90\%\] {
+  width: 90%;
 }
 
 .max-w-sm {
@@ -3201,6 +3223,14 @@ html {
 
 .duration-1000 {
   transition-duration: 1000ms;
+}
+
+.\!duration-100 {
+  transition-duration: 100ms !important;
+}
+
+.\!duration-300 {
+  transition-duration: 300ms !important;
 }
 
 /* 안내 메시지 스타일(tailwind daisyui) */

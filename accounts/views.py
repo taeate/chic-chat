@@ -1,3 +1,4 @@
+from multiprocessing import context
 from django.contrib.auth.decorators import login_required
 from django.http import HttpRequest, HttpResponse
 from accounts.models import User
@@ -8,10 +9,6 @@ from django.shortcuts import render, redirect
 
 from accounts.form import UserForm, SearchUserForm, LoginForm
 from chat.models import Room
-
-
-def accounts(request):
-    return render(request, 'accounts_login.html')
 
 
 def login(request: HttpRequest):
@@ -28,7 +25,7 @@ def login(request: HttpRequest):
         else:
             messages.error(request, "잘못된 아이디/비밀번호 입니다.")
             return redirect('accounts:login')
-    return render(request, 'main/main_login.html')
+    return render(request, 'main/main.html')
 
 
 def signup(request: HttpRequest):
@@ -39,13 +36,16 @@ def signup(request: HttpRequest):
             auth_login(request, signed_user)
             signed_user.is_active = 1
             signed_user.save()
-            messages.success(request, "회원가입 환영합니다.")
+            messages.success(request, f"환영합니다 <{signed_user.nickname}>님!")
             return redirect('chat:list')
+        else :
+            messages.error(request, "회원가입 중 오류가 발생했습니다.")
+            return render(request, 'main/main.html')
     else:
         form = UserForm()
-    return render(request, 'main/main_signup.html', {
-        'form': form,
-    })
+        signup = "signup"
+        context = {'form': form, 'signup': signup}
+        return render(request, 'main/main.html', context)
 
 
 def logout(request):
