@@ -49,7 +49,7 @@
                 <div class="card flex-shrink-0 w-full max-w-sm shadow-2xl bg-[#36393f] ml-20">
                 <form method="post" class="post-form" action="{% url 'accounts:login' %}">
                 {% csrf_token %}
-                    <div class="card-body">
+                    <div class="card-body bg-[#36393F]">
                         <div class="form-control">
                             <label class="label">
                                 <span class="label-text text-gray-200">아이디</span>
@@ -76,7 +76,7 @@
                                 value="{{ form.password.value|default_if_none:'' }}"
                             />
                         </div>
-                        <div class="text-sm flex">
+                        <div class="text-sm flex mt-1">
                             <div class="text-gray-300">
                                 계정이 필요하신가요?
                             </div>
@@ -84,7 +84,7 @@
                             
                         </div>
                         
-                        <div class="d-flex justify-content-evenly mt-5">
+                        <div class="d-flex justify-content-evenly mt-1">
                             <button class="btn btn-ghost bg-green-500 hover:bg-white hover:text-green-500">
                                 로그인
                             </button> 

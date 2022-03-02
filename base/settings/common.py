@@ -107,7 +107,7 @@ HOME = {
         },
     }
 }
-DATABASES = HOME
+DATABASES = ACADEMY
 # DB = {
 #     "HOME":HOME,
 #     "ACADEMY":ACADEMY
