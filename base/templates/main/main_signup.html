@@ -1,0 +1,96 @@
+{% extends 'main/main.html' %}
+{% block main_content %}
+
+<div class="card flex-shrink-0 w-full max-w-sm shadow-2xl bg-[#36393f] ml-20">
+    <form method="post" class="post-form" action="{% url 'accounts:signup' %}">
+        {% csrf_token %}
+        <div class="card-body">
+            <div
+                class="container w-50 position-absolute top-50 start-50 translate-middle"
+            >
+                <form
+                    method="post"
+                    class="post-form"
+                    action="{% url 'accounts:signup' %}"
+                >
+                    {% csrf_token %}
+                    <div class="form-control paracode-base-color">
+                        <div
+                            class="form-label text-center font-bold text-white"
+                        >
+                            <h4 class="text-lg">계정만들기</h4>
+                        </div>
+                        <div class="mb-3 mt-4 w-75 m-auto">
+                            <label
+                                for="username"
+                                class="form-label text-gray-400 text-sm"
+                                >아이디</label
+                            >
+                            <input
+                                type="text"
+                                class="form-control text-black bg-[#2d2f30]"
+                                name="username"
+                                id="username"
+                                value="{{ form.username.value|default_if_none:'' }}"
+                            />
+                        </div>
+                        <div class="mb-3 w-75 m-auto">
+                            <label
+                                for="password1"
+                                class="form-label text-gray-400 text-sm"
+                                >비밀번호</label
+                            >
+                            <input
+                                type="password"
+                                class="form-control text-black"
+                                name="password1"
+                                id="password1"
+                                value="{{ form.password.value|default_if_none:'' }}"
+                            />
+                        </div>
+                        <div class="mb-3 w-75 m-auto">
+                            <label
+                                for="password2"
+                                class="form-label text-gray-400 text-sm"
+                                >비밀번호 확인</label
+                            >
+                            <input
+                                type="password"
+                                class="form-control text-black"
+                                name="password2"
+                                id="password2"
+                                value="{{ form.password.value|default_if_none:'' }}"
+                            />
+                        </div>
+                        <div class="mb-3 w-75 m-auto">
+                            <label
+                                for="nickname"
+                                class="form-label text-gray-400 text-sm"
+                                >닉네임</label
+                            >
+                            <input
+                                type="text"
+                                class="form-control text-black"
+                                name="nickname"
+                                id="nickname"
+                                value="{{ form.nickname.value|default_if_none:'' }}"
+                            />
+                        </div>
+                        <button
+                            type="submit"
+                            class="btn btn-primary my-4 w-75 mx-auto d-block"
+                        >
+                            생성하기
+                        </button>
+                        <a
+                            href="/"
+                            class="text-sm mt-2 text-blue-400 hover:underline"
+                            >이미 계정이 있으신가요?</a
+                        >
+                    </div>
+                </form>
+            </div>
+        </div>
+    </form>
+</div>
+{% endblock %}

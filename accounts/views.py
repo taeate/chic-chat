@@ -28,7 +28,7 @@ def login(request: HttpRequest):
         else:
             messages.error(request, "잘못된 아이디/비밀번호 입니다.")
             return redirect('accounts:login')
-    return render(request, 'main.html')
+    return render(request, 'main/main_login.html')
 
 
 def signup(request: HttpRequest):
@@ -43,7 +43,7 @@ def signup(request: HttpRequest):
             return redirect('chat:list')
     else:
         form = UserForm()
-    return render(request, 'signup.html', {
+    return render(request, 'main/main_signup.html', {
         'form': form,
     })
 

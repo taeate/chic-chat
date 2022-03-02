@@ -1,5 +1,8 @@
 
-{% extends 'layout.html' %} {% block content %}
+{% extends 'layout/layout.html' %} {% block content %}
+{% if messages %}
+<div class="alert_mt transition-all !duration-1000 mt-[4.5rem] bg-red"></div>
+{% endif %}
 <div class="text-gray-200 mx-4 mt-2 h-12 my-4">
   <div class="ml-6 mt-4 mb-2 text-white text-lg">친구</div>
   <div class="text-gray-400 ml-6 mb-6">나의 친구들이에요!</div>

@@ -1,7 +1,9 @@
-{% extends 'layout.html' %}
+{% extends 'layout/layout.html' %}
 {% block content %}
-
-<div class="text-gray-200 mx-4 mt-2 h-12 my-4 ">
+{% if messages %}
+<div class="alert_mt transition-all !duration-1000 mt-[4.5rem] bg-red"></div>
+{% endif %}
+<div class="text-gray-200 mx-4 h-12 mb-4">
     <div class="ml-4 mt-4 mb-2 text-white text-lg">
         모든유저
     </div>
