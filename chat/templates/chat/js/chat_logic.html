@@ -37,8 +37,7 @@
         ChickChat__lastMessageId = chat.id;
         ChickChat__renderMessage(chat);
       }
-      console.log(1);
-      setTimeout(ChickChat__loadMore, 100);
+      setTimeout(ChickChat__loadMore, 1000);
     }, "json");
   }
 
@@ -95,7 +94,6 @@
             </div>     
             `);
       }
-      console.log("here");
 
       console.log($("#chat_scroll").scrollTop($("#chat_scroll")[0].scrollHeight));
       return false;
