@@ -37,6 +37,7 @@
         ChickChat__lastMessageId = chat.id;
         ChickChat__renderMessage(chat);
       }
+      console.log(1);
       setTimeout(ChickChat__loadMore, 1000);
     }, "json");
   }
@@ -51,8 +52,8 @@
     let chat_timestamp;
     target = `loading${chat["nickname"]}`;
     if (chat["m_type"] == "LOADING") {
-      chat_timestamp = "00000000";
-      if (lastNickname != chat.nickname || lastTimeStamp != chat_timestamp) {
+        chat_timestamp = moment(Date.now()).format("LT");
+        if (lastNickname != chat.nickname || lastTimeStamp != chat_timestamp) {
         $(".chat-messages").append(`
             <div class="flex-1 flex justify-between ${target}">
                 <div class="bg-gray-700 flex-1 flex flex-col justify-between">
@@ -77,6 +78,7 @@
                 </div>
             </div>
             `);
+            lastTimeStamp = chat_timestamp;
       } else {
         $(".chat-messages").append(`
             <div class="flex-1 flex justify-between ${target}">
@@ -93,6 +95,7 @@
                 </div>
             </div>     
             `);
+            lastTimeStamp = chat_timestamp;
       }
 
       console.log($("#chat_scroll").scrollTop($("#chat_scroll")[0].scrollHeight));
@@ -102,19 +105,8 @@
 
       $("." + target).remove();
     }
-    console.log(chat["m_type"]);
     if (chat.m_type != "NOMAL") {
-      if (chat.m_type == "ENTER") {
-        $(".chat-messages").append(`
-            <div class="m-8">
-                <form class="bg-gray-800 text-center">
-                ${chat.message}
-                    <span class="text-gray-500 text-xs">
-                    ${chat_timestamp}
-                    </span>
-                </form>
-            </div>`);
-      } else if (chat.m_type == "EXIT") {
+      if (chat.m_type == "ENTER" || chat.m_type == "EXIT") {
         $(".chat-messages").append(`
             <div class="m-8">
                 <form class="bg-gray-800 text-center">

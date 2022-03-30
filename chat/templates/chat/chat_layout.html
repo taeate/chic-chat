@@ -10,14 +10,14 @@
   <!-- chat페이지 공용 -->
   {% if room %}
     <div class="bg-gray-700 h-24 flex items-center mx-3  border-gray-600">
-      <button class="px-2 py-2 h-10 bg-gray-600 rounded-l text-gray-700 hover:text-white border-r border-gray-600">
+      <button class="p-2 h-10 bg-gray-600 rounded-l text-gray-700 hover:text-white border-r border-gray-600">
         <i class="fas fa-plus-circle"></i>
       </button>
       <form id="message_form" class="flex-1 py-2 h-10 mb-4" action="{% url 'chat:message_write' %}" onsubmit="ChickChatForm__submit(this); return false;">
         {% csrf_token %}
         <input type="hidden" name="room_id" value="{{room.id}}">
         <input type="hidden" placeholder="작성자" name="writer" value="{{request.user.nickname}}">
-        <input id="message_input" autocomplete="off" placeholder="메세지보내기.." name="body" type="text" class="w-full text-sm h-10 px-2 py-2 bg-gray-600 text-gray-200 focus:outline-none rounded">
+        <input id="message_input" autocomplete="off" placeholder="메세지보내기.." name="body" type="text" class="w-full text-sm h-10 p-2 bg-gray-600 text-gray-200 focus:outline-none rounded">
       </form>
 
     </div>

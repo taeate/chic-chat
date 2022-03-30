@@ -1,10 +1,5 @@
 {% extends 'chat/chat_layout.html' %}
-
 {% block app %}
-  {% if room %}
-    {% include 'chat/js/chat_logic.html' %}
-    <div class="chat-messages text-gray-300" id="jax"></div>
-  {% else %}
-    <h1>채팅방을 찾을수가 없어요...ㅠㅠ 안타깝..</h1>
-  {% endif %}
+  {% include 'chat/js/chat_logic.html' %}
+  <div class="chat-messages text-gray-300" id="jax"></div>
 {% endblock %}

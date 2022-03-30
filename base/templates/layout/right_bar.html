@@ -1,43 +1,42 @@
-
-                    <div id="on_off_scroll" class="bg-gray-800 w-56 px-3 py-3 flex-none  overflow-y-auto">
-                        <h3 class="uppercase tracking-wide font-semibold text-xs text-gray-400 mb-2">온라인 -                            
-                        </h3>
-                        {% for user in room.part_user.all %}
-                        {% if user.is_active %}
-                        <ul>
-                            <li
-                                class="text-sm text-gray-400 px-2 hover:text-gray-200 hover:bg-gray-700 py-1 my-2 ">
-                                <a href="#" class="flex items-center">
-                                    <span>
-                                        <a href="#">
-                                            <i class="fas fa-circle text-green-400"></i>
-                                    </a>
-                                </span>
-                                    <span class="ml-2">
-                                        {{user}}
-                                    </span>
-                                </a>
-                            </li>
-                        </ul>
-                        {% endif %}
-                        {% endfor %}
-                        <h3 class="uppercase tracking-wide font-semibold text-xs text-gray-400 mb-2">오프라인 -
-                        </h3>
-                        {% for user in room.part_user.all %}
-                        {% if not user.is_active %}
-                        <ul>
-                            <li
-                                class="text-sm text-gray-400 px-2 hover:text-gray-200 hover:bg-gray-700 py-1 my-2 ">
-                                <a href="#" class="flex items-center">
-                                    <span><a href="#">
-                                        <i class="fas fa-circle text-red-600"></i>
-                                    </a></span>
-                                    <span class="ml-2">
-                                        {{user}}
-                                    </span>
-                                </a>
-                            </li>
-                        </ul>
-                        {% endif %}
-                        {% endfor %}
-                    </div>
+<div id="on_off_scroll" class="bg-gray-800 p-3 flex-none overflow-y-auto">
+  <h3 class="uppercase tracking-wide font-semibold text-xs text-gray-400 mb-2">온라인 -
+  </h3>
+  {% for user in room.part_user.all %}
+    {% if user.is_active %}
+      <ul>
+        <li class="text-sm text-gray-400 px-2 hover:text-gray-200 hover:bg-gray-700 py-1 my-2 ">
+          <a href="#" class="flex items-center">
+            <span>
+              <a href="#">
+                <i class="fas fa-circle text-green-400"></i>
+              </a>
+            </span>
+            <span class="ml-2">
+              {{user}}
+            </span>
+          </a>
+        </li>
+      </ul>
+    {% endif %}
+  {% endfor %}
+  <h3 class="uppercase tracking-wide font-semibold text-xs text-gray-400 mb-2">오프라인 -
+  </h3>
+  {% for user in room.part_user.all %}
+    {% if not user.is_active %}
+      <ul>
+        <li class="text-sm text-gray-400 px-2 hover:text-gray-200 hover:bg-gray-700 py-1 my-2 ">
+          <a href="#" class="flex items-center">
+            <span>
+              <a href="#">
+                <i class="fas fa-circle text-red-600"></i>
+              </a>
+            </span>
+            <span class="ml-2">
+              {{user}}
+            </span>
+          </a>
+        </li>
+      </ul>
+    {% endif %}
+  {% endfor %}
+</div>
