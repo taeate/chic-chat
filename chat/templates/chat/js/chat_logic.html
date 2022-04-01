@@ -2,67 +2,59 @@
 
 <script type="text/javascript">
   function ChickChatForm__submit(form) {
-    form.writer.value = form.writer.value.trim();
-
+    form.writer.value = form
+      .writer
+      .value
+      .trim();
     const writer = form.writer.value;
     const body = form.body.value;
     const room_id = form.room_id.value;
-    console.log(writer)
-    msgtest = make_message(writer,body)
-    console.log(msgtest)
-    ChickChat__renderMessage(msgtest)
-    $.post(
-      form.action,
-      {
-        csrfmiddlewaretoken: form.csrfmiddlewaretoken.value,
-        writer,
-        body,
-        room_id,
-      },
-      "json"
-    );
+    console.log(writer);
+    msgtest = make_message(writer, body);
+    console.log(msgtest);
+    ChickChat__renderMessage(msgtest);
+    $.post(form.action, {
+      csrfmiddlewaretoken: form.csrfmiddlewaretoken.value,
+      writer,
+      body,
+      room_id
+    }, "json");
 
     form.body.value = "";
-    form.body.focus();
+    form
+      .body
+      .focus();
   }
 
   let ChickChat__lastMessageId = 0;
 
   function ChickChat__loadMore() {
-    $.get(
-      "{% url 'chat:chat' room.id %}",
-      {
-        from_id: ChickChat__lastMessageId,
-      },
-      function (data) {
-        for (const chatKey in data.chats) {
-          const chat = data.chats[chatKey];
-          ChickChat__lastMessageId = chat.id;
-          ChickChat__renderMessage(chat);
-        }
-        console.log(1);
-        setTimeout(ChickChat__loadMore, 100);
-      },
-      "json"
-    );
+    $.get("{% url 'chat:chat' room.id %}", {
+      from_id: ChickChat__lastMessageId
+    }, function (data) {
+      for (const chatKey in data.chats) {
+        const chat = data.chats[chatKey];
+        ChickChat__lastMessageId = chat.id;
+        ChickChat__renderMessage(chat);
+      }
+      console.log(1);
+      setTimeout(ChickChat__loadMore, 1000);
+    }, "json");
   }
-  function make_message(nickname,msg) {
-      return {
-      "m_type":"LOADING",
-      "nickname":nickname,
-      "message":msg,
-      "timestamp":"asd"
-    }
+
+  function make_message(nickname, msg) {
+    return {m_type: "LOADING", nickname: nickname, message: msg, timestamp: "asd"};
   }
   let lastNickname = null;
   let lastTimeStamp = null;
+
   function ChickChat__renderMessage(chat) {
-    let chat_timestamp
-    target = `loading${chat['nickname']}`
-    if(chat["m_type"]=="LOADING"){
-      chat_timestamp="00000000"
+    let chat_timestamp;
+    target = `loading${chat["nickname"]}`;
+    if (chat["m_type"] == "LOADING") {
+        chat_timestamp = moment(Date.now()).format("LT");
         if (lastNickname != chat.nickname || lastTimeStamp != chat_timestamp) {
-          $(".chat-messages").append(`
+        $(".chat-messages").append(`
             <div class="flex-1 flex justify-between ${target}">
                 <div class="bg-gray-700 flex-1 flex flex-col justify-between">
                     <div class="text-sm overflow-y-auto">
@@ -86,8 +78,9 @@
                 </div>
             </div>
             `);
-        } else {
-          $(".chat-messages").append(`
+            lastTimeStamp = chat_timestamp;
+      } else {
+        $(".chat-messages").append(`
             <div class="flex-1 flex justify-between ${target}">
                 <div class="bg-gray-700 flex-1 flex flex-col justify-between">
                     <div class="text-sm overflow-y-auto mt-1">
@@ -102,30 +95,18 @@
                 </div>
             </div>     
             `);
-        }
-      console.log("here")
+            lastTimeStamp = chat_timestamp;
+      }
 
-    console.log($("#chat_scroll").scrollTop($("#chat_scroll")[0].scrollHeight));
-      return false
-      
-    }else{
+      console.log($("#chat_scroll").scrollTop($("#chat_scroll")[0].scrollHeight));
+      return false;
+    } else {
       chat_timestamp = moment(chat.timestamp).format("LT");
-      
-      $('.'+target).remove()
+
+      $("." + target).remove();
     }
-    console.log(chat["m_type"]);
     if (chat.m_type != "NOMAL") {
-      if (chat.m_type == "ENTER") {
-        $(".chat-messages").append(`
-            <div class="m-8">
-                <form class="bg-gray-800 text-center">
-                ${chat.message}
-                    <span class="text-gray-500 text-xs">
-                    ${chat_timestamp}
-                    </span>
-                </form>
-            </div>`);
-      } else if (chat.m_type == "EXIT") {
+      if (chat.m_type == "ENTER" || chat.m_type == "EXIT") {
         $(".chat-messages").append(`
             <div class="m-8">
                 <form class="bg-gray-800 text-center">
@@ -163,22 +144,22 @@
             `);
         } else {
           $(".chat-messages").append(`
-            <div class="flex-1 flex justify-between">
-                <div class="bg-gray-700 flex-1 flex flex-col justify-between">
-                    <div class="text-sm overflow-y-auto mt-1">
-                        <div class="flex mx-6">
-                            <div class="ml-[3em]">
-                                <div class="ml-5">
-                                    ${chat.message}
-                                </div>
+                    <div class="flex-1 flex justify-between">
+                        <div class="bg-gray-700 flex-1 flex flex-col justify-between">
+                            <div class="text-sm overflow-y-auto mt-1">
+                                <div class="flex mx-6">
+                                    <div class="ml-[3em]">
+                                        <div class="ml-5">
+                                            ${chat.message}
+                                        </div>
+                                    </div>
+                                </div> 
                             </div>
-                        </div> 
-                    </div>
-                </div>
-            </div>     
-            `);
+                        </div>
+                    </div>     
+                    `);
         }
-        
+
         lastNickname = chat.nickname;
         lastTimeStamp = chat_timestamp;
       }
@@ -188,4 +169,3 @@
   }
   ChickChat__loadMore();
 </script>
-

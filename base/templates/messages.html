@@ -1,5 +1,5 @@
 {% if messages %} {% for message in messages %}
-<div class="alert alert-{{ message.tags }} absolute w-full">
+<div class="message alert alert-{{ message.tags }} absolute h-16 w-full transition-all !duration-1000">
     <div>
         <span>{{ message }}</span>
     </div>
@@ -8,3 +8,44 @@
     </div>
 </div>
 {% endfor %} {% endif %}
+
+
+
+{% comment %}
+회원가입 시 발생하는 오류 안내 메시지 출력
+<!-- 필드 에러 -->
+{% if form.errors %}
+    <div class="message absolute transition-all !duration-1000 w-50 absolute right-0">
+        {% for field in form %}
+            {% for error in field.errors %}  <!-- 필드 오류를 출력한다. -->
+                <div class="alert alert-error">
+                    <strong>{{ field.label }}</strong>
+                    {{ error }}
+                </div>
+            {% endfor %}
+        {% endfor %}
+        {% for error in form.non_field_errors %}   <!-- 넌필드 오류를 출력한다. -->
+            <div class="alert alert-error transition-all !duration-1000">
+                <strong>{{ error }}</strong>
+            </div>
+        {% endfor %}
+        <div class="flex-none">
+            <button class="btn btn-sm absolute right-0">See</button>
+        </div>
+    </div>
+{% endif %} {% endcomment %}
+<script>
+<!-- alert 메시지 hidden -->
+$('.flex-none').click(function(){
+    $('.message').addClass('opacity-0');
+    setTimeout(function(){
+        $('.message').addClass('hidden');
+    }, 1000)
+});
+$('.flex-none').click(function(){
+    setTimeout(function(){
+        $('.alert_mt').addClass('mt-0');
+    }, 1000)
+});
+
+</script>

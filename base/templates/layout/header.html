@@ -1,0 +1,21 @@
+<div class="flex-1 bg-gray-700 flex items-center justify-between px-4 border-b border-gray-900">
+  <div class="flex items-center whitespace-nowrap">
+    <i class="fas fa-user-friends text-gray-200"></i>
+    <a href="{% url 'accounts:user_list' %}">
+      <div class="font-bold text-green-300 ml-2">친구</div>
+    </a>
+    <a href="{% url 'accounts:user_list_online' %}">
+      <button class="ml-4 bg-gray-600 rounded w-14 hover:bg-gray-800">
+        온라인
+      </button>
+    </a>
+    <a href="{% url 'accounts:user_list_all' %}">
+      <button class="ml-4 bg-gray-600 rounded w-12 hover:bg-gray-800">
+        모두
+      </button>
+    </a>
+    <a href="{% url 'accounts:add_friend_searchpage' %}">
+      <button class="ml-4 bg-green-400 rounded w-20">친구추가</button>
+    </a>
+  </div>
+</div>

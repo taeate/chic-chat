@@ -49,15 +49,16 @@ def dm_create(request,user_nickname):
 def room_list(request):
     kw = request.GET.get('kw')
     if kw:
-        rooms = Room.objects.filter(name__icontains=kw) | Room.objects.filter(name__startswith=kw)
+        target = Room.objects.prefetch_related(
+            Prefetch('part_user', queryset=User.objects.filter(id=request.user.id), to_attr='part_server'))
+        rooms = target.filter(name__icontains=kw) | target.filter(name__startswith=kw)
         if not rooms:
             messages.error(request, "검색된 채팅방이 없습니다.")
     else:
         rooms = Room.objects.prefetch_related(
             Prefetch('part_user', queryset=User.objects.filter(id=request.user.id), to_attr='part_server'))
     rooms = rooms.exclude(room_type="direct")
-    users = User.objects.all()
-    context = {'rooms': rooms, 'users': users}
+    context = {'rooms': rooms}
     return render(request, 'chat/room_list.html', context)
 
 @login_required(login_url='accounts:login')
